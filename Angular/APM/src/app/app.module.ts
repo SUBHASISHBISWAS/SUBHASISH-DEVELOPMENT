@@ -11,22 +11,23 @@ import { WelcomeComponent } from './home/welcome.component';
 import { ProductModule } from './Products/product.module';
 
 @NgModule({
-  declarations: [
+  declarations: 
+  [
     AppComponent,
     WelcomeComponent
   ],
-  imports: [
+  imports: 
+  [
     BrowserModule,
     AppRoutingModule,
-    
     HttpClientModule,
+    ProductModule,
     RouterModule.forRoot([
-      
       {path:'welcome', component: WelcomeComponent},
       {path:'', redirectTo :'welcome', pathMatch:'full'},
       {path:'**', redirectTo :'welcome', pathMatch:'full'},
     ],{useHash:false}),
-    ProductModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
