@@ -34,13 +34,13 @@ namespace SB_APIChecker.Controllers
             names.Add(value);
         }
 
-        // PUT api/values/5
+        // PUT api/values/3
         public void Put(int id, [FromBody]string value)
         {
             names[id] = value;
         }
 
-        // DELETE api/values/5
+        // DELETE api/values/3
         public void Delete(int id)
         {
             names.RemoveAt(id);
