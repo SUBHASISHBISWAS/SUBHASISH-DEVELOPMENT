@@ -9,6 +9,8 @@ namespace _3_Page_Control_Events
 {
     public partial class About : Page
     {
+
+
         protected void Page_PreInit(object sender, EventArgs e)
         { Response.Write("Page_PreInit" + "<br/>"); }
 
@@ -33,6 +35,16 @@ namespace _3_Page_Control_Events
         protected void Page_Unload(object sender, EventArgs e)
         {
             //Response.Write("Page_Unload" + "<br/>"); 
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Write("Button Clicked Evenet Fired"+"<br/>");
+        }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            Response.Write("TextChanged Evene Fired" + "<br/>");
         }
     }
 }
