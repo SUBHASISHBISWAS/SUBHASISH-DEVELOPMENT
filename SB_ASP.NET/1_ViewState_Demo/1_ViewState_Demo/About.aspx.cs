@@ -11,7 +11,7 @@ namespace _1_ViewState_Demo
 
     public partial class About : Page
     {
-        int ClicksCount = 0;
+        int ClicksCount = 1;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -22,11 +22,13 @@ namespace _1_ViewState_Demo
 
         protected void Buttonl_Click(object sender, EventArgs e)
         {
-            ClicksCount=ClicksCount + 1;
+            if (ViewState["Clicks"]!=null)
+            {
+                ClicksCount = (int)ViewState["Clicks"] + 1;
+            }
             TextBox1.Text = ClicksCount.ToString();
+            ViewState["Clicks"] = ClicksCount;
         }
-    
-
 
     }
 

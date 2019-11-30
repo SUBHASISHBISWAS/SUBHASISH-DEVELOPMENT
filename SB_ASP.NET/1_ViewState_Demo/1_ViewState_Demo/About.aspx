@@ -6,5 +6,5 @@
     <p>Use this area to provide additional information.</p>
 
     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-    <asp:Button ID="Button1" runat="server" Text="Button" />
+    <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Buttonl_Click" />
 </asp:Content>
