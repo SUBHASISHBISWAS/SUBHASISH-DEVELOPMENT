@@ -18,6 +18,11 @@ namespace _1_ViewState_Demo
             {
                 TextBox1.Text = "0";
             }
+
+            Response.Write("Number of Applications: " + Application["TotalApplications"]);
+            Response.Write("<br/>");
+
+            Response.Write("Number of Users Online: " + Application["TotalUserSessions"]);
         }
 
         protected void Buttonl_Click(object sender, EventArgs e)

@@ -16,6 +16,23 @@ namespace _1_ViewState_Demo
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            Application["TotalApplications"] = 0;
+            Application["TotalUserSessions"] = 0;
+        }
+
+        void Application_End(object sender, EventArgs e)
+        {
+
+        }
+        void Session_Start(object sender, EventArgs e)
+        {
+            Application["TotalUserSessions"] = (int)Application["TotalUserSessions"] + 1;
+        }
+
+        void Session_End(object sender, EventArgs e)
+        {
+            Application["TotalUserSessions"] = (int)Application["TotalUserSessions"] - 1;
         }
     }
 }
