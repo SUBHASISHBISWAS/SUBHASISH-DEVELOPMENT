@@ -9,6 +9,10 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:HyperLink ID="HyperLink1" runat="server" 
+                NavigateUrl="~/RadioButtonControl.aspx"
+                Text="Click Here"
+                Target="_blank"></asp:HyperLink>
         </div>
     </form>
 </body>
