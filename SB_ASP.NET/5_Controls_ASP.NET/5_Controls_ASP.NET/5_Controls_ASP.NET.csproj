@@ -108,6 +108,7 @@
     <Content Include="About.aspx" />
     <Content Include="ButtonControls.aspx" />
     <Content Include="CommandButtons.aspx" />
+    <Content Include="CompareValidatorControl.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -115,6 +116,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Countries.xml" />
+    <Content Include="CustomValidatorControl.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DropDownDataBase.aspx" />
     <Content Include="DropDownListControl.aspx" />
@@ -135,6 +137,9 @@
     <Content Include="HiddenFieldControl.aspx" />
     <Content Include="HyperLinkControl.aspx" />
     <Content Include="RadioButtonControl.aspx" />
+    <Content Include="RangeValidatorControls.aspx" />
+    <Content Include="RegularExpressionValidator.aspx" />
+    <Content Include="RequiredFieldValodationControl.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -166,6 +171,7 @@
     <Content Include="ServerMapPath\ServerMapPath.aspx" />
     <Content Include="Site.Master" />
     <Content Include="TextBoxControl.aspx" />
+    <Content Include="ValidationSumarryControl.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -195,6 +201,13 @@
     <Compile Include="CommandButtons.aspx.designer.cs">
       <DependentUpon>CommandButtons.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CompareValidatorControl.aspx.cs">
+      <DependentUpon>CompareValidatorControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompareValidatorControl.aspx.designer.cs">
+      <DependentUpon>CompareValidatorControl.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -207,6 +220,13 @@
     </Compile>
     <Compile Include="Countries.xml.designer.cs">
       <DependentUpon>Countries.xml.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomValidatorControl.aspx.cs">
+      <DependentUpon>CustomValidatorControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomValidatorControl.aspx.designer.cs">
+      <DependentUpon>CustomValidatorControl.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -268,6 +288,27 @@
     <Compile Include="RadioButtonControl.aspx.designer.cs">
       <DependentUpon>RadioButtonControl.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RangeValidatorControls.aspx.cs">
+      <DependentUpon>RangeValidatorControls.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RangeValidatorControls.aspx.designer.cs">
+      <DependentUpon>RangeValidatorControls.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegularExpressionValidator.aspx.cs">
+      <DependentUpon>RegularExpressionValidator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegularExpressionValidator.aspx.designer.cs">
+      <DependentUpon>RegularExpressionValidator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RequiredFieldValodationControl.aspx.cs">
+      <DependentUpon>RequiredFieldValodationControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RequiredFieldValodationControl.aspx.designer.cs">
+      <DependentUpon>RequiredFieldValodationControl.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ServerMapPath\ServerMapPath.aspx.cs">
       <DependentUpon>ServerMapPath.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -295,6 +336,13 @@
     </Compile>
     <Compile Include="TextBoxControl.aspx.designer.cs">
       <DependentUpon>TextBoxControl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ValidationSumarryControl.aspx.cs">
+      <DependentUpon>ValidationSumarryControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ValidationSumarryControl.aspx.designer.cs">
+      <DependentUpon>ValidationSumarryControl.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
