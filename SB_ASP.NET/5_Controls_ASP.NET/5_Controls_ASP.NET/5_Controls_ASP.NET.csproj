@@ -132,6 +132,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="HiddenFieldControl.aspx" />
     <Content Include="HyperLinkControl.aspx" />
     <Content Include="RadioButtonControl.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -244,6 +245,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HiddenFieldControl.aspx.cs">
+      <DependentUpon>HiddenFieldControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HiddenFieldControl.aspx.designer.cs">
+      <DependentUpon>HiddenFieldControl.aspx</DependentUpon>
     </Compile>
     <Compile Include="HyperLinkControl.aspx.cs">
       <DependentUpon>HyperLinkControl.aspx</DependentUpon>
