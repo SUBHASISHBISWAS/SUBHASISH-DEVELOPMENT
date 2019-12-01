@@ -115,6 +115,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="DropDownDataBase.aspx" />
     <Content Include="DropDownListControl.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -202,6 +203,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DropDownDataBase.aspx.cs">
+      <DependentUpon>DropDownDataBase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DropDownDataBase.aspx.designer.cs">
+      <DependentUpon>DropDownDataBase.aspx</DependentUpon>
     </Compile>
     <Compile Include="DropDownListControl.aspx.cs">
       <DependentUpon>DropDownListControl.aspx</DependentUpon>
