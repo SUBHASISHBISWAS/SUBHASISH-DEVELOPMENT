@@ -16,6 +16,7 @@ namespace _5_Controls_ASP.NET
             DataSet DS = new DataSet();
             //Read the xml data from the XML file using ReadXml() method
             var xmlPath = Server.MapPath("Countries.xml");
+
             DS.ReadXml(xmlPath);
             
             DropDownList1.DataTextField = "CountryName";
