@@ -120,6 +120,7 @@
     <Content Include="DropDownListControl.aspx" />
     <Content Include="DropDownXML.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="FileUpLoadContls.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -234,6 +235,13 @@
     <Compile Include="DropDownXML.aspx.designer.cs">
       <DependentUpon>DropDownXML.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FileUpLoadContls.aspx.cs">
+      <DependentUpon>FileUpLoadContls.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FileUpLoadContls.aspx.designer.cs">
+      <DependentUpon>FileUpLoadContls.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -290,6 +298,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
