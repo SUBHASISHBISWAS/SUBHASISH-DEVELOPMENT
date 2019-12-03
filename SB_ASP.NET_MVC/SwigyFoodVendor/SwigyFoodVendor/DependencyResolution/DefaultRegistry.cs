@@ -18,7 +18,9 @@
 namespace SwigyFoodVendor.DependencyResolution {
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
-	
+    using SwigyFoodVendor.Controllers;
+    using SwigyFoodVendor.Services;
+
     public class DefaultRegistry : Registry {
         #region Constructors and Destructors
 
@@ -29,7 +31,7 @@ namespace SwigyFoodVendor.DependencyResolution {
                     scan.WithDefaultConventions();
 					scan.With(new ControllerConvention());
                 });
-            //For<IExample>().Use<Example>();
+            For<ILogger>().Use<SqlServerLogger>();
         }
 
         #endregion

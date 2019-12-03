@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using StructureMap;
 
 namespace SwigyFoodVendor
 {
@@ -18,7 +19,14 @@ namespace SwigyFoodVendor
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            ControllerBuilder.Current.SetControllerFactory(new SwigyControllerFactory());
+            //ControllerBuilder.Current.SetControllerFactory(new SwigyControllerFactory());
+
+            ConfigureContainer();
+        }
+
+        private void ConfigureContainer()
+        {
+            
         }
     }
 }

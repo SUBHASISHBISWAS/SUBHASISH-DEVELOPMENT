@@ -9,15 +9,19 @@ namespace SwigyFoodVendor.Controllers
 {
     public class HelloController : IController
     {
+
+        public void Execute(RequestContext requestContext)
+        {
+            requestContext.HttpContext.Response.Write("Hello");
+
+
+            _logger.Log("My Message");
+        }
         ILogger _logger;
         HelloController(ILogger logger)
         {
             _logger = logger;
         }
-        public void Execute(RequestContext requestContext)
-        {
-            requestContext.HttpContext.Response.Write("Hello");
-            _logger.Log("My Message");
-        }
+        
     }
 }

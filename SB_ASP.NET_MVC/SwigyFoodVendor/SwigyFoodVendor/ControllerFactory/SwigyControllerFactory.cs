@@ -14,9 +14,11 @@ namespace SwigyFoodVendor.ControllerFactory
         protected override IController GetControllerInstance(RequestContext requestContext, 
             Type controllerType)
         {
-           
-            return Activator.CreateInstance(controllerType, new SqlServerLogger())
-               as IController;
+            return ObjectFactory.GetInstance(controllerType) as IController;
+
+
+            //return Activator.CreateInstance(controllerType, new SqlServerLogger())
+            //   as IController;
         }
     }
 }
