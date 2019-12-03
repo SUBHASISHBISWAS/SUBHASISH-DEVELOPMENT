@@ -59,15 +59,15 @@ namespace SwigyFoodVendor.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
+            var review = _db.Reviews.FirstOrDefault(r => r.ID == id);
             try
             {
-                // TODO: Add update logic here
-
+                TryUpdateModel(review);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View(review);
             }
         }
 
