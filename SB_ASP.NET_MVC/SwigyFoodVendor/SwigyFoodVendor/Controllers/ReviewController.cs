@@ -50,7 +50,9 @@ namespace SwigyFoodVendor.Controllers
         // GET: Review/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var review=_db.Reviews.FirstOrDefault(r => r.ID == id);
+
+            return View(review);
         }
 
         // POST: Review/Edit/5
