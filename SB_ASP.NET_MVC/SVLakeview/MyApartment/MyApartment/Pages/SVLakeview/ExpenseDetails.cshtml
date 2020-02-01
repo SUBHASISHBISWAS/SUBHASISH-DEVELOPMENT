@@ -1,0 +1,25 @@
+﻿@page "{expenseId:int}"
+
+@model MyApartment.ExpenseDetailsModel
+@{
+    ViewData["Title"] = "ExpenseDetails";
+}
+
+<h2>@Model.Expense.ExpenseId;</h2>
+
+<div>
+    Expense Amount: @Model.Expense.ExpenseAmount;
+</div>
+
+<div>
+    Expense Description: @Model.Expense.ExpenseDescription;
+</div>
+
+<div>
+    Expense Type: @Model.Expense.ExpenseType
+</div>
+
+<a asp-page="./SVLExpenseList" class="btn btn-default">All Expenses</a>
+
+
+

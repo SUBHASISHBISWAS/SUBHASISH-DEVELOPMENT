@@ -2,38 +2,39 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SVLakeview.Model.Core;
+using MyApartment.Model.Core;
+using MyApartment.Model.Core.Models;
 
 namespace MyApartment.Data.Services
 {
-    public class InMememoryExpenseData : IMyApartmentExpenseData
+    public class InMememoryExpenseDataProvider : IMyApartmentExpenseDataProvider
     {
-        private IEnumerable<Expense> _expences;
-        public InMememoryExpenseData()
+        private IEnumerable<IMyApartmentExpense> _expences;
+        public InMememoryExpenseDataProvider()
         {
-            _expences = new List<Expense>()
+            _expences = new List<IMyApartmentExpense>()
             {
-                new Expense
+                new MyApartmentExpense
                 {
                     ExpenseType = ExpenseType.Generator,
-                    ExpAmount = 2000,
-                    ExpDescription = "Generator",
-                    Id = 1
+                    ExpenseAmount = 2000,
+                    ExpenseDescription = "Generator",
+                    ExpenseId = 1
 
                 },
 
-                new Expense{
+                new MyApartmentExpense{
                     ExpenseType = ExpenseType.None,
-                    ExpAmount = 2000,
-                    ExpDescription = "General Perpose",
-                    Id = 1
+                    ExpenseAmount = 2000,
+                    ExpenseDescription = "General Perpose",
+                    ExpenseId = 2
 
                 },
-                new Expense{
+                new MyApartmentExpense{
                     ExpenseType = ExpenseType.Water,
-                    ExpAmount = 2000,
-                    ExpDescription = "Water Man",
-                    Id = 1
+                    ExpenseAmount = 2000,
+                    ExpenseDescription = "Water Man",
+                    ExpenseId = 3
 
                 },
 
@@ -41,17 +42,23 @@ namespace MyApartment.Data.Services
 
             
         }
-        public IEnumerable<Expense> GetAllExpense()
+        public IEnumerable<IMyApartmentExpense> GetAllExpense()
         {
             return _expences;
         }
 
-        public IEnumerable<Expense> GetExpenseByType(ExpenseType expenseType)
+        public IEnumerable<IMyApartmentExpense> GetExpenseByType(ExpenseType expenseType)
         {
             return from e in _expences
-                orderby e.ExpAmount
-                where e.ExpenseType == expenseType
+                orderby e.ExpenseAmount
+                   where e.ExpenseType == expenseType
                 select e;
         }
+
+        public IMyApartmentExpense GetExpenseDetailsById(int id)
+        {
+            return _expences.SingleOrDefault(e => e.ExpenseId == id);
+        }
+
     }
 }

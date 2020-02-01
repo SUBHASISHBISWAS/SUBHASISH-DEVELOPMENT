@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SVLakeview.Model.Core\SVLakeview.Model.Core.csproj" />
+    <ProjectReference Include="..\SVLakeview.Model.Core\MyApartment.Model.Core.csproj" />
   </ItemGroup>
 
 </Project>

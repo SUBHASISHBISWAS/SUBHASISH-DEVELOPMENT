@@ -6,43 +6,48 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using MyApartment.Data.Services;
-using SVLakeview.Model.Core;
+using MyApartment.Model.Core;
+using MyApartment.Model.Core.Models;
 
 namespace MyApartment.Pages.SVLakeview
 {
     public class SVLExpenseListModel : PageModel
     {
         private readonly IConfiguration _configuration;
-        private readonly IMyApartmentExpenseData _apartmentExpenseData;
+        private readonly IMyApartmentExpenseDataProvider _apartmentExpenseDataProvider;
 
 
 
-        public SVLExpenseListModel(IConfiguration configuration, IMyApartmentExpenseData apartmentExpenseData)
+        public SVLExpenseListModel(IConfiguration configuration, IMyApartmentExpenseDataProvider apartmentExpenseData)
         {
             _configuration = configuration;
-            _apartmentExpenseData = apartmentExpenseData;
+            _apartmentExpenseDataProvider = apartmentExpenseData;
         }
         public string Message { get; set; }
 
-        public IEnumerable<Expense> Expenses { get; set; }
+        [BindProperty(SupportsGet =true)]
+        public string SearchTerm { get; set; }
+
+         
+        public IEnumerable<IMyApartmentExpense> Expenses { get; set; }
         public void OnGet(string searchTerm)
         {
             if (searchTerm==null)
             {
-                Expenses = _apartmentExpenseData.GetAllExpense();
+                Expenses = _apartmentExpenseDataProvider.GetAllExpense();
             }
             else
             {
                 if (searchTerm.Equals("Generator"))
                 {
-                    Expenses = _apartmentExpenseData.GetExpenseByType(ExpenseType.Generator);
+                    Expenses = _apartmentExpenseDataProvider.GetExpenseByType(ExpenseType.Generator);
                 }
 
                 if (searchTerm.Equals("None"))
                 {
                     
                 }
-                Expenses = _apartmentExpenseData.GetExpenseByType(ExpenseType.None);
+                Expenses = _apartmentExpenseDataProvider.GetExpenseByType(ExpenseType.None);
             }
             
             Message = _configuration["ConfigurationMessage"];

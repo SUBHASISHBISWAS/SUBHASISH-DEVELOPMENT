@@ -1,5 +1,5 @@
 ﻿@page
-@using global::SVLakeview.Model.Core
+@using global::MyApartment.Model.Core
 @model SVLExpenseListModel
 @{
 }
@@ -9,7 +9,7 @@
 <form  method="get">
     <div class="form-group">
         <div class="input-group">
-            <input type="search" class="form-control" value="" name="searchTerm"/>
+            <input type="search" class="form-control"  asp-for="SearchTerm"/>
             <span class="input-group-btn">
                 <button class="btn btn-default">
                     <i class="glyphicon glyphicon-search"></i>
@@ -20,12 +20,18 @@
 
 </form>
 <table class="table">
-    @foreach (Expense e in @Model.Expenses)
+    @foreach (var e in @Model.Expenses)
     {
         <tr>
             <td>@e.ExpenseType</td>
-            <td>@e.ExpAmount</td>
-            <td>@e.ExpDescription</td>
+            <td>@e.ExpenseAmount</td>
+            <td>@e.ExpenseDescription</td>
+            <td>
+                <a class="btn btn-lg" asp-page="./ExpenseDetails" asp-route-expenseId="@e.ExpenseId">
+                    <i class="glyphicon glyphicon-zoom-in"/>
+
+                </a>
+            </td>
         </tr>
     }
 </table>
