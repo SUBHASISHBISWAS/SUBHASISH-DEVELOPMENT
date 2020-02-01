@@ -19,7 +19,10 @@ namespace MyApartment.Data.Services
                     ExpenseType = ExpenseType.Generator,
                     ExpenseAmount = 2000,
                     ExpenseDescription = "Generator",
-                    ExpenseId = 1
+                    ExpenseId = 1,
+                    TransactionDate=DateTime.Now,
+                    Payee="Manjesh",
+                    Payer="SUBHASISH"
 
                 },
 
@@ -27,14 +30,20 @@ namespace MyApartment.Data.Services
                     ExpenseType = ExpenseType.None,
                     ExpenseAmount = 2000,
                     ExpenseDescription = "General Perpose",
-                    ExpenseId = 2
+                    ExpenseId = 2,
+                    TransactionDate=DateTime.Now,
+                    Payee="Manjesh",
+                    Payer="SUBHASISH"
 
                 },
                 new MyApartmentExpense{
                     ExpenseType = ExpenseType.Water,
                     ExpenseAmount = 2000,
                     ExpenseDescription = "Water Man",
-                    ExpenseId = 3
+                    ExpenseId = 3,
+                    TransactionDate=DateTime.Now,
+                    Payee="Manjesh",
+                    Payer="SUBHASISH"
 
                 },
 
