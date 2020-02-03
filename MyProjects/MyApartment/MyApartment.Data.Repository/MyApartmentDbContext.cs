@@ -1,4 +1,5 @@
-﻿using MyApartment.Core.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using MyApartment.Core.Model;
 
 namespace MyApartment.Data.Repository
 {
