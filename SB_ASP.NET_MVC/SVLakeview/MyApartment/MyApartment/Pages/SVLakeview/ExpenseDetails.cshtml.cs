@@ -14,12 +14,15 @@ namespace MyApartment
     {
         private readonly IMyApartmentExpenseDataProvider _apartmentDataProvider;
 
-        public ExpenseDetailsModel(IMyApartmentExpenseDataProvider apartmentDataProvider )
+        public ExpenseDetailsModel(IMyApartmentExpenseDataProvider apartmentDataProvider)
         {
             this._apartmentDataProvider = apartmentDataProvider;
         }
-       public IMyApartmentExpense Expense { get; set; }
-        public void OnGet(int expenseId)
+        public IMyApartmentExpense Expense { get; set; }
+
+        [TempData]
+        public string TransactionMessage { get; set; }
+        public void OnGet(Guid expenseId)
         {
             Expense = _apartmentDataProvider.GetExpenseDetailsById(expenseId);
         }

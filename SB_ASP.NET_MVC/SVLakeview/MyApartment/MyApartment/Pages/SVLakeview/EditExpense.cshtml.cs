@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MyApartment.Data.Services;
 using MyApartment.Model.Core.Models;
 
@@ -12,20 +13,43 @@ namespace MyApartment
     public class EditExpenseModel : PageModel
     {
         private readonly IMyApartmentExpenseDataProvider _myExpenseDataProvider;
+        private readonly IHtmlHelper _htmlHelper;
 
-        public EditExpenseModel(IMyApartmentExpenseDataProvider myExpenseDataProvider)
+        public IEnumerable<SelectListItem> ExpenseTypes { get; set; }
+        public EditExpenseModel(IMyApartmentExpenseDataProvider myExpenseDataProvider,
+        IHtmlHelper htmlHelper)
         {
-            this._myExpenseDataProvider = myExpenseDataProvider;
+            _myExpenseDataProvider = myExpenseDataProvider;
+            _htmlHelper = htmlHelper;
+            Expense=new MyApartmentExpense();
         }
-        public IMyApartmentExpense Expense { get; set; }
+
+        [BindProperty]
+        public MyApartmentExpense Expense { get; set; }
         
-        public IActionResult OnGet(int expenseId)
+        public IActionResult OnGet(Guid expenseId)
         {
-            Expense = _myExpenseDataProvider.GetExpenseDetailsById(expenseId);
+            ExpenseTypes = _htmlHelper.GetEnumSelectList<ExpenseType>();
+
+            Expense = (MyApartmentExpense)_myExpenseDataProvider.GetExpenseDetailsById(expenseId);
             if (Expense == null)
             {
                 return RedirectToPage("./NotFound");
             }
+            return Page();
+        }
+
+        [HttpPost]
+        public IActionResult OnPost()
+        {
+            if (ModelState.IsValid)
+            {
+                Expense = (MyApartmentExpense)_myExpenseDataProvider.UpdateExpense(Expense);
+                _myExpenseDataProvider.Commit();
+                TempData["TransactionMessage"] = "Expense Saved Successfully";
+                return RedirectToPage("./ExpenseDetails", new { expenseId = Expense.ExpenseId});
+            }
+            ExpenseTypes = _htmlHelper.GetEnumSelectList<ExpenseType>();
             return Page();
         }
     }

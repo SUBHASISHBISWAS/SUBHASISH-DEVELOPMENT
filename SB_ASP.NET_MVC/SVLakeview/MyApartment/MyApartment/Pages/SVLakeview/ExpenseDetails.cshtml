@@ -1,11 +1,19 @@
-﻿@page "{expenseId:int}"
+﻿@page "{expenseId:Guid}"
 
+@using NuGet.Frameworks
 @model MyApartment.ExpenseDetailsModel
 @{
     ViewData["Title"] = "ExpenseDetails";
 }
 
-<h2>@Model.Expense.ExpenseId</h2>
+<h2>@Model.Expense.ExpenseType</h2>
+
+@if (Model.TransactionMessage != null)
+{
+    <div class="alert alert-info">
+        @Model.TransactionMessage
+    </div>
+}
 
 <div>
     Expense Amount: @Model.Expense.ExpenseAmount
@@ -27,6 +35,9 @@
 <div>
     Payer: @Model.Expense.Payer
 </div>
+
+
+
 
 <a asp-page="./SVLExpenseList" class="btn btn-default">All Expenses</a>
 

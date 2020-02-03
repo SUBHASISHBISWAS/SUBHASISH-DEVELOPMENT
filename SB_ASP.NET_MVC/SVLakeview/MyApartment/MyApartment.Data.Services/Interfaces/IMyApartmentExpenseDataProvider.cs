@@ -11,6 +11,12 @@ namespace MyApartment.Data.Services
 
         IEnumerable<IMyApartmentExpense> GetExpenseByType(ExpenseType expenseType);
 
-        IMyApartmentExpense GetExpenseDetailsById(int id);
+        IMyApartmentExpense GetExpenseDetailsById(Guid id);
+
+        IMyApartmentExpense UpdateExpense(IMyApartmentExpense updatedExpense);
+
+        IMyApartmentExpense AddNewExpense(IMyApartmentExpense newExpense);
+
+        int Commit();
     }
 }
