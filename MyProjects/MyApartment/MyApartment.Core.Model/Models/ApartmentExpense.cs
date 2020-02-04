@@ -7,6 +7,8 @@ namespace MyApartment.Core.Model
     public class MyApartmentExpense : IMyApartmentExpense
     {
         private DateTime _transactionDate;
+
+        [Key]
         public Guid ExpenseId { get; set; }
 
         [Required]

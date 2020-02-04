@@ -4,9 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MyApartment.Data.Services;
-using MyApartment.Model.Core;
-using MyApartment.Model.Core.Models;
+using MyApartment.Core.Model;
+using MyApartment.Data.Repository;
 
 namespace MyApartment.WebClient.Pages.SVLakeview
 {

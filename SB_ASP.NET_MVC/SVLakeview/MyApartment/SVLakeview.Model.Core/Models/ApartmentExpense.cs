@@ -1,13 +1,14 @@
-﻿using MyApartment.Model.Core.Models;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace MyApartment.Model.Core.Models
+namespace MyApartment.Core.Model
 {
    
     public class MyApartmentExpense : IMyApartmentExpense
     {
         private DateTime _transactionDate;
+
+        [Key]
         public Guid ExpenseId { get; set; }
 
         [Required]

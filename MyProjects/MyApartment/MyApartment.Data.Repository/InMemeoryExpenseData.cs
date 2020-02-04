@@ -55,10 +55,7 @@ namespace MyApartment.Data.Repository
 
         public IEnumerable<IMyApartmentExpense> GetExpenseByType(ExpenseType expenseType)
         {
-            return from e in _expences
-                orderby e.ExpenseAmount
-                   where e.ExpenseType == expenseType
-                select e;
+            return from e in _expences where e.ExpenseType == expenseType select e;
         }
 
         public IMyApartmentExpense GetExpenseDetailsById(Guid id)
@@ -89,6 +86,11 @@ namespace MyApartment.Data.Repository
         public int Commit()
         {
             return 0;
+        }
+
+        public IMyApartmentExpense DeleteExpense(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

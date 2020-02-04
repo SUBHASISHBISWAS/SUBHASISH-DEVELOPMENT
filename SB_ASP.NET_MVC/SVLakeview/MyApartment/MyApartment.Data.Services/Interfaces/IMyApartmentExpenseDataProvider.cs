@@ -1,9 +1,9 @@
-﻿using MyApartment.Model.Core;
-using MyApartment.Model.Core.Models;
+﻿using MyApartment.Core.Model;
 using System;
 using System.Collections.Generic;
+using System.Security.Principal;
 
-namespace MyApartment.Data.Services
+namespace MyApartment.Data.Repository
 {
     public interface IMyApartmentExpenseDataProvider
     {
@@ -16,6 +16,8 @@ namespace MyApartment.Data.Services
         IMyApartmentExpense UpdateExpense(IMyApartmentExpense updatedExpense);
 
         IMyApartmentExpense AddNewExpense(IMyApartmentExpense newExpense);
+
+        IMyApartmentExpense DeleteExpense(Guid id);
 
         int Commit();
     }

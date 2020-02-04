@@ -1,6 +1,6 @@
 ﻿@page
-@using global::MyApartment.Model.Core
-@model SVLExpenseListModel
+@using global::MyApartment.Core.Model
+@model ExpenseListModel
 @{
 }
 
@@ -29,11 +29,10 @@
         <td>@e.Payee</td>
         <td>
             <a class="btn btn-lg" asp-page="./ExpenseDetails" asp-route-expenseId="@e.ExpenseId">
-                <i class="glyphicon glyphicon-zoom-in" />
-
+                <i class="btn btn-primary" />
             </a>
             <a class="btn btn-lg" asp-page="./EditExpense" asp-route-expenseId="@e.ExpenseId">
-                <i class="glyphicon glyphicon-edit" />
+                <i class="btn btn-primary" />
             </a>
         </td>
     </tr>
@@ -41,3 +40,8 @@
 </table>
 
 <a asp-page="./AddExpense" class="btn btn-primary">Add New</a>
+
+@section footer
+{
+    <div>@Model.Message</div>
+}

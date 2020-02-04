@@ -1,7 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Microsoft.EntityFrameworkCore;
 using MyApartment.Core.Model;
 
-namespace MyApartment.Data.Repository
+
+namespace MyApartment.Data.Services
 {
     public class MyApartmentDbContext :DbContext
     {
@@ -10,6 +14,6 @@ namespace MyApartment.Data.Repository
         {
                 
         }
-        public  DbSet<IMyApartmentExpense> Expenses { get; set; }
+        public  DbSet<MyApartmentExpense> Expenses { get; set; }
     }
 }

@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using MyApartment.Data.Services;
-using MyApartment.Model.Core.Models;
+using MyApartment.Core.Model;
+using MyApartment.Data.Repository;
 
 namespace MyApartment.WebClient.Pages.SVLakeview
 {
@@ -37,7 +37,7 @@ namespace MyApartment.WebClient.Pages.SVLakeview
             };
             
             _myExpenseDataProvider.AddNewExpense(Expense);
-            _myExpenseDataProvider.Commit();
+            //_myExpenseDataProvider.Commit();
             
             if (Expense == null)
             {
@@ -51,7 +51,7 @@ namespace MyApartment.WebClient.Pages.SVLakeview
         {
             if (ModelState.IsValid)
             {
-                Expense = (MyApartmentExpense)_myExpenseDataProvider.UpdateExpense(Expense);
+                Expense = (MyApartmentExpense)_myExpenseDataProvider.AddNewExpense(Expense);
                 _myExpenseDataProvider.Commit();
                 TempData["TransactionMessage"] = "New Expense Created Successfully!";
                 return RedirectToPage("./ExpenseDetails", new { expenseId = Expense.ExpenseId});

@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyApartment.Data.Repository;
+using MyApartment.Data.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyApartment.WebClient
 {
@@ -24,7 +26,10 @@ namespace MyApartment.WebClient
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IMyApartmentExpenseDataProvider, InMememoryExpenseDataProvider>();
+            //services.AddSingleton<IMyApartmentExpenseDataProvider, InMememoryExpenseDataProvider>();
+            services.AddScoped<IMyApartmentExpenseDataProvider, SqlServerExpenseDataProvider>();
+            services.AddDbContextPool<MyApartmentDbContext>
+                (options => options.UseSqlServer(Configuration.GetConnectionString("SVLakeview")));
             services.AddRazorPages();
         }
 

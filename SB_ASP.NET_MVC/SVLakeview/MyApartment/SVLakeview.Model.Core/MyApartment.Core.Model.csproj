@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyName>MyApartment.Model.Core</AssemblyName>
-    <RootNamespace>MyApartment.Model.Core</RootNamespace>
+    <AssemblyName>MyApartment.Core.Model</AssemblyName>
+    <RootNamespace>MyApartment.Core.Model</RootNamespace>
   </PropertyGroup>
 
 </Project>

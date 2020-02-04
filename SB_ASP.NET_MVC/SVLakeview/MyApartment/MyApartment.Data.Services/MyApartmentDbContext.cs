@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
-using MyApartment.Model.Core.Models;
+using MyApartment.Core.Model;
+
 
 namespace MyApartment.Data.Services
 {
@@ -13,6 +14,6 @@ namespace MyApartment.Data.Services
         {
                 
         }
-        public  DbSet<IMyApartmentExpense> Expenses { get; set; }
+        public  DbSet<MyApartmentExpense> Expenses { get; set; }
     }
 }

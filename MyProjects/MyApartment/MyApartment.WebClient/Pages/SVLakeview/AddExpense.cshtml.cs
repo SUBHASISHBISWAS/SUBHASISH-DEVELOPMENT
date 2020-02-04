@@ -37,7 +37,7 @@ namespace MyApartment.WebClient.Pages.SVLakeview
             };
             
             _myExpenseDataProvider.AddNewExpense(Expense);
-            _myExpenseDataProvider.Commit();
+            //_myExpenseDataProvider.Commit();
             
             if (Expense == null)
             {
@@ -51,7 +51,7 @@ namespace MyApartment.WebClient.Pages.SVLakeview
         {
             if (ModelState.IsValid)
             {
-                Expense = (MyApartmentExpense)_myExpenseDataProvider.UpdateExpense(Expense);
+                Expense = (MyApartmentExpense)_myExpenseDataProvider.AddNewExpense(Expense);
                 _myExpenseDataProvider.Commit();
                 TempData["TransactionMessage"] = "New Expense Created Successfully!";
                 return RedirectToPage("./ExpenseDetails", new { expenseId = Expense.ExpenseId});

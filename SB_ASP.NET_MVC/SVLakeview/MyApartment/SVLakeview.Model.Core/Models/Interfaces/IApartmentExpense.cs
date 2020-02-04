@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MyApartment.Model.Core.Models
+namespace MyApartment.Core.Model
 {
     public interface IMyApartmentExpense
     {

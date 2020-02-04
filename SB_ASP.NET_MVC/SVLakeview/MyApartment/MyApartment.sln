@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApartment", "MyApartment\MyApartment.csproj", "{3A62A70C-7E8A-4421-BD55-9EB6B7F2F327}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApartment.Model.Core", "SVLakeview.Model.Core\MyApartment.Model.Core.csproj", "{286148CB-4191-4F4B-9B74-3F3C4490048A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApartment.Core.Model", "SVLakeview.Model.Core\MyApartment.Core.Model.csproj", "{286148CB-4191-4F4B-9B74-3F3C4490048A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApartment.Data.Services", "MyApartment.Data.Services\MyApartment.Data.Services.csproj", "{C4D94D9A-AD1D-4E6D-AF63-B90A837C5867}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApartment.Data.Repository", "MyApartment.Data.Services\MyApartment.Data.Repository.csproj", "{C4D94D9A-AD1D-4E6D-AF63-B90A837C5867}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApartment.WebClient", "MyApartment.WebClient\MyApartment.WebClient.csproj", "{E3ED56E3-0A6C-4D21-B616-B3563BE67AA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApartment.WebClient", "MyApartment.WebClient\MyApartment.WebClient.csproj", "{E3ED56E3-0A6C-4D21-B616-B3563BE67AA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
