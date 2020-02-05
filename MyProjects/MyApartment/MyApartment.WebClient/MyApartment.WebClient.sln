@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApartment.WebClient", "MyApartment.WebClient.csproj", "{4A946FEF-626B-4884-9B0E-27C029315D55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApartment.Data.Repository", "..\MyApartment.Data.Repository\MyApartment.Data.Repository.csproj", "{FE2E22F1-99F0-45C6-8886-F7195CA532A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApartment.Data.Repository", "..\MyApartment.Data.Repository\MyApartment.Data.Repository.csproj", "{FE2E22F1-99F0-45C6-8886-F7195CA532A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApartment.Core.Model", "..\MyApartment.Core.Model\MyApartment.Core.Model.csproj", "{B038FE37-777F-4732-A47E-BEE9618CF552}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApartment.Core.Model", "..\MyApartment.Core.Model\MyApartment.Core.Model.csproj", "{B038FE37-777F-4732-A47E-BEE9618CF552}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApartment.API", "..\MyApartment.API\MyApartment.API.csproj", "{8C74D8AB-9904-4B01-AA41-4D3670ABB7FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{B038FE37-777F-4732-A47E-BEE9618CF552}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B038FE37-777F-4732-A47E-BEE9618CF552}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B038FE37-777F-4732-A47E-BEE9618CF552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C74D8AB-9904-4B01-AA41-4D3670ABB7FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C74D8AB-9904-4B01-AA41-4D3670ABB7FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C74D8AB-9904-4B01-AA41-4D3670ABB7FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C74D8AB-9904-4B01-AA41-4D3670ABB7FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
