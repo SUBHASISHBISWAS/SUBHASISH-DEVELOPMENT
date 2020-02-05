@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using MyApartment.Data.Repository;
 using MyApartment.Data.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace MyApartment.WebClient
 {
@@ -60,6 +61,24 @@ namespace MyApartment.WebClient
                 endpoints.MapControllers(); //Routes for my API controllers
             });
 
+            app.Use(MyOwnMiddleWare);
+
+
+        }
+
+        private RequestDelegate MyOwnMiddleWare(RequestDelegate next)
+        {
+            return async ctx =>
+            {
+                if (ctx.Request.Path.StartsWithSegments("/hello"))
+                {
+                    await ctx.Response.WriteAsync("Hello World");
+                }
+                else
+                {
+                    await next(ctx);
+                }
+            };
         }
     }
 }
