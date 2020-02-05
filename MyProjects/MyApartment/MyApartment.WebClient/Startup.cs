@@ -49,7 +49,7 @@ namespace MyApartment.WebClient
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseNodeModules();
             app.UseRouting();
 
             app.UseAuthorization();
@@ -57,7 +57,9 @@ namespace MyApartment.WebClient
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers(); //Routes for my API controllers
             });
+
         }
     }
 }

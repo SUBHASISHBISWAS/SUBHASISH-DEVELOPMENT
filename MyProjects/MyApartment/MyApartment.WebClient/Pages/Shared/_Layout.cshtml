@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MyApartment</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
 </head>
 <body>
     <header>
@@ -23,7 +24,13 @@
                             <li><a asp-page="/SvLakeview/ExpenseList">SvLakeview</a></li>
                         </ul>
                     </ul>
+                    <ul class="navbar-nav flex-grow-1">
+                        <ul class="nav navbar-nav">
+                            <li><a asp-page="/SvLakeview/ClientExpense">Client Expense</a></li>
+                        </ul>
+                    </ul>
                 </div>
+
             </div>
         </nav>
     </header>
@@ -35,9 +42,10 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            <vc:expense-count></vc:expense-count><br />
             &copy; 2020 - MyApartment - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &emsp;&emsp;&emsp;&emsp;<vc:expense-count></vc:expense-count>
         </div>
+
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

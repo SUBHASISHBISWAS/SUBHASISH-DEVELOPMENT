@@ -5,14 +5,40 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\lib\ClientExpense.cshtml" />
+    <Content Remove="wwwroot\lib\ClientExpense.cshtml.cs" />
+    <Content Remove="wwwroot\lib\datatables.net-bs\js\dataTables.bootstrap.js" />
+    <Content Remove="wwwroot\lib\datatables.net-bs\js\dataTables.bootstrap.min.js" />
+    <Content Remove="wwwroot\lib\datatables.net-bs\Readme.md" />
+    <Content Remove="wwwroot\lib\datatables.net\js\jquery.dataTables.js" />
+    <Content Remove="wwwroot\lib\datatables.net\js\jquery.dataTables.min.js" />
+    <Content Remove="wwwroot\lib\datatables.net\Readme.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\datatables.net-bs\js\dataTables.bootstrap.js" />
+    <None Include="wwwroot\lib\datatables.net-bs\js\dataTables.bootstrap.min.js" />
+    <None Include="wwwroot\lib\datatables.net-bs\Readme.md" />
+    <None Include="wwwroot\lib\datatables.net\js\jquery.dataTables.js" />
+    <None Include="wwwroot\lib\datatables.net\js\jquery.dataTables.min.js" />
+    <None Include="wwwroot\lib\datatables.net\Readme.md" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="OdeToCode.UseNodeModules" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
