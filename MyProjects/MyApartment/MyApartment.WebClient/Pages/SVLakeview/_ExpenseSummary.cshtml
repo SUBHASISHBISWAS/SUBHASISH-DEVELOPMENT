@@ -1,0 +1,44 @@
+﻿@using MyApartment.Core.Model
+@model MyApartmentExpense
+
+<tr>
+    @*<td>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>@Model.ExpenseDescription</h4>
+            </div>
+            <div class="panel-body">
+                <span>@Model.ExpenseAmount</span>
+                <span>@Model.ExpenseDescription</span>
+                <span>@Model.Payee</span>
+            </div>
+            <div class="panel-footer">
+                <a class="btn btn-lg" asp-page="./ExpenseDetails" asp-route-expenseId="@Model.ExpenseId">
+            <span class="glyphicon glyphicon-zoom-in" />
+        </a>
+        <a class="btn btn-lg" asp-page="./EditExpense" asp-route-expenseId="@Model.ExpenseId">
+            <span class="glyphicon glyphicon-edit" />
+        </a>
+        <a class="btn btn-lg" asp-page="./DeleteExpense" asp-route-expenseId="@Model.ExpenseId">
+            <span class="glyphicon glyphicon-trash" />
+        </a>
+            </div>
+        </div>
+    </td>*@
+
+
+    <td>@Model.ExpenseAmount</td>
+    <td>@Model.ExpenseDescription</td>
+    <td>@Model.Payee</td>
+    <td>
+        <a class="btn btn-lg" asp-page="./ExpenseDetails" asp-route-expenseId="@Model.ExpenseId">
+            <span class="glyphicon glyphicon-zoom-in" />
+        </a>
+        <a class="btn btn-lg" asp-page="./EditExpense" asp-route-expenseId="@Model.ExpenseId">
+            <span class="glyphicon glyphicon-edit" />
+        </a>
+        <a class="btn btn-lg" asp-page="./DeleteExpense" asp-route-expenseId="@Model.ExpenseId">
+            <span class="glyphicon glyphicon-trash" />
+        </a>
+    </td>
+</tr>

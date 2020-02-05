@@ -92,5 +92,10 @@ namespace MyApartment.Data.Repository
         {
             throw new NotImplementedException();
         }
+
+        public int GetExpenseCount()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

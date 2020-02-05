@@ -62,5 +62,10 @@ namespace MyApartment.Data.Repository
 
             return expense;
         }
+
+        public int GetExpenseCount()
+        {
+            return _apartmentDbContext.Expenses.Count();
+        }
     }
 }

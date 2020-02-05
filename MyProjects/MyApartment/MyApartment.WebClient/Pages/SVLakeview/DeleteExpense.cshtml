@@ -1,9 +1,9 @@
 ﻿@page
 @model MyApartment.WebClient.Pages.SVLakeview.DeleteExpenseModel
-@{
-    Layout = null;
-}
 
+@{
+    ViewData["Title"] = "Delete Expense";
+}
 <!DOCTYPE html>
 
 <html>
@@ -12,5 +12,13 @@
     <title>DeleteExpense</title>
 </head>
 <body>
+    <h2>Delete!</h2>
+    <div class="alert alert-danger">
+        Are you Sure You want to Delete Expense :: @Model.Expense.ExpenseDescription
+    </div>
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Yes!</button>
+        <a asp-page="ExpenseList" class="btn btn-default">Cancel</a>
+    </form>
 </body>
 </html>
