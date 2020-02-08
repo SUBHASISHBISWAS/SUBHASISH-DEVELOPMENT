@@ -19,6 +19,8 @@ namespace MyApartment.Data.Repository
 
         IMyApartmentExpense DeleteExpense(Guid id);
 
+        bool IsExpenseExists(Guid id);
+
         int GetExpenseCount();
 
         int Commit();

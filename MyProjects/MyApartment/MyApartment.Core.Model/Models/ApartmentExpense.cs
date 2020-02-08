@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyApartment.Core.Model
@@ -41,5 +42,12 @@ namespace MyApartment.Core.Model
         [Required]
         public string Payee { get; set; }
         public string Payer { get; set; }
+
+        //public IEnumerable<MyApartmentBeneficiary> Beneficiaries { get; set; }
+        //public IEnumerable<MyApartmentBeneficiary> Remunerators { get; set; }
+        public MyApartmentBeneficiary Beneficiary { get; set; }
+        public MyApartmentRemunerator Remunerator { get; set; }
+        public Guid BeneficiaryId { get; set; }
+        public Guid RemuneratorId { get; set; }
     }
 }

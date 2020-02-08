@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyApartment.Data.Services;
 
 namespace MyApartment.Data.Repository.Migrations
 {
     [DbContext(typeof(MyApartmentDbContext))]
-    partial class MyApartmentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200208044801_NewModel")]
+    partial class NewModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

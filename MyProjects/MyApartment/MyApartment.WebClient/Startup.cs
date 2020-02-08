@@ -28,7 +28,7 @@ namespace MyApartment.WebClient
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddSingleton<IMyApartmentExpenseDataProvider, InMememoryExpenseDataProvider>();
-            services.AddScoped<IMyApartmentExpenseDataProvider, SqlServerExpenseDataProvider>();
+            services.AddScoped<IMyApartmentExpenseDataProvider, MyApartmentExpenseDataProvider>();
             services.AddDbContextPool<MyApartmentDbContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("SVLakeview")));
             services.AddRazorPages();

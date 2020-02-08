@@ -97,5 +97,10 @@ namespace MyApartment.Data.Repository
         {
             throw new NotImplementedException();
         }
+
+        public bool IsExpenseExists(Guid id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

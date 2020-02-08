@@ -8,11 +8,11 @@ using MyApartment.Data.Services;
 
 namespace MyApartment.Data.Repository
 {
-    public class SqlServerExpenseDataProvider : IMyApartmentExpenseDataProvider
+    public class MyApartmentExpenseDataProvider : IMyApartmentExpenseDataProvider
     {
         private readonly MyApartmentDbContext _apartmentDbContext;
 
-        public SqlServerExpenseDataProvider(MyApartmentDbContext apartmentDbContext)
+        public MyApartmentExpenseDataProvider(MyApartmentDbContext apartmentDbContext)
         {
             _apartmentDbContext = apartmentDbContext;
         }
@@ -66,6 +66,11 @@ namespace MyApartment.Data.Repository
         public int GetExpenseCount()
         {
             return _apartmentDbContext.Expenses.Count();
+        }
+
+        public bool IsExpenseExists(Guid id)
+        {
+            return _apartmentDbContext.Expenses.Any(exp => exp.ExpenseId == id);
         }
     }
 }
