@@ -35,7 +35,20 @@ namespace MyApartment.WebClient.Pages.SVLakeview
             {
                 ExpenseId = Guid.NewGuid()
             };
-            
+            var beneficiary = new MyApartmentBeneficiary
+            {
+                BeneficiaryId = Guid.NewGuid()
+            };
+
+            var renumerator = new MyApartmentRemunerator
+            {
+                RemuneratorId = Guid.NewGuid()
+            };
+            //Expense.Beneficiary = beneficiary;
+            //Expense.Remunerator = renumerator;
+            Expense.BeneficiaryId = beneficiary.BeneficiaryId;
+            Expense.RemuneratorId = renumerator.RemuneratorId;
+
             _myExpenseDataProvider.AddNewExpense(Expense);
             //_myExpenseDataProvider.Commit();
             
@@ -51,6 +64,20 @@ namespace MyApartment.WebClient.Pages.SVLakeview
         {
             if (ModelState.IsValid)
             {
+                var beneficiary = new MyApartmentBeneficiary
+                {
+                    BeneficiaryId = Guid.NewGuid()
+                };
+
+                var renumerator = new MyApartmentRemunerator
+                {
+                    RemuneratorId = Guid.NewGuid()
+                };
+                //Expense.Beneficiary = beneficiary;
+                //Expense.Remunerator = renumerator;
+                Expense.BeneficiaryId = beneficiary.BeneficiaryId;
+                Expense.RemuneratorId = renumerator.RemuneratorId;
+
                 Expense = (MyApartmentExpense)_myExpenseDataProvider.AddNewExpense(Expense);
                 _myExpenseDataProvider.Commit();
                 TempData["TransactionMessage"] = "New Expense Created Successfully!";

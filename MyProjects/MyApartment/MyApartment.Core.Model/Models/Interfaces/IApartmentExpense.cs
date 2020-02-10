@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MyApartment.Core.Model
 {
@@ -13,9 +12,13 @@ namespace MyApartment.Core.Model
         DateTime TransactionDate { get; set; }
         string Payee { get; set; }
         string Payer { get; set; }
-        //IEnumerable<MyApartmentBeneficiary> Beneficiaries { get; set; }
-        //IEnumerable<MyApartmentBeneficiary> Remunerators { get; set; }
-        MyApartmentBeneficiary Beneficiary { get; set; }
         MyApartmentRemunerator Remunerator { get; set; }
+        Guid RemuneratorId { get; set; }
+        MyApartmentBeneficiary Beneficiary { get; set; }
+        Guid BeneficiaryId { get; set; }
+
+        //IEnumerable<MyApartmentBeneficiary> Remunerators { get; set; }
+        //MyApartmentBeneficiary Beneficiary { get; set; }
+
     }
 }
