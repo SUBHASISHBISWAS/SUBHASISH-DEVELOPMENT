@@ -108,7 +108,7 @@ namespace MyApartment.Data.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Renumerators");
+                    b.ToTable("Remunerators");
                 });
 
             modelBuilder.Entity("MyApartment.Core.Model.MyApartmentExpense", b =>

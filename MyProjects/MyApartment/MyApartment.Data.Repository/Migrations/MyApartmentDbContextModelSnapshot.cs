@@ -64,7 +64,6 @@ namespace MyApartment.Data.Repository.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Payee")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Payer")
@@ -106,7 +105,7 @@ namespace MyApartment.Data.Repository.Migrations
 
                     b.HasKey("RemuneratorId");
 
-                    b.ToTable("Renumerators");
+                    b.ToTable("Remunerators");
                 });
 
             modelBuilder.Entity("MyApartment.Core.Model.MyApartmentExpense", b =>

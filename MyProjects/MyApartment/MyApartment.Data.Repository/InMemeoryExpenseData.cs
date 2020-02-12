@@ -102,5 +102,15 @@ namespace MyApartment.Data.Repository
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<IMyApartmentBeneficiary> GetBenificiries()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<IMyApartmentRemunerator> GetRemunerators()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

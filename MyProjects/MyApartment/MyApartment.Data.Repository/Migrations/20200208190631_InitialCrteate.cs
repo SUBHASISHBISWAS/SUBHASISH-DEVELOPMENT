@@ -22,7 +22,7 @@ namespace MyApartment.Data.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Renumerators",
+                name: "Remunerators",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -32,7 +32,7 @@ namespace MyApartment.Data.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Renumerators", x => x.Id);
+                    table.PrimaryKey("PK_Remunerators", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,9 +59,9 @@ namespace MyApartment.Data.Repository.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Expenses_Renumerators_RemuneratorId",
+                        name: "FK_Expenses_Remunerators_RemuneratorId",
                         column: x => x.RemuneratorId,
-                        principalTable: "Renumerators",
+                        principalTable: "Remunerators",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -86,7 +86,7 @@ namespace MyApartment.Data.Repository.Migrations
                 name: "Benificiries");
 
             migrationBuilder.DropTable(
-                name: "Renumerators");
+                name: "Remunerators");
         }
     }
 }

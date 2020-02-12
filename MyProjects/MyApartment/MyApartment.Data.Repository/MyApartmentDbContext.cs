@@ -16,7 +16,7 @@ namespace MyApartment.Data.Services
         }
         public  DbSet<MyApartmentExpense> Expenses { get; set; }
         public DbSet<MyApartmentBeneficiary> Benificiries { get; set; }
-        public DbSet<MyApartmentRemunerator> Renumerators { get; set; }
+        public DbSet<MyApartmentRemunerator> Remunerators { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

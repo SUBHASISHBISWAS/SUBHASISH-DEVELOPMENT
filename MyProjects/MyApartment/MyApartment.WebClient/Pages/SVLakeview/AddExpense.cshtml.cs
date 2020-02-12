@@ -35,22 +35,8 @@ namespace MyApartment.WebClient.Pages.SVLakeview
             {
                 ExpenseId = Guid.NewGuid()
             };
-            var beneficiary = new MyApartmentBeneficiary
-            {
-                BeneficiaryId = Guid.NewGuid()
-            };
-
-            var renumerator = new MyApartmentRemunerator
-            {
-                RemuneratorId = Guid.NewGuid()
-            };
-            //Expense.Beneficiary = beneficiary;
-            //Expense.Remunerator = renumerator;
-            Expense.BeneficiaryId = beneficiary.BeneficiaryId;
-            Expense.RemuneratorId = renumerator.RemuneratorId;
 
             _myExpenseDataProvider.AddNewExpense(Expense);
-            //_myExpenseDataProvider.Commit();
             
             if (Expense == null)
             {
@@ -59,25 +45,37 @@ namespace MyApartment.WebClient.Pages.SVLakeview
             return Page();
         }
 
-        [HttpPost]
+
+
+        
+        public JsonResult OnGetSearchBenificiries(string benificiryName)
+        {
+
+            var benificiries = (from benificiary  in _myExpenseDataProvider.GetBenificiries()
+                                where benificiary.FirstName.StartsWith(benificiryName)
+                                select new { benificiary.FirstName, benificiary.BeneficiaryId });
+
+            return new JsonResult(benificiries);
+        }
+
+        public JsonResult OnGetSearchRemunerators(string remuneratorName)
+        {
+
+            var remunerators = (from remunerator in _myExpenseDataProvider.GetRemunerators()
+                                where remunerator.FirstName.StartsWith(remuneratorName)
+                                select new { remunerator.FirstName, remunerator.RemuneratorId }).ToList();
+
+            return new JsonResult(remunerators);
+        }
+
+
         public IActionResult OnPost()
         {
+            
+
             if (ModelState.IsValid)
             {
-                var beneficiary = new MyApartmentBeneficiary
-                {
-                    BeneficiaryId = Guid.NewGuid()
-                };
-
-                var renumerator = new MyApartmentRemunerator
-                {
-                    RemuneratorId = Guid.NewGuid()
-                };
-                //Expense.Beneficiary = beneficiary;
-                //Expense.Remunerator = renumerator;
-                Expense.BeneficiaryId = beneficiary.BeneficiaryId;
-                Expense.RemuneratorId = renumerator.RemuneratorId;
-
+                Expense.Payee = "Me";
                 Expense = (MyApartmentExpense)_myExpenseDataProvider.AddNewExpense(Expense);
                 _myExpenseDataProvider.Commit();
                 TempData["TransactionMessage"] = "New Expense Created Successfully!";

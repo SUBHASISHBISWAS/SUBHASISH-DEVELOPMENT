@@ -39,7 +39,7 @@ namespace MyApartment.Core.Model
             }
         }
 
-        [Required]
+        
         public string Payee { get; set; }
         public string Payer { get; set; }
 

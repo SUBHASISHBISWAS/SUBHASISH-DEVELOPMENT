@@ -72,5 +72,15 @@ namespace MyApartment.Data.Repository
         {
             return _apartmentDbContext.Expenses.Any(exp => exp.ExpenseId == id);
         }
+
+        public IEnumerable<IMyApartmentBeneficiary> GetBenificiries()
+        {
+            return _apartmentDbContext.Benificiries;
+        }
+
+        public IEnumerable<IMyApartmentRemunerator> GetRemunerators()
+        {
+           return _apartmentDbContext.Remunerators;
+        }
     }
 }

@@ -1,8 +1,10 @@
-﻿@page "{expenseId:Guid?}"
+﻿@page 
 @model AddExpenseModel
 @{
     ViewData["Title"] = "Add Expense";
 }
+
+
 
 <h2> Add New Expense</h2>
 
@@ -21,9 +23,19 @@
         <span class="text-danger" asp-validation-for="Expense.ExpenseAmount"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Expense.Payee"></label>
-        <input asp-for="Expense.Payee" class="form-control" />
-        <span class="text-danger" asp-validation-for="Expense.Payee"></span>
+        <label asp-for="Expense.Beneficiary"></label>
+        <input type="search" class="form-control" id="searchBenificiary"/>
+        @*<input asp-for="Expense.Beneficiary" class="form-control" id="searchBenificiary" />*@
+        <input type="hidden" asp-for="Expense.BeneficiaryId" id="benificaryId"/>
+        <span class="text-danger" asp-validation-for="Expense.BeneficiaryId"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Expense.Remunerator"></label>
+        <input type="search" class="form-control" id="searchRemunerator" />
+        @*<input asp-for="Expense.RemuneratorId" class="form-control" />*@
+        <input type="hidden" asp-for="Expense.RemuneratorId" id="remuneratorId" />
+        <span class="text-danger" asp-validation-for="Expense.RemuneratorId"></span>
     </div>
     <div class="form-group">
         <label asp-for="Expense.ExpenseType"></label>
@@ -31,4 +43,67 @@
     </div>
     <button type="submit" class="btn btn-primary">Create</button>
 </form>
+
+
+<link href="~/jqueryui/jquery-ui.css" rel="stylesheet" />
+<script src="~/jquery/jquery.js"></script>
+<script src="~/jqueryui/jquery-ui.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#searchBenificiary").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/SVLakeview/AddExpense/?handler=SearchBenificiries",
+                    type: "GET",
+                    dataType: "json",
+                    data: { benificiryName: $("#searchBenificiary").val() },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            console.log(item);
+                            $("#benificaryId").val(item.beneficiaryId);
+                            $("#searchBenificiary").val(item.firstName);
+                            return { label: item.firstName, value: item.beneficiaryId };
+                        }))
+
+                    }
+                })
+            },
+            messages: {
+            noResults: "",
+            results: function (resultsCount) { }
+        //results: ""
+            }
+        });
+    })
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#searchRemunerator").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/SVLakeview/AddExpense/?handler=SearchRemunerators",
+                    type: "GET",
+                    dataType: "json",
+                    data: { remuneratorName: $("#searchRemunerator").val() },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            console.log(item);
+                            $("#remuneratorId").val(item.remuneratorId);
+                            $("#searchRemunerator").val(item.firstName);
+                            return { label: item.firstName, value: item.remuneratorId };
+                        }))
+
+                    }
+                })
+            },
+            messages: {
+                noResults: "",
+                results: function (resultsCount) { }
+                //results: ""
+            }
+        });
+    })
+</script>
 

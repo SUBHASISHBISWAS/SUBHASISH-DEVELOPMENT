@@ -19,6 +19,10 @@ namespace MyApartment.Data.Repository
 
         IMyApartmentExpense DeleteExpense(Guid id);
 
+        IEnumerable<IMyApartmentBeneficiary> GetBenificiries();
+
+        IEnumerable<IMyApartmentRemunerator> GetRemunerators();
+
         bool IsExpenseExists(Guid id);
 
         int GetExpenseCount();

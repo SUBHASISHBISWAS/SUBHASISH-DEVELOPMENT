@@ -1,0 +1,45 @@
+﻿@page
+@model MyApartment.WebClient.BeneficiaryEditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>MyApartmentBeneficiary</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MyApartmentBeneficiary.BeneficiaryId" />
+            <div class="form-group">
+                <label asp-for="MyApartmentBeneficiary.FirstName" class="control-label"></label>
+                <input asp-for="MyApartmentBeneficiary.FirstName" class="form-control" />
+                <span asp-validation-for="MyApartmentBeneficiary.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyApartmentBeneficiary.LastName" class="control-label"></label>
+                <input asp-for="MyApartmentBeneficiary.LastName" class="form-control" />
+                <span asp-validation-for="MyApartmentBeneficiary.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyApartmentBeneficiary.Address" class="control-label"></label>
+                <input asp-for="MyApartmentBeneficiary.Address" class="form-control" />
+                <span asp-validation-for="MyApartmentBeneficiary.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

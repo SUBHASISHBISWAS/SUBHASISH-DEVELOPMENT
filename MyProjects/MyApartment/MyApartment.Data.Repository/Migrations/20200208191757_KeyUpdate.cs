@@ -12,12 +12,12 @@ namespace MyApartment.Data.Repository.Migrations
                 table: "Expenses");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Expenses_Renumerators_RemuneratorId",
+                name: "FK_Expenses_Remunerators_RemuneratorId",
                 table: "Expenses");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_Renumerators",
-                table: "Renumerators");
+                name: "PK_Remunerators",
+                table: "Remunerators");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Benificiries",
@@ -25,7 +25,7 @@ namespace MyApartment.Data.Repository.Migrations
 
             migrationBuilder.DropColumn(
                 name: "Id",
-                table: "Renumerators");
+                table: "Remunerators");
 
             migrationBuilder.DropColumn(
                 name: "Id",
@@ -33,7 +33,7 @@ namespace MyApartment.Data.Repository.Migrations
 
             migrationBuilder.AddColumn<Guid>(
                 name: "RemuneratorId",
-                table: "Renumerators",
+                table: "Remunerators",
                 nullable: false,
                 defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
 
@@ -44,8 +44,8 @@ namespace MyApartment.Data.Repository.Migrations
                 defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_Renumerators",
-                table: "Renumerators",
+                name: "PK_Remunerators",
+                table: "Remunerators",
                 column: "RemuneratorId");
 
             migrationBuilder.AddPrimaryKey(
@@ -62,10 +62,10 @@ namespace MyApartment.Data.Repository.Migrations
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Expenses_Renumerators_RemuneratorId",
+                name: "FK_Expenses_Remunerators_RemuneratorId",
                 table: "Expenses",
                 column: "RemuneratorId",
-                principalTable: "Renumerators",
+                principalTable: "Remunerators",
                 principalColumn: "RemuneratorId",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -77,12 +77,12 @@ namespace MyApartment.Data.Repository.Migrations
                 table: "Expenses");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Expenses_Renumerators_RemuneratorId",
+                name: "FK_Expenses_Remunerators_RemuneratorId",
                 table: "Expenses");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_Renumerators",
-                table: "Renumerators");
+                name: "PK_Remunerators",
+                table: "Remunerators");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Benificiries",
@@ -90,7 +90,7 @@ namespace MyApartment.Data.Repository.Migrations
 
             migrationBuilder.DropColumn(
                 name: "RemuneratorId",
-                table: "Renumerators");
+                table: "Remunerators");
 
             migrationBuilder.DropColumn(
                 name: "BeneficiaryId",
@@ -98,7 +98,7 @@ namespace MyApartment.Data.Repository.Migrations
 
             migrationBuilder.AddColumn<Guid>(
                 name: "Id",
-                table: "Renumerators",
+                table: "Remunerators",
                 type: "uniqueidentifier",
                 nullable: false,
                 defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
@@ -111,8 +111,8 @@ namespace MyApartment.Data.Repository.Migrations
                 defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_Renumerators",
-                table: "Renumerators",
+                name: "PK_Remunerators",
+                table: "Remunerators",
                 column: "Id");
 
             migrationBuilder.AddPrimaryKey(
@@ -129,10 +129,10 @@ namespace MyApartment.Data.Repository.Migrations
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Expenses_Renumerators_RemuneratorId",
+                name: "FK_Expenses_Remunerators_RemuneratorId",
                 table: "Expenses",
                 column: "RemuneratorId",
-                principalTable: "Renumerators",
+                principalTable: "Remunerators",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }

@@ -1,0 +1,37 @@
+﻿@page
+@model MyApartment.WebClient.RemuneratorDetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>MyApartmentRemunerator</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MyApartmentRemunerator.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MyApartmentRemunerator.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MyApartmentRemunerator.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MyApartmentRemunerator.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MyApartmentRemunerator.DateOfBirth)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MyApartmentRemunerator.DateOfBirth)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./RemuneratorEdit" asp-route-id="@Model.MyApartmentRemunerator.RemuneratorId">Edit</a> |
+    <a asp-page="./RemuneratorIndex">Back to List</a>
+</div>

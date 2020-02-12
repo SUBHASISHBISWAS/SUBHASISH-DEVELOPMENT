@@ -24,6 +24,18 @@
                             <li><a asp-page="/SvLakeview/ExpenseList">SvLakeview</a></li>
                         </ul>
                     </ul>
+
+                    <ul class="navbar-nav flex-grow-1">
+                        <ul class="nav navbar-nav">
+                            <li><a asp-page="/SvLakeview/Benificiries/Index">Benificiries</a></li>
+                        </ul>
+                    </ul>
+
+                    <ul class="navbar-nav flex-grow-1">
+                        <ul class="nav navbar-nav">
+                            <li><a asp-page="/SvLakeview/Remunerators/RemuneratorIndex">Remunerators</a></li>
+                        </ul>
+                    </ul>
                     <ul class="navbar-nav flex-grow-1">
                         <ul class="nav navbar-nav">
                             <li><a asp-page="/SvLakeview/ClientExpense">Client Expense</a></li>
@@ -48,9 +60,9 @@
 
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>*@
 
     @RenderSection("Scripts", required: false)
 </body>

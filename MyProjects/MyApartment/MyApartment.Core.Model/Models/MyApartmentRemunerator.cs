@@ -1,4 +1,4 @@
-﻿using MyApartment.Core.Model.Models.Interfaces;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
