@@ -1,9 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
+  "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "MyApartmentAWC": {
+    "MyApartment-UI": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/MyApartmentAWC",
+            "outputPath": "dist/MyApartment-UI",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "MyApartmentAWC:build"
+            "browserTarget": "MyApartment-UI:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "MyApartmentAWC:build:production"
+              "browserTarget": "MyApartment-UI:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "MyApartmentAWC:build"
+            "browserTarget": "MyApartment-UI:build"
           }
         },
         "test": {
@@ -110,15 +110,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "MyApartmentAWC:serve"
+            "devServerTarget": "MyApartment-UI:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "MyApartmentAWC:serve:production"
+              "devServerTarget": "MyApartment-UI:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "MyApartmentAWC"
+  "defaultProject": "MyApartment-UI"
 }
