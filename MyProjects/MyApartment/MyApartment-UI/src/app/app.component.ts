@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'MyApartment-root',
+  selector: 'apt-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
