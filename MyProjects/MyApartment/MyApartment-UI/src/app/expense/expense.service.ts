@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { IExpenses } from './Expences';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {Observable, throwError} from 'rxjs'
+import {catchError,tap} from 'rxjs/operators'
 
 
 @Injectable({
@@ -7,34 +10,20 @@ import { IExpenses } from './Expences';
 })
 export class ExpenseService {
 
-  constructor() { }
+  private expenseUrl="api/products/products.json"
+  constructor(private http : HttpClient) {
 
-  getExpenses() : IExpenses []
-  {
-    return [
-      {
-        "expenseId": 1,
-        "expenseDescription": "Garden Cart",
-        "expenseAmount": 10000,
-        "expenseType":"Water",
-        "transactionDate": 15-10-9183,
-        "beneficiary": "ASMITA SAHA",
-        "remunerator": "SUBHASISH BISWAS",
-        "benificiaryRating":2,
-        "imageUrl": "assets/images/xbox-controller.png"
-      },
-      {
-        "expenseId": 1,
-        "expenseDescription": "Garden Cart",
-        "expenseAmount": 10000,
-        "expenseType":"Water",
-        "transactionDate": 15-10-9183,
-        "beneficiary": "ASMITA",
-        "remunerator": "SUBHASISH BISWAS",
-        "benificiaryRating":5,
-        "imageUrl": "assets/images/garden_cart.png"
-      }
-    ];
+  }
 
+  getExpenses() : Observable<IExpenses []>{
+
+    return this.http.get<IExpenses[]>(this.expenseUrl).pipe(
+      tap(data=>console.log('All Data : '+JSON.stringify(data))),catchError(this.handleError));
+
+  }
+
+  private handleError(err: HttpErrorResponse){
+
+    return throwError(err.error);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IExpenses } from '../Expences';
 import { ExpenseService } from '../expense.service';
+import { throwError } from 'rxjs';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class ExpenseListComponent implements OnInit {
   imageWidth:number=50;
   imageMargin:number=2;
   showImage:boolean=true;
+  errorMessage:string;
   expenses: IExpenses[] ;
   filteredExpenses:IExpenses[];
 
@@ -37,8 +39,15 @@ export class ExpenseListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.expenses=this.expenseService.getExpenses();
-    this.filteredExpenses=this.expenses;
+    this.expenseService.getExpenses().subscribe({
+      next: responseExpenses=>
+      {
+        this.expenses=responseExpenses;
+        this.filteredExpenses=this.expenses;
+      },
+      error: err=>this.errorMessage=err
+    });
+
   }
 
 
