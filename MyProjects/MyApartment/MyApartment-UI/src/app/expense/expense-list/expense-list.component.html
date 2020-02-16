@@ -5,8 +5,9 @@
   <div class='card-body'>
     <div class='row'>
       <div class='col-md-2'>Filter by:</div>
-      <div class='col-md-4'>
-        <input type='text' [(ngModel)]='listFilter'/>
+      <div class="form-inline my-2 my-lg-0">
+        <input [(ngModel)]='listFilter' class="form-control mr-sm-2" type="search" placeholder="Search Expenses" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </div>
     </div>
     <div class='row'>
@@ -15,9 +16,9 @@
       </div>
     </div>
     <div class='table-responsive'>
-      <table class='table'
+      <table class="table table-bordered table-striped table-hover table-dark table-sm"
              *ngIf='expenses && expenses.length'>
-        <thead>
+        <thead class="thead-dark">
           <tr>
             <th>
               <button class='btn btn-primary'
@@ -32,6 +33,7 @@
             <th>Benificiary</th>
             <th>Remunarator</th>
             <th>Benificiary Rating</th>
+            <th>Benificiary Rating</th>
           </tr>
         </thead>
         <tbody>
@@ -43,7 +45,9 @@
                  [style.margin.px]='imageMargin'/>
             </td>
             <td>{{ expense.expenseId }}</td>
-            <td>{{ expense.expenseDescription }}</td>
+            <td>
+              <a [routerLink]="['/expenseDetails',expense.expenseId]">{{ expense.expenseDescription }}</a>
+            </td>
             <td>{{ expense.expenseAmount | currency :'INR' }}</td>
             <td>{{ expense.expenseType }}</td>
             <td>{{ expense.beneficiary  | lowercase}}</td>
@@ -53,6 +57,7 @@
               (notifyProducList)='onStartRatingClickedInStartComponenet($event)'>
               </apt-startrating>
             </td>
+
           </tr>
         </tbody>
       </table>
