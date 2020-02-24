@@ -10,7 +10,7 @@ import {catchError,tap} from 'rxjs/operators'
 })
 export class ExpenseService {
 
-  private expenseUrl="api/products/products.json"
+  private expenseUrl="https://localhost:5001/api/expenses"
   constructor(private http : HttpClient) {
 
   }

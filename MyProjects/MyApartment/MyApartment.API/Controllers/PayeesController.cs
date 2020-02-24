@@ -25,10 +25,10 @@ namespace MyApartment.API.Controllers
         }
 
 
-        public ActionResult<IEnumerable<MyApartmentPayeeDto>> GetPayeeForExpense(Guid expenseID)
-        {
-            return null;
-            //return apartmentPayeeDataProvider.GetAllPayees();
-        }
+        //public ActionResult<IEnumerable<MyApartmentPayeeDto>> GetPayeeForExpense(Guid expenseID)
+        //{
+        //    return null;
+        //    //return apartmentPayeeDataProvider.GetAllPayees();
+        //}
     }
 }

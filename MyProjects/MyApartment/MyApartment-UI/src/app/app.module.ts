@@ -12,6 +12,7 @@ import { ConvertToSpacePipe } from './shared/convert-to-space.pipe';
 import { StartratingComponent } from './shared/startrating/startrating.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { ExpensedetailsComponent } from './expense/expensedetails/expensedetails.component';
+import { AddexpenseComponent } from './expense/addexpense/addexpense.component';
 
 
 
@@ -24,6 +25,7 @@ import { ExpensedetailsComponent } from './expense/expensedetails/expensedetails
     StartratingComponent,
     WelcomeComponent,
     ExpensedetailsComponent,
+    AddexpenseComponent,
   ],
   imports: [
     BrowserModule,
