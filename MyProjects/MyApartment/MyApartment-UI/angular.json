@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "MyApartment-UI"
+    }
+  },
+  "defaultProject": "MyApartment-UI",
+  "cli": {
+    "analytics": "28d7e890-48eb-425b-bb4e-555f3d9b6d9f"
+  }
 }
