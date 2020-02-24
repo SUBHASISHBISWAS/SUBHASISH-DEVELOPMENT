@@ -31,7 +31,7 @@ namespace MyApartment.API
         {
             services.AddScoped<IMyApartmentExpenseDataProvider, MyApartmentExpenseDataProvider>();
             services.AddDbContextPool<MyApartmentDbContext>
-                (options => options.UseSqlServer(Configuration.GetConnectionString("SVLakeview"), 
+                (options => options.UseSqlServer(Configuration.GetConnectionString("DockerSVLakeview"), 
                 b => b.MigrationsAssembly("MyApartment.Data.Repository")));
 
             services.AddControllers(setupAction=>
