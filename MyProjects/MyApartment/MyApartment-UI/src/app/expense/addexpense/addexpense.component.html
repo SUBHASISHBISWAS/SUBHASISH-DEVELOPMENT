@@ -1,1 +1,77 @@
-<p>addexpense works!</p>
+<form #addExpenseForm='ngForm' (ngSubmit)='onSubmit(addExpenseForm)'>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h2>Add Expense </h2>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <!-- <label for="expenseDescription" >Expense Description</label> -->
+          <input id="expenseDescription" name="expenseDescription" class="form-control" placeholder="Expense Dscription"
+            [(ngModel)]='expense.expenseDescription' required #expenseDescriptionField='ngModel'
+            [class.field-error]='addExpenseForm.submitted && expenseDescriptionField.invalid'
+            (blur)="onBlur(expenseDescriptionField)" />
+          <div [hidden]="!addExpenseForm.submitted || expenseDescriptionField.valid" class="alert alert-danger">
+            Enter Expense Description
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="number" id="expenseAmount" name="expenseAmount" class="form-control" placeholder="Expense Amount"
+            [(ngModel)]='expense.expenseAmount' required #expenseAmountField='ngModel'
+            [class.field-error]='addExpenseForm.submitted && expenseAmountField.invalid' />
+          <div [hidden]="!addExpenseForm.submitted || expenseAmountField.valid" class="alert alert-danger">
+            Enter Expense Amount
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input id="beneficiaryName" name="beneficiaryName" class="form-control" placeholder="Beneficiary Name"
+            [(ngModel)]='expense.beneficiary' required #beneficiaryNameField='ngModel'
+            [class.field-error]='addExpenseForm.submitted && beneficiaryNameField.invalid' />
+          <div [hidden]="!addExpenseForm.submitted || beneficiaryNameField.valid" class="alert alert-danger">
+            Enter Beneficiary Name
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input id="remuneratorName" name="remuneratorName" class="form-control" placeholder="Remunerator Name"
+            [(ngModel)]='expense.remunerator' required #remuneratorNameField='ngModel'
+            [class.field-error]='addExpenseForm.submitted && remuneratorNameField.invalid' />
+          <div [hidden]="!addExpenseForm.submitted || remuneratorNameField.valid" class="alert alert-danger">
+            Enter Remunerator Name
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="ExpenseType">Expense Type</label>
+          <select class="form-control" id="ExpenseType" [(ngModel)]='expense.expenseType'>
+            <option>Monthly</option>
+            <option>Annual</option>
+            <option>Lifetime</option>
+          </select>
+        </div>
+
+        <div class="form-check form-group">
+          <input class="form-check-input" type="checkbox" id="showTransactionDate" name="showTransactionDate" ngModel>
+          <label class="form-check-label" for="showTransactionDate">
+            Show Date
+          </label>
+        </div>
+
+        <div class="form-group">
+          <input type="date" id="transactionDate" name="transactionDate" class="form-control"
+            placeholder="Transaction Date" ngModel />
+        </div>
+
+        <button class="btn btn-primary">Save</button>
+
+        {{ addExpenseForm.value | json}}
+        {{'Touched :'+expenseDescriptionField.touched}}
+
+
+
+      </div>
+    </div>
+  </div>
+</form>

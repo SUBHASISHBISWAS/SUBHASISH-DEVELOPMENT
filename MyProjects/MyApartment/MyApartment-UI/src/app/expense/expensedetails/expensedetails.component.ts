@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IExpenses } from '../Expences';
+import { IExpense } from '../Expences';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ExpensedetailsComponent implements OnInit {
 
   pageTitle: string = 'Expense Detail';
-  expense: IExpenses;
+  expense: IExpense;
   constructor(private router: Router, private route: ActivatedRoute) {
 
 

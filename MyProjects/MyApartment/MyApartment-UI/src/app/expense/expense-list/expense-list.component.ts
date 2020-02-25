@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IExpenses } from '../Expences';
+import { IExpense } from '../Expences';
 import { ExpenseService } from '../expense.service';
 import { throwError } from 'rxjs';
 
@@ -17,8 +17,8 @@ export class ExpenseListComponent implements OnInit {
   imageMargin:number=2;
   showImage:boolean=true;
   errorMessage:string;
-  expenses: IExpenses[] ;
-  filteredExpenses:IExpenses[];
+  expenses: IExpense[] ;
+  filteredExpenses:IExpense[];
 
 
   private _listFilter : string;
@@ -55,9 +55,9 @@ export class ExpenseListComponent implements OnInit {
     this.showImage = !this.showImage;
   }
 
-  performFilter(filterBy: string): IExpenses[] {
+  performFilter(filterBy: string): IExpense[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.expenses.filter((product: IExpenses) =>
+    return this.expenses.filter((product: IExpense) =>
       product.expenseDescription.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 

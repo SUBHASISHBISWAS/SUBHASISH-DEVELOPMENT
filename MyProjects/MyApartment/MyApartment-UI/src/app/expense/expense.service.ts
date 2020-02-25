@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { IExpenses } from './Expences';
+import { IExpense } from './Expences';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import {Observable, throwError} from 'rxjs'
+import {Observable, throwError, of} from 'rxjs'
 import {catchError,tap} from 'rxjs/operators'
 
 
@@ -15,11 +15,16 @@ export class ExpenseService {
 
   }
 
-  getExpenses() : Observable<IExpenses []>{
+  getExpenses() : Observable<IExpense []>{
 
-    return this.http.get<IExpenses[]>(this.expenseUrl).pipe(
+    return this.http.get<IExpense[]>(this.expenseUrl).pipe(
       tap(data=>console.log('All Data : '+JSON.stringify(data))),catchError(this.handleError));
 
+  }
+
+  postExpense(expense : IExpense): Observable<any>{
+    //return of(expense);
+    return this.http.post('https://putsreq.com/lglZpuOPGWwIxfr7TD2N',expense);
   }
 
   private handleError(err: HttpErrorResponse){

@@ -13,19 +13,15 @@ import { StartratingComponent } from './shared/startrating/startrating.component
 import { WelcomeComponent } from './home/welcome.component';
 import { ExpensedetailsComponent } from './expense/expensedetails/expensedetails.component';
 import { AddexpenseComponent } from './expense/addexpense/addexpense.component';
+import { ExpenseModule } from './expense/expense.module';
+import { WelcomeModule } from './home/welcome.module';
 
 
 
 @NgModule({
-  declarations: [
+  declarations: 
+  [
     AppComponent,
-    ExpenseComponent,
-    ExpenseListComponent,
-    ConvertToSpacePipe,
-    StartratingComponent,
-    WelcomeComponent,
-    ExpensedetailsComponent,
-    AddexpenseComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,13 +30,12 @@ import { AddexpenseComponent } from './expense/addexpense/addexpense.component';
     HttpClientModule,
     RouterModule.forRoot(
       [
-      {path: 'expense', component:ExpenseComponent},
-      {path: 'expenses', component:ExpenseListComponent},
       {path:'welcome', component:WelcomeComponent},
-      {path: 'expenseDetails/:expenseId', component:ExpensedetailsComponent},
       {path: '', redirectTo:'welcome', pathMatch:'full'},
       {path: '**', redirectTo:'welcome', pathMatch:'full'}
-    ])
+    ]),
+    ExpenseModule,
+    WelcomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
