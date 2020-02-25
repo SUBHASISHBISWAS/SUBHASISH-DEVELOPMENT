@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './../app-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WelcomeComponent } from './welcome.component';
@@ -9,6 +10,7 @@ import { WelcomeComponent } from './welcome.component';
   imports: 
   [
     CommonModule,
+    AppRoutingModule
   ]
 })
 export class WelcomeModule { }
