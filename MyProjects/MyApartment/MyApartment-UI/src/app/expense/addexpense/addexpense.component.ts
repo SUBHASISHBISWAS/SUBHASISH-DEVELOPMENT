@@ -22,14 +22,14 @@ export class AddexpenseComponent implements OnInit {
     {value: '1', viewValue: 'Electricity'},
     {value: '2', viewValue: 'Plumber'}
   ];
-  remunerators: IExpense[];
+  remunerators: IRemunerator[];
   benificiaries: IBeneficiary[];
-  filteredRemunerators: Observable<IExpense[]>;
+  filteredRemunerators: Observable<IRemunerator[]>;
   filteredBenificiary: Observable<IBeneficiary[]>;
 
   constructor(private expenseService: ExpenseService, private fb: FormBuilder) {
 
-    this.expenseService.getExpenses().subscribe(result => this.remunerators = result as IExpense[]);
+    this.expenseService.getRemunarators().subscribe(result => this.remunerators = result as IRemunerator[]);
     this.expenseService.getBenificiries().subscribe(result => this.benificiaries = result as IBeneficiary[]);
   }
 
@@ -62,9 +62,9 @@ export class AddexpenseComponent implements OnInit {
     return this.benificiaries.filter(benificiary => benificiary.firstName.toLowerCase().indexOf(filterValue) === 0);
   }
 
-  private _filterRemunerator(value: string): IExpense[] {
+  private _filterRemunerator(value: string): IRemunerator[] {
     const filterValue = value.toLowerCase();
-    return this.remunerators.filter(remunarator => remunarator.expenseDescription.toLowerCase().indexOf(filterValue) === 0);
+    return this.remunerators.filter(remunarator => remunarator.firstName.toLowerCase().indexOf(filterValue) === 0);
   }
 
 

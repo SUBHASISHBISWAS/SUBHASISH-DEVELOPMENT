@@ -12,7 +12,7 @@ export class ExpenseService {
 
   private expenseUrl="https://localhost:5001/api/expenses"
   private benificieriesUrl="https://localhost:5001/api/SVLakeview/AddExpense/Benificiries"
-  private remuneratorsUrl="https://localhost:5001/api/SVLakeview/AddExpense/?handler=SearchRemunerators"
+  private remuneratorsUrl="https://localhost:5001/api/SVLakeview/AddExpense/Remunarators"
   constructor(private http : HttpClient) {
 
   }

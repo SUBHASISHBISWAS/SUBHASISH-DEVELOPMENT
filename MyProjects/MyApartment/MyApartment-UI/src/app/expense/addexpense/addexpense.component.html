@@ -21,10 +21,10 @@
             formControlName="remuneratorCtrl">
           <mat-autocomplete #autoRemunerator="matAutocomplete">
             <mat-option *ngFor="let remunerator of filteredRemunerators | async"
-              [value]="remunerator.expenseDescription">
+              [value]="remunerator.firstName">
               <!-- <img class="example-option-img" aria-hidden [src]="state.flag" height="25"> -->
-              <span>{{remunerator.expenseDescription}}</span> |
-              <small>remunerator: {{remunerator.expenseDescription}}</small>
+              <span>{{remunerator.firstName}}</span> |
+              <small>remunerator: {{remunerator.firstName}}</small>
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>

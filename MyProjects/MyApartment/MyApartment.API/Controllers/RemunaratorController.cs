@@ -13,7 +13,7 @@ using MyApartment.Data.Repository.Interfaces;
 
 namespace MyApartment.API.Controllers
 {
-    [Route("api/SVLakeview/AddExpense/Benificiries")]
+    [Route("api/SVLakeview/AddExpense/Remunarators")]
     [ApiController]
     public class RemuneratorController : ControllerBase
     {
@@ -26,19 +26,9 @@ namespace MyApartment.API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<MyApartmentBeneficiary>> OnGetBenificiries()
+        public ActionResult<IEnumerable<MyApartmentBeneficiary>> OnGetRemunerators()
         {
-            return Ok(_myExpenseDataProvider.GetBenificiries());
-        }
-
-        public JsonResult OnGetSearchBenificiries(string benificiryName)
-        {
-
-            var benificiries = (from benificiary in _myExpenseDataProvider.GetBenificiries()
-                                where benificiary.FirstName.StartsWith(benificiryName)
-                                select new { benificiary.FirstName, benificiary.BeneficiaryId });
-
-            return new JsonResult(benificiries);
+            return Ok(_myExpenseDataProvider.GetRemunerators());
         }
 
         public JsonResult OnGetSearchRemunerators(string remuneratorName)
