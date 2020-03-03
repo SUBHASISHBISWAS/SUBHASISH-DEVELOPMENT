@@ -9,3 +9,15 @@ export interface IExpense {
   benificiaryRating:number;
   imageUrl: string;
 }
+
+export interface IBeneficiary {
+  firstName: string;
+  lastName: string;
+  address: string;
+}
+export interface IRemunerator {
+  firstName: string;
+  lastName: string;
+  address: string;
+}
+

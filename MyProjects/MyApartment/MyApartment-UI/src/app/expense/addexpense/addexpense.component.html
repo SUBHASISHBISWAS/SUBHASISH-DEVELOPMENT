@@ -1,19 +1,10 @@
-<form #addExpenseForm='ngForm' (ngSubmit)='onSubmit(addExpenseForm)'>
+<form [formGroup]="addExpenseForm">
   <div class="container">
     <div class="card">
       <div class="card-header">
         <h2>Add Expense </h2>
       </div>
       <div class="card-body">
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Textarea</mat-label>
-          <textarea matInput></textarea>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Input</mat-label>
-          <input matInput type="number">
-        </mat-form-field>
 
         <!-- <div class="form-group">
           <label for="expenseDescription">Expense Description</label>
@@ -52,7 +43,7 @@
           </div>
         </div> -->
 
-         <!-- <div class="form-group">
+        <!-- <div class="form-group">
           <label for="ExpenseType">Expense Type</label>
           <select class="form-control" id="ExpenseType" [(ngModel)]='expense.expenseType'>
             <option>Monthly</option>
@@ -61,19 +52,36 @@
           </select>
         </div> -->
 
-         <!-- <div class="form-group">
+        <!-- <div class="form-check form-group">
+          <input class="form-check-input" type="checkbox" id="showTransactionDate" name="showTransactionDate" ngModel>
+          <label class="form-check-label" for="showTransactionDate">
+            Show Date
+          </label>
+        </div> -->
+
+        <!-- <div class="form-group">
           <input type="date" id="transactionDate" name="transactionDate" class="form-control"
             placeholder="Transaction Date" ngModel />
         </div> -->
 
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Expense Description</mat-label>
+          <textarea matInput formControlName="expenseDescriptionCtrl"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Expense Amount</mat-label>
+          <input matInput type="number" formControlName="expenseAmountCtrl">
+        </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="outline">
-          <input matInput placeholder="State" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
-              <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
-              <span>{{state.name}}</span> |
-              <small>Population: {{state.population}}</small>
+          <input matInput placeholder="Remunerator" aria-label="Remunerator" [matAutocomplete]="autoRemunerator"
+            formControlName="remuneratorCtrl">
+          <mat-autocomplete #autoRemunerator="matAutocomplete">
+            <mat-option *ngFor="let remunerator of filteredRemunerators | async" [value]="remunerator.expenseDescription">
+              <!-- <img class="example-option-img" aria-hidden [src]="state.flag" height="25"> -->
+              <span>{{remunerator.expenseDescription}}</span> |
+              <small>remunerator: {{remunerator.expenseDescription}}</small>
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
@@ -86,25 +94,38 @@
 
 
         <mat-form-field class="example-full-width" appearance="outline">
-          <input matInput placeholder="State" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
-              <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
-              <span>{{state.name}}</span> |
-              <small>Population: {{state.population}}</small>
+          <input matInput placeholder="Beneficiary" aria-label="Beneficiary" [matAutocomplete]="autoBeneficiary"
+            formControlName="beneficiaryCtrl">
+          <mat-autocomplete #autoBeneficiary="matAutocomplete">
+            <mat-option *ngFor="let beneficiary of filteredBenificiary | async" [value]="beneficiary.firstName">
+              <!-- <img class="example-option-img" aria-hidden [src]="state.flag" height="25"> -->
+              <span>{{beneficiary.firstName}}</span> |
+              <small>Population: {{beneficiary.firstName}}</small>
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
-
-
-        <!-- <mat-slide-toggle [checked]="stateCtrl.disabled"
-            (change)="stateCtrl.disabled ? stateCtrl.enable() : stateCtrl.disable()">
-            Disable Input?
-          </mat-slide-toggle> -->
-
         
+        <!-- <mat-form-field class="example-full-width" appearance="outline">
+          <input matInput placeholder="Beneficiary" aria-label="State" [matAutocomplete]="auto"
+            [formControl]="stateCtrl">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+              <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
+              <span>{{state.name}}</span> |
+              <small>Population: {{state.population}}</small>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field> -->
 
-        <mat-form-field class="example-full-width" appearance="outline">
+
+        <!-- <mat-slide-toggle [checked]="stateCtrl.disabled"
+            (change)="stateCtrl.disabled ? stateCtrl.enable() : stateCtrl.disable()">
+            Disable Input?
+          </mat-slide-toggle> -->
+
+
+
+        <!-- <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Expense Type</mat-label>
           <mat-select>
             <mat-option *ngFor="let expenseType of expenseTypes" [value]="expenseType.value">
@@ -114,30 +135,30 @@
         </mat-form-field>
 
 
-        <div class="form-check form-group">
-          <input class="form-check-input" type="checkbox" id="showTransactionDate" name="showTransactionDate" ngModel>
-          <label class="form-check-label" for="showTransactionDate">
-            Show Date
-          </label>
-        </div>
+
 
         <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="picker">
+          <mat-label>Transaction date</mat-label>
+          <input matInput [matDatepicker]="picker" [formControl]="picker" disabled>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-       
+        <mat-slide-toggle [checked]="picker.disabled"
+          (change)="picker.disabled ? stateCtrl.enable() : stateCtrl.disable()">
+          Disable Date?
+        </mat-slide-toggle> -->
 
-        <button class="btn btn-primary">Save</button>
+        <div class="form-group">
+            <button class="btn btn-primary">Save</button>
+        </div>
+        
 
         <!-- {{ addExpenseForm.value | json}}
         {{'Touched :'+expenseDescriptionField.touched}} -->
 
-
-
       </div>
+
     </div>
   </div>
 </form>

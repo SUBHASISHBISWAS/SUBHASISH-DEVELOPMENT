@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IExpense } from './Expences';
+import { IExpense, IRemunerator, IBeneficiary } from './Expences';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {Observable, throwError, of} from 'rxjs'
 import {catchError,tap} from 'rxjs/operators'
@@ -11,6 +11,8 @@ import {catchError,tap} from 'rxjs/operators'
 export class ExpenseService {
 
   private expenseUrl="https://localhost:5001/api/expenses"
+  private benificieriesUrl="https://localhost:5001/api/SVLakeview/AddExpense/Benificiries"
+  private remuneratorsUrl="https://localhost:5001/api/SVLakeview/AddExpense/?handler=SearchRemunerators"
   constructor(private http : HttpClient) {
 
   }
@@ -18,6 +20,20 @@ export class ExpenseService {
   getExpenses() : Observable<IExpense []>{
 
     return this.http.get<IExpense[]>(this.expenseUrl).pipe(
+      tap(data=>console.log('All Data : '+JSON.stringify(data))),catchError(this.handleError));
+
+  }
+
+  getRemunarators() : Observable<IRemunerator []>{
+    
+    return this.http.get<IRemunerator[]>(this.remuneratorsUrl).pipe(
+      tap(data=>console.log('All Data : '+JSON.stringify(data))),catchError(this.handleError));
+
+  }
+
+  getBenificiries() : Observable<IBeneficiary []>{
+
+    return this.http.get<IBeneficiary[]>(this.benificieriesUrl).pipe(
       tap(data=>console.log('All Data : '+JSON.stringify(data))),catchError(this.handleError));
 
   }
