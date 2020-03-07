@@ -1,11 +1,11 @@
 import { IRemunerator, IBeneficiary } from './../Expences';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, NgForm, NgModel, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup, FormControl, NgForm, NgModel, FormBuilder, Validators, AbstractControl } from '@angular/forms'
 import { IExpense } from '../Expences';
 import { ExpenseService } from '../expense.service';
 import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
+import { startWith, map, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'apt-addexpense',
@@ -27,6 +27,14 @@ export class AddexpenseComponent implements OnInit {
   filteredRemunerators: Observable<IRemunerator[]>;
   filteredBenificiary: Observable<IBeneficiary[]>;
 
+  expenseAmountErrorMessage: string;
+
+  private validationErrorMessage=
+  {
+    required:"Please Enter Amount",
+    email:"Please Enter Valid Email Massage"
+  };
+
   constructor(private expenseService: ExpenseService, private fb: FormBuilder) {
 
     this.expenseService.getRemunarators().subscribe(result => this.remunerators = result as IRemunerator[]);
@@ -36,10 +44,10 @@ export class AddexpenseComponent implements OnInit {
   ngOnInit(): void {
 
     this.addExpenseForm = this.fb.group({
-      expenseDescriptionCtrl: [''],
-      expenseAmountCtrl: ['1000', Validators.required],
-      beneficiaryCtrl: [null],
-      remuneratorCtrl: [null],
+      expenseDescriptionCtrl: [null, Validators.required],
+      expenseAmountCtrl: ['0', Validators.required],
+      beneficiaryCtrl: [null,Validators.required],
+      remuneratorCtrl: [null,Validators.required],
       datePickerCtrl:null
 
     });
@@ -55,8 +63,25 @@ export class AddexpenseComponent implements OnInit {
         startWith(''),
         map(benificiary => benificiary ? this._filterBenificiary(benificiary) : this.benificiaries)
       );
+
+      const expenseAmountCtrl=this.addExpenseForm.get('expenseAmountCtrl');
+
+      expenseAmountCtrl.valueChanges.pipe(debounceTime(1000)).subscribe(value=>{
+        this.setErrorMessage(expenseAmountCtrl);
+      });
   }
 
+  setErrorMessage(c:AbstractControl):void{
+
+    this.expenseAmountErrorMessage='';
+    if((c.touched || c.dirty) && c.errors)
+    {
+      console.log(c.errors);
+      
+      this.expenseAmountErrorMessage=Object.keys(c.errors).
+      map(key=>this.validationErrorMessage[key]).join(' ');
+    }
+  }
   private _filterBenificiary(value: string): IBeneficiary[] {
     const filterValue = value.toLowerCase();
     return this.benificiaries.filter(benificiary => benificiary.firstName.toLowerCase().indexOf(filterValue) === 0);

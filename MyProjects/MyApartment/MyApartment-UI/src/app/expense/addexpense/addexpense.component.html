@@ -1,4 +1,4 @@
-<form [formGroup]="addExpenseForm">
+<form [formGroup]="addExpenseForm" >
   <div class="container">
     <div class="card">
       <div class="card-header">
@@ -11,10 +11,16 @@
           <textarea matInput formControlName="expenseDescriptionCtrl"></textarea>
         </mat-form-field>
 
+        
         <mat-form-field appearance="outline" class="example-full-width">
           <mat-label>Expense Amount</mat-label>
-          <input matInput type="number" formControlName="expenseAmountCtrl">
+          <input matInput type="number" formControlName="expenseAmountCtrl" 
+          [ngClass]="{'is-invalid': expenseAmountErrorMessage }">
         </mat-form-field>
+        <!-- <span class="alert alert-danger">
+          {{ expenseAmountErrorMessage }}
+        </span> -->
+      
 
         <mat-form-field class="example-full-width" appearance="outline">
           <input matInput placeholder="Remunerator" aria-label="Remunerator" [matAutocomplete]="autoRemunerator"
