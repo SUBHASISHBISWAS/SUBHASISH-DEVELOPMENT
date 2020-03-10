@@ -1,19 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using MyApartment.Data.Repository;
 using MyApartment.Data.Services;
+using System;
 
 namespace MyApartment.API
 {
@@ -26,20 +20,41 @@ namespace MyApartment.API
 
         public IConfiguration Configuration { get; }
 
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IMyApartmentExpenseDataProvider, MyApartmentExpenseDataProvider>();
             services.AddDbContextPool<MyApartmentDbContext>
-                (options => options.UseSqlServer(Configuration.GetConnectionString("SVLakeview"), 
+                (options => options.UseSqlServer(Configuration.GetConnectionString("DockerSVLakeview"), 
                 b => b.MigrationsAssembly("MyApartment.Data.Repository")));
 
-            services.AddControllers(setupAction=>
+            services.AddControllers(setupAction =>
             {
-                setupAction.ReturnHttpNotAcceptable = true;
+                setupAction.ReturnHttpNotAcceptable = false;
             }).AddXmlDataContractSerializerFormatters();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200").AllowAnyMethod();
+                });
+            });
+
+            services.AddSwaggerGen(setupAction =>
+            {
+                setupAction.SwaggerDoc("MyApartmentOpenAPISpecification", 
+                    new Microsoft.OpenApi.Models.OpenApiInfo() 
+                    {
+                        Title="MyApartment",
+                        Version="1"
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +65,11 @@ namespace MyApartment.API
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(MyAllowSpecificOrigins);
+
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
 
             app.UseRouting();
 

@@ -1,0 +1,84 @@
+<form [formGroup]="addExpenseForm" >
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h2>Add Expense </h2>
+      </div>
+      <div class="card-body">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Expense Description</mat-label>
+          <textarea matInput formControlName="expenseDescriptionCtrl"></textarea>
+        </mat-form-field>
+
+        
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Expense Amount</mat-label>
+          <input matInput type="number" formControlName="expenseAmountCtrl" 
+          [ngClass]="{'is-invalid': expenseAmountErrorMessage }">
+        </mat-form-field>
+        <!-- <span class="alert alert-danger">
+          {{ expenseAmountErrorMessage }}
+        </span> -->
+      
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <input matInput placeholder="Remunerator" aria-label="Remunerator" [matAutocomplete]="autoRemunerator"
+            formControlName="remuneratorCtrl">
+          <mat-autocomplete #autoRemunerator="matAutocomplete">
+            <mat-option *ngFor="let remunerator of filteredRemunerators | async"
+              [value]="remunerator.firstName">
+              <!-- <img class="example-option-img" aria-hidden [src]="state.flag" height="25"> -->
+              <span>{{remunerator.firstName}}</span> |
+              <small>remunerator: {{remunerator.firstName}}</small>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <input matInput placeholder="Beneficiary" aria-label="Beneficiary" [matAutocomplete]="autoBeneficiary"
+            formControlName="beneficiaryCtrl">
+          <mat-autocomplete #autoBeneficiary="matAutocomplete">
+            <mat-option *ngFor="let beneficiary of filteredBenificiary | async" [value]="beneficiary.firstName">
+              <!-- <img class="example-option-img" aria-hidden [src]="state.flag" height="25"> -->
+              <span>{{beneficiary.firstName}}</span> |
+              <small>Population: {{beneficiary.firstName}}</small>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Expense Type</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let expenseType of expenseTypes" [value]="expenseType.value">
+              {{expenseType.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Transaction date</mat-label>
+          <input matInput [matDatepicker]="datePickerCtrl" formControlName="datePickerCtrl">
+          <mat-datepicker-toggle matSuffix [for]="datePickerCtrl"></mat-datepicker-toggle>
+          <mat-datepicker #datePickerCtrl></mat-datepicker>
+        </mat-form-field>
+
+        <!-- <mat-slide-toggle [checked]="picker.disabled"
+          (change)="picker.disabled ? stateCtrl.enable() : stateCtrl.disable()">
+          Disable Date?
+        </mat-slide-toggle> -->
+
+        <div class="form-group">
+          <button class="btn btn-primary">Save</button>
+        </div>
+
+
+        <!-- {{ addExpenseForm.value | json}}
+        {{'Touched :'+expenseDescriptionField.touched}} -->
+
+      </div>
+
+    </div>
+  </div>
+</form>

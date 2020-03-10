@@ -1,0 +1,68 @@
+<div class='card'>
+  <div class='card-header'>
+    {{pageTitle}}
+  </div>
+  <div class='card-body'>
+    <div class='row'>
+      <div class='col-md-2'>Filter by:</div>
+      <div class="form-inline my-2 my-lg-0">
+        <input [(ngModel)]='listFilter' class="form-control mr-sm-2" type="search" placeholder="Search Expenses" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-6'>
+      <h4>Filtered by: {{listFilter}}</h4>
+      </div>
+    </div>
+    <div class='table-responsive'>
+      <table class="table table-bordered table-striped table-hover table-dark table-sm"
+             *ngIf='expenses && expenses.length'>
+        <thead class="thead-dark">
+          <tr>
+            <th>
+              <button class='btn btn-primary'
+                (click)='toggleImage()'>
+                {{showImage?'Hide':'Show'}} Image
+              </button>
+            </th>
+            <th>Expense Id</th>
+            <th>Expense Description</th>
+            <th>Expense Amount</th>
+            <th>Expense Type</th>
+            <th>Benificiary</th>
+            <th>Remunarator</th>
+            <th>Benificiary Rating</th>
+            <th>Benificiary Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let expense of filteredExpenses'>
+            <td>
+            <img  *ngIf='showImage' [src]='expense.imageUrl'
+                 [title]='expense.expenseType'
+                 [style.width.px]='imageWidth'
+                 [style.margin.px]='imageMargin'/>
+            </td>
+            <td>{{ expense.expenseId }}</td>
+            <td>
+              <a [routerLink]="['/expenseDetails',expense.expenseId]">{{ expense.expenseDescription }}</a>
+            </td>
+            <td>{{ expense.expenseAmount | currency :'INR' }}</td>
+            <td>{{ expense.expenseType }}</td>
+            <td>{{ expense.beneficiary  | lowercase}}</td>
+            <td>{{ expense.remunerator  | convertToSpace:' '}}</td>
+            <td>
+              <apt-startrating [rating]='expense.benificiaryRating'
+              (notifyProducList)='onStartRatingClickedInStartComponenet($event)'>
+              </apt-startrating>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
