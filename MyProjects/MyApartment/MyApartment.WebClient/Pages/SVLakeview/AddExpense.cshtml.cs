@@ -22,7 +22,7 @@ namespace MyApartment.WebClient.Pages.SVLakeview
             _myExpenseDataProvider = myExpenseDataProvider;
             _htmlHelper = htmlHelper;
             Expense=new MyApartmentExpense();
-        }
+        } 
 
         [BindProperty]
         public MyApartmentExpense Expense { get; set; }
