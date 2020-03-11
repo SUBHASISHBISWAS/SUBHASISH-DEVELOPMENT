@@ -15,7 +15,6 @@ import { startWith, map, debounceTime } from 'rxjs/operators';
 export class AddexpenseComponent implements OnInit {
 
   addExpenseForm: FormGroup;
-
   expenseTypes: IExpenseType[] = 
   [
     {value: '0', viewValue: 'Water'},
