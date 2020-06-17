@@ -3,8 +3,10 @@ function Tree() {
 }
 
 Tree.prototype.addValue = function (val) {
-  if (root == null) {
-    this.root = val;
-    this.root = val;
+  var n = new Node(val);
+  if (this.root == null) {
+    this.root = n;
+  } else {
+    this.root.addNode(n);
   }
 };
