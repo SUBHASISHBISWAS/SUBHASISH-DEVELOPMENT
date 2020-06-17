@@ -21,7 +21,13 @@ Node.prototype.addNode = function (n) {
 };
 
 Node.prototype.visit = function () {
-  this.left.visit();
+  if (this.left != null) {
+    this.left.visit();
+  }
+
   console.log(this.value);
-  this.right.visit();
+
+  if (this.right != null) {
+    this.right.visit();
+  }
 };

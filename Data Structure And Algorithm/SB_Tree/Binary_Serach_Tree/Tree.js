@@ -10,3 +10,7 @@ Tree.prototype.addValue = function (val) {
     this.root.addNode(n);
   }
 };
+
+Tree.prototype.traverse = function () {
+  this.root.visit();
+};
