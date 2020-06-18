@@ -25,4 +25,6 @@ function CreateTree() {
   console.log(tree);
 
   tree.traverse();
+
+  //tree.search(24);
 }

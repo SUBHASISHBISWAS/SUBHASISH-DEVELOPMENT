@@ -31,3 +31,13 @@ Node.prototype.visit = function () {
     this.right.visit();
   }
 };
+
+Node.prototype.search = function (val) {
+  if (this.val == val) {
+    return val;
+  } else if (val < this.val && this.left != null) {
+    return this.left.search(val);
+  } else if (val > this.val && this.right != null) {
+    return this.right.search(val);
+  }
+};
