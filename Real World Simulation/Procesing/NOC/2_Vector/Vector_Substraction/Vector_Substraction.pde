@@ -17,19 +17,7 @@ void draw()
     PVector mouse=new PVector(mouseX,mouseY);
     
     mouse.sub(center);
-    
-    /*
-    float m=mouse.mag();
-    fill(255,0,0);
-    rect(0,0,m,20);
-    */
-    
-    mouse.normalize();
-    mouse.mult(50);
-    
-    mouse.setMag(100);
-    print(mouse.x);
+    mouse.mult(2);
     line(0,0,mouse.x,mouse.y);
-   
     
 }
