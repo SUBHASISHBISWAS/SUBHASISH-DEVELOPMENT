@@ -1,0 +1,38 @@
+[I 16:57:12.037 NotebookApp] Serving notebooks from local directory: /Users/subhasish/Documents/Apple/SUBHASISH/Development/Personal/SUBHASISH-DEVELOPMENT/AI
+[I 16:57:12.037 NotebookApp] The Jupyter Notebook is running at:
+[I 16:57:12.037 NotebookApp] http://192.168.1.35:8888/?token=193f3b571b368777c87abfad8ae35f834bc42b13f27b7a76
+[I 16:57:12.038 NotebookApp]  or http://127.0.0.1:8888/?token=193f3b571b368777c87abfad8ae35f834bc42b13f27b7a76
+[I 16:57:12.038 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 16:57:12.044 NotebookApp] 
+    
+    To access the notebook, open this file in a browser:
+        file:///Users/subhasish/Library/Jupyter/runtime/nbserver-14425-open.html
+    Or copy and paste one of these URLs:
+        http://192.168.1.35:8888/?token=193f3b571b368777c87abfad8ae35f834bc42b13f27b7a76
+     or http://127.0.0.1:8888/?token=193f3b571b368777c87abfad8ae35f834bc42b13f27b7a76
+[I 17:03:52.755 NotebookApp] Creating new notebook in 
+[I 17:03:53.552 NotebookApp] Kernel started: dd250160-ecb3-4a3b-a8e7-057511ea1d46
+[I 17:05:02.050 NotebookApp] Starting buffering for dd250160-ecb3-4a3b-a8e7-057511ea1d46:7f04f68c933f45fa8e584195de70007f
+[I 17:05:05.275 NotebookApp] Creating new notebook in 
+[I 17:05:05.822 NotebookApp] Kernel started: 2442c7b7-d19d-402a-b655-afb0c05dd9be
+[I 17:06:48.335 NotebookApp] Starting buffering for 2442c7b7-d19d-402a-b655-afb0c05dd9be:cc9a65c44c844b4f8e1c4b556832876a
+[W 17:06:52.978 NotebookApp] Notebook Untitled.ipynb is not trusted
+[I 17:06:53.149 NotebookApp] Kernel started: e3863510-1641-4da6-be39-081092f871fb
+[I 17:08:53.240 NotebookApp] Saving file at /Untitled.ipynb
+[I 17:09:16.761 NotebookApp] Saving file at /Untitled1.ipynb
+[I 17:11:15.440 NotebookApp] Saving file at /Untitled1.ipynb
+[I 17:13:16.396 NotebookApp] Saving file at /Untitled1.ipynb
+[I 17:15:15.453 NotebookApp] Saving file at /Untitled1.ipynb
+[I 17:17:15.453 NotebookApp] Saving file at /Untitled1.ipynb
+[I 17:23:55.190 NotebookApp] Starting buffering for dd250160-ecb3-4a3b-a8e7-057511ea1d46:141abfe49f3e4e7f84b5703356f624ba
+[I 17:23:55.193 NotebookApp] Starting buffering for e3863510-1641-4da6-be39-081092f871fb:5573f364f82444f084b6dbfcabaee65a
+[I 17:23:56.629 NotebookApp] Restoring connection for dd250160-ecb3-4a3b-a8e7-057511ea1d46:141abfe49f3e4e7f84b5703356f624ba
+[I 17:23:56.642 NotebookApp] Restoring connection for e3863510-1641-4da6-be39-081092f871fb:5573f364f82444f084b6dbfcabaee65a
+[I 17:30:39.421 NotebookApp] Starting buffering for e3863510-1641-4da6-be39-081092f871fb:5573f364f82444f084b6dbfcabaee65a
+[I 17:30:39.436 NotebookApp] Starting buffering for dd250160-ecb3-4a3b-a8e7-057511ea1d46:141abfe49f3e4e7f84b5703356f624ba
+[I 17:30:41.926 NotebookApp] Restoring connection for e3863510-1641-4da6-be39-081092f871fb:5573f364f82444f084b6dbfcabaee65a
+[I 17:30:41.956 NotebookApp] Restoring connection for dd250160-ecb3-4a3b-a8e7-057511ea1d46:141abfe49f3e4e7f84b5703356f624ba
+[I 17:53:53.468 NotebookApp] Starting buffering for dd250160-ecb3-4a3b-a8e7-057511ea1d46:141abfe49f3e4e7f84b5703356f624ba
+[I 17:53:53.472 NotebookApp] Starting buffering for e3863510-1641-4da6-be39-081092f871fb:5573f364f82444f084b6dbfcabaee65a
+[I 17:53:55.996 NotebookApp] Restoring connection for dd250160-ecb3-4a3b-a8e7-057511ea1d46:141abfe49f3e4e7f84b5703356f624ba
+[I 17:53:56.026 NotebookApp] Restoring connection for e3863510-1641-4da6-be39-081092f871fb:5573f364f82444f084b6dbfcabaee65a
