@@ -16,7 +16,6 @@ void Create(int A[], int n)
     first =(struct Node *)maloc
     
     
-    
 }
 
 int main(int argc, const char * argv[]) {
