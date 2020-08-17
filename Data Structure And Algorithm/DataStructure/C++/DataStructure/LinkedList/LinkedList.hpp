@@ -28,6 +28,7 @@ public:
     int SumOfAllNode();
     int TotalNoNodeInList_Recursive(Node * node);
     int TotalNoNodeInList();
+    void Insert_InLast(int data);
     void Insert(int data, int index);
     void Display_Recursive(Node * node);
     void Display();
