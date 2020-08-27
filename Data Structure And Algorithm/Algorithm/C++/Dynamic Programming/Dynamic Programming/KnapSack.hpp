@@ -13,7 +13,7 @@
 class KanpSack
 {
 public:
-    int KnapSack_Recursive(int weights[5], int values[5],int capacity, int size);
+    int KnapSack_Recursive(int weights[], int values[],int capacity, int size);
     
 };
 #endif /* KnapSack_hpp */
