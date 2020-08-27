@@ -1,15 +1,15 @@
-//
-//  LinkedList.cpp
-//  DataStructure
-//
-//  Created by SUBHASISH BISWAS on 17/08/20.
-//  Copyright © 2020 SUBHASISH BISWAS. All rights reserved.
-//
+    //
+    //  LinkedList.cpp
+    //  DataStructure
+    //
+    //  Created by SUBHASISH BISWAS on 17/08/20.
+    //  Copyright © 2020 SUBHASISH BISWAS. All rights reserved.
+    //
 
 #include "LinkedList.hpp"
 
 using namespace::std;
-//using namespace::SB_LinkedList;
+    //using namespace::SB_LinkedList;
 
 
 Node * LinkedList:: Search_Improved(int value){
@@ -17,7 +17,7 @@ Node * LinkedList:: Search_Improved(int value){
     Node *p=firstNode;
     Node *trailingNode=NULL;
     while (p) {
-        // If node found move node to the First Node
+            // If node found move node to the First Node
         if (p->data == value) {
             cout<<"Found Node::"<<p->data<<endl;
             trailingNode->next=p->next;
@@ -26,7 +26,7 @@ Node * LinkedList:: Search_Improved(int value){
             Display();
             return p;
         }
-        //trailingNode points to previous node of p
+            //trailingNode points to previous node of p
         trailingNode=p;
         p=p->next;
     }
@@ -94,16 +94,16 @@ void LinkedList::Insert(int data, int index){
     t->data=data;
     t->next=NULL;
     
-    // Insert  before irst Node
+        // Insert  before irst Node
     if (index==0) {
         
         t->next=firstNode->next;
         firstNode=t;
     }
     else{
-        // P is intilly Pointing to First node
-        // if postion i 4 the move move 3 times
-        // and if p is not null
+            // P is intilly Pointing to First node
+            // if postion i 4 the move move 3 times
+            // and if p is not null
         for (int i=0; i<index-1 && p; i++) {
             p=p->next;
         }
@@ -119,10 +119,10 @@ void LinkedList::Insert(int data, int index){
 void LinkedList::Display_Recursive(Node * node){
     
     if (node) {
-         cout<<node->data<<"|";
-         Display_Recursive(node->next);
+        cout<<node->data<<"|";
+        Display_Recursive(node->next);
     }
-
+    
 }
 void LinkedList::Display(){
     
