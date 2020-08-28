@@ -11,8 +11,28 @@
 #include<algorithm>
 using namespace std;
 
+int KanpSack::KnapSack_Memozize(int *weights, int *values, int bagCapacity, int numberOfItems){
+    
+    
+    if (numberOfItems==0 || bagCapacity==0) {
+        return 0;
+    }
+    
+    //Dynamic Matrix is created in Constructor
+    if (MemozizeMatrix[numberOfItems][bagCapacity]!=-1) {
+        return MemozizeMatrix[numberOfItems][bagCapacity];
+    }
+    
+    if (bagCapacity>=weights[numberOfItems-1]) {
+        
+        return MemozizeMatrix[numberOfItems][bagCapacity]= max(values[numberOfItems-1]+KnapSack_Memozize(weights, values, bagCapacity-weights[numberOfItems-1], numberOfItems-1),
+                                                           KnapSack_Memozize(weights, values, bagCapacity, numberOfItems-1));
+    }
+    return MemozizeMatrix[numberOfItems][bagCapacity]=KnapSack_Memozize(weights, values, bagCapacity, numberOfItems-1);
+    
+}
 // Returns Maximum Profit
-int KanpSack:: KnapSack_Recursive(int weights[], int values[],int capacity, int size){
+int KanpSack:: KnapSack_Recursive(int weights[], int values[],int bagCapacity, int numberOfItems){
     
     /*
      Base case
@@ -20,7 +40,7 @@ int KanpSack:: KnapSack_Recursive(int weights[], int values[],int capacity, int 
     
      capacity=0 -> bag is full so no more item can be put into it or bag give has no capcity to hold any element--> in this case what will be the profit
     */
-    if (size==0 || capacity==0) {
+    if (numberOfItems==0 || bagCapacity==0) {
         return 0;
     }
     
@@ -42,9 +62,9 @@ int KanpSack:: KnapSack_Recursive(int weights[], int values[],int capacity, int 
         if after adding the item if it exceeds bag capacity the we discard the item and its value and we move forward to next item
         KnapSack_Recursive(weights,values,capacity, size-1)
      */
-    if (weights[size-1]<=capacity) {
+    if (weights[numberOfItems-1]<=bagCapacity) {
         
-        return max(values[size-1]+KnapSack_Recursive(weights, values, capacity-weights[size-1], size-1),KnapSack_Recursive(weights,values,capacity, size-1));
+        return max(values[numberOfItems-1]+KnapSack_Recursive(weights, values, bagCapacity-weights[numberOfItems-1], numberOfItems-1),KnapSack_Recursive(weights,values,bagCapacity, numberOfItems-1));
     }
     /*
      if weight of the item is > than the capacity of the bag then we dont consider it and move to the next item -> (size-1) and
@@ -52,7 +72,32 @@ int KanpSack:: KnapSack_Recursive(int weights[], int values[],int capacity, int 
      
      KnapSack_Recursive(weights,values,capacity, size-1)
      */
-    return KnapSack_Recursive(weights,values,capacity, size-1);
+    return KnapSack_Recursive(weights,values,bagCapacity, numberOfItems-1);
     
     
+}
+
+void KanpSack::Display(int **matrix)
+{
+    for (int i=0; i<numberOfItems; i++) {
+        cout<<endl;
+        for (int j=0; j<bagCapacity; j++) {
+            cout<<matrix[i][j]<<"|";
+        }
+    }
+}
+KanpSack::KanpSack(){
+    
+}
+KanpSack::KanpSack(int bagCapacity,int numberOfItems)
+{
+    this->bagCapacity=bagCapacity;
+    this->numberOfItems=numberOfItems;
+    
+    this->MemozizeMatrix=new int* [this->numberOfItems];
+    for (int i=0; i<this->numberOfItems; i++) {
+        MemozizeMatrix[i]=new int [this->bagCapacity];
+        memset(MemozizeMatrix[i], -1, this->bagCapacity * sizeof(int));
+    }
+    Display(MemozizeMatrix);
 }
