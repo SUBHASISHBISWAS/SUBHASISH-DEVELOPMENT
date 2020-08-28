@@ -10,17 +10,22 @@
 #define KnapSack_hpp
 #include<iostream>
 #include <stdio.h>
+#include "Matrix.hpp"
 class KanpSack
 {
 private:
     int numberOfItems;
     int bagCapacity;
-    int ** MemozizeMatrix;
+    int ** _memozizeMatrix;
+    int ** _topDownMatrix;
+    Matrix *_matrix;
     
 public:
+    int KanpSack_TopDown(int weights[], int values[],int bagCapacity, int numberOfItems);
     int KnapSack_Recursive(int weights[], int values[],int bagCapacity, int numberOfItems);
     int KnapSack_Memozize(int weights[], int values[],int bagCapacity, int numberOfItems);
-    void Display(int ** matrix);
+    int ** GetMatrix();
+    void Display();
     KanpSack(int bagCapacity,int numberOfItems);
     KanpSack();
     

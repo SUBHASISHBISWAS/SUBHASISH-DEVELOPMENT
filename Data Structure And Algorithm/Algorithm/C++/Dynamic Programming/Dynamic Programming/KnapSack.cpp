@@ -8,27 +8,59 @@
 
 
 #include "KnapSack.hpp"
+#include "Matrix.hpp"
 #include<algorithm>
 using namespace std;
 
+int KanpSack::KanpSack_TopDown(int *weights, int *values, int bagCapacity, int numberOfItems){
+    
+    Matrix *matrix=new Matrix(numberOfItems+1,bagCapacity+1);
+    _topDownMatrix=matrix->GetMatrix();
+    matrix->Display();
+    
+    for (int i=0; i<numberOfItems; i++) {
+        for (int j=0; j<bagCapacity; j++) {
+            if (i==0 || j==0) {
+                _topDownMatrix[i][j]=0;
+            }
+        }
+    }
+    
+    for (int i=1; i<numberOfItems+1; i++) {
+        for (int j=1; j<bagCapacity+1; j++) {
+             if (j>=weights[i-1]){
+                 _topDownMatrix[i][j]=max(values[i-1]+_topDownMatrix[i-1][j-weights[i-1]],_topDownMatrix[i-1][j]);
+             }
+             else{
+                 _topDownMatrix[i][j]=_topDownMatrix[i-1][j];
+                 
+             }
+        }
+    }
+    
+    
+    return _topDownMatrix[numberOfItems][bagCapacity];
+}
+
 int KanpSack::KnapSack_Memozize(int *weights, int *values, int bagCapacity, int numberOfItems){
     
+   
     
     if (numberOfItems==0 || bagCapacity==0) {
         return 0;
     }
     
     //Dynamic Matrix is created in Constructor
-    if (MemozizeMatrix[numberOfItems][bagCapacity]!=-1) {
-        return MemozizeMatrix[numberOfItems][bagCapacity];
+    if (_memozizeMatrix[numberOfItems][bagCapacity]!=-1) {
+        return _memozizeMatrix[numberOfItems][bagCapacity];
     }
     
     if (bagCapacity>=weights[numberOfItems-1]) {
         
-        return MemozizeMatrix[numberOfItems][bagCapacity]= max(values[numberOfItems-1]+KnapSack_Memozize(weights, values, bagCapacity-weights[numberOfItems-1], numberOfItems-1),
+        return _memozizeMatrix[numberOfItems][bagCapacity]= max(values[numberOfItems-1]+KnapSack_Memozize(weights, values, bagCapacity-weights[numberOfItems-1], numberOfItems-1),
                                                            KnapSack_Memozize(weights, values, bagCapacity, numberOfItems-1));
     }
-    return MemozizeMatrix[numberOfItems][bagCapacity]=KnapSack_Memozize(weights, values, bagCapacity, numberOfItems-1);
+    return _memozizeMatrix[numberOfItems][bagCapacity]=KnapSack_Memozize(weights, values, bagCapacity, numberOfItems-1);
     
 }
 // Returns Maximum Profit
@@ -77,27 +109,29 @@ int KanpSack:: KnapSack_Recursive(int weights[], int values[],int bagCapacity, i
     
 }
 
-void KanpSack::Display(int **matrix)
+void KanpSack::Display()
 {
-    for (int i=0; i<numberOfItems; i++) {
-        cout<<endl;
-        for (int j=0; j<bagCapacity; j++) {
-            cout<<matrix[i][j]<<"|";
-        }
-    }
+    
 }
 KanpSack::KanpSack(){
     
 }
+int** KanpSack::GetMatrix(){
+    
+    return _matrix->GetMatrix();
+}
+
 KanpSack::KanpSack(int bagCapacity,int numberOfItems)
 {
     this->bagCapacity=bagCapacity;
     this->numberOfItems=numberOfItems;
     
-    this->MemozizeMatrix=new int* [this->numberOfItems];
-    for (int i=0; i<this->numberOfItems; i++) {
-        MemozizeMatrix[i]=new int [this->bagCapacity];
-        memset(MemozizeMatrix[i], -1, this->bagCapacity * sizeof(int));
-    }
-    Display(MemozizeMatrix);
+    _matrix=new Matrix(numberOfItems+1, bagCapacity+1);
+    
+    
+    this->_memozizeMatrix=_matrix->GetMatrix();
+    _matrix->Display();
+    
+    //_topDownMatrix=(new Matrix(numberOfItems+1, bagCapacity+1))->GetMatrix();
+    
 }

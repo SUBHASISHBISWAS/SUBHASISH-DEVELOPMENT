@@ -23,9 +23,12 @@ int main(int argc, const char * argv[]) {
     cout<<endl<<"Result::"<<result<<endl;
     
     
-    KanpSack knapsack_memozize(bagCapacity+1,numberOfItems+1);
+    KanpSack knapsack_memozize(bagCapacity,numberOfItems);
     int result_1= knapsack_memozize.KnapSack_Memozize(weights, values, bagCapacity, numberOfItems);
     cout<<endl<<"Result::"<<result_1<<endl;
    
+    int result_2=knapsack.KanpSack_TopDown(weights,values,bagCapacity,numberOfItems);
+    cout<<endl<<"Result::"<<result_2<<endl;
+    
     return 0;
 }
