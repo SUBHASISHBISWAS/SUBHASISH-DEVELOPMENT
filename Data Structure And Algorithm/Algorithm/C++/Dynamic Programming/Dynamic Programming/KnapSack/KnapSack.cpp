@@ -15,7 +15,7 @@ using namespace std;
 int KanpSack::KanpSack_TopDown(int *weights, int *values, int bagCapacity, int numberOfItems){
     
     Matrix *matrix=new Matrix(numberOfItems+1,bagCapacity+1);
-    _topDownMatrix=matrix->GetMatrix();
+    this->_topDownMatrix=matrix->GetMatrix();
     matrix->Display();
     
     for (int i=0; i<numberOfItems; i++) {

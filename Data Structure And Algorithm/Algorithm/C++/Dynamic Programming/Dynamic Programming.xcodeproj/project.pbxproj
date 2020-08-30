@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A6AE586124F947B7003BC932 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6AE585F24F947B7003BC932 /* Matrix.cpp */; };
+		A6AE586724FAD6AB003BC932 /* MazePaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6AE586524FAD6AB003BC932 /* MazePaths.cpp */; };
 		A6FD71F824F1A26D00FAF286 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6FD71F724F1A26D00FAF286 /* main.cpp */; };
 		A6FD720024F1A39600FAF286 /* KnapSack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6FD71FE24F1A39600FAF286 /* KnapSack.cpp */; };
 /* End PBXBuildFile section */
@@ -27,6 +28,8 @@
 /* Begin PBXFileReference section */
 		A6AE585F24F947B7003BC932 /* Matrix.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix.cpp; sourceTree = "<group>"; };
 		A6AE586024F947B7003BC932 /* Matrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Matrix.hpp; sourceTree = "<group>"; };
+		A6AE586524FAD6AB003BC932 /* MazePaths.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MazePaths.cpp; sourceTree = "<group>"; };
+		A6AE586624FAD6AB003BC932 /* MazePaths.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MazePaths.hpp; sourceTree = "<group>"; };
 		A6FD71F424F1A26D00FAF286 /* Dynamic Programming */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Dynamic Programming"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6FD71F724F1A26D00FAF286 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		A6FD71FE24F1A39600FAF286 /* KnapSack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KnapSack.cpp; sourceTree = "<group>"; };
@@ -44,6 +47,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A6AE586224FA7A73003BC932 /* KnapSack */ = {
+			isa = PBXGroup;
+			children = (
+				A6FD71FF24F1A39600FAF286 /* KnapSack.hpp */,
+				A6FD71FE24F1A39600FAF286 /* KnapSack.cpp */,
+			);
+			path = KnapSack;
+			sourceTree = "<group>";
+		};
+		A6AE586324FA7A9A003BC932 /* Matrix */ = {
+			isa = PBXGroup;
+			children = (
+				A6AE586024F947B7003BC932 /* Matrix.hpp */,
+				A6AE585F24F947B7003BC932 /* Matrix.cpp */,
+			);
+			path = Matrix;
+			sourceTree = "<group>";
+		};
+		A6AE586424FA7AA7003BC932 /* FloodFill */ = {
+			isa = PBXGroup;
+			children = (
+				A6AE586524FAD6AB003BC932 /* MazePaths.cpp */,
+				A6AE586624FAD6AB003BC932 /* MazePaths.hpp */,
+			);
+			path = FloodFill;
+			sourceTree = "<group>";
+		};
 		A6FD71EB24F1A26D00FAF286 = {
 			isa = PBXGroup;
 			children = (
@@ -63,11 +93,10 @@
 		A6FD71F624F1A26D00FAF286 /* Dynamic Programming */ = {
 			isa = PBXGroup;
 			children = (
+				A6AE586424FA7AA7003BC932 /* FloodFill */,
+				A6AE586324FA7A9A003BC932 /* Matrix */,
+				A6AE586224FA7A73003BC932 /* KnapSack */,
 				A6FD71F724F1A26D00FAF286 /* main.cpp */,
-				A6FD71FE24F1A39600FAF286 /* KnapSack.cpp */,
-				A6FD71FF24F1A39600FAF286 /* KnapSack.hpp */,
-				A6AE585F24F947B7003BC932 /* Matrix.cpp */,
-				A6AE586024F947B7003BC932 /* Matrix.hpp */,
 			);
 			path = "Dynamic Programming";
 			sourceTree = "<group>";
@@ -132,6 +161,7 @@
 				A6AE586124F947B7003BC932 /* Matrix.cpp in Sources */,
 				A6FD71F824F1A26D00FAF286 /* main.cpp in Sources */,
 				A6FD720024F1A39600FAF286 /* KnapSack.cpp in Sources */,
+				A6AE586724FAD6AB003BC932 /* MazePaths.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
