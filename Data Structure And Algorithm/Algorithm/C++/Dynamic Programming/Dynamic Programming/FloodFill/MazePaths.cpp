@@ -11,6 +11,78 @@
 
 using namespace::std;
 
+int Maze::DFS_FloodFill(vector<vector<int> > &maze, int sr, int sc, int dr, int dc)
+{
+    // Check boundary condition and check for if it is visited
+    if (sr<0 || sc <0 || sr>dr || sc >dc || maze[sr][sc]==0) {
+        return 0;
+    }
+    
+    //Mark the cell is visited
+    maze[sr][sc]=0;
+    
+    // Move Down
+    DFS_FloodFill(maze,sr+1,sc,dr,dc);
+    //Move Left
+    DFS_FloodFill(maze,sr,sc-1,dr,dc);
+    //Move Top
+    DFS_FloodFill(maze,sr-1,sc,dr,dc);
+    //Move Right
+    DFS_FloodFill(maze,sr,sc+1,dr,dc);
+    
+    return 1;
+}
+
+int Maze::Display_ConnectedIsland(vector<vector<int> > &maze){
+    
+    int numIsland =0;
+    
+    int dr=(int)maze.size()-1;
+    if (dr==0) {
+        return 0;
+    }
+    int dc=(int)maze[0].size()-1;
+    
+    // We explore ecah cell in the maze and try to find connected cell
+    for (int i=0; i<dr; i++) {
+        for (int j=0; j<dc; j++) {
+            
+            // if cell=1 then only cell is connected to adjucent cell
+            // If cell is allowed then only we explore adjucent cell
+            if (maze[i][j]==1) {
+                numIsland+=DFS_FloodFill(maze, i, j, dr, dc);
+            }
+            
+        }
+    }
+    
+    return numIsland;
+}
+
+/*
+int Display_ConnectedIsland(vector<vector<int>>& maze){
+    
+    int numIsland =0;
+    
+    int dr=maze.size();
+    if (dr==0) {
+        return 0;
+    }
+    int dc=maze[0].size();
+    
+    for (int i=0; i<dr; i++) {
+        for (int j=0; j<dc; j++) {
+            
+            if (maze[i][j]==1) {
+                numIsland+=DFS_FloodFill(maze,i,j,dr,dc);
+            }
+        }
+    }
+    
+    return numIsland;
+}
+ 
+ */
 bool Maze::IsInvalidPath(int maze[][1000],bool visited[][1000], int sr, int sc, int dr, int dc){
     
     /*

@@ -10,6 +10,9 @@
 #include "KnapSack.hpp"
 #include <stdlib.h>
 #include "MazePaths.hpp"
+#include <string>
+#include <sstream>
+#include <iostream>
 using namespace::std;
 int main(int argc, const char * argv[]) {
     
@@ -47,5 +50,73 @@ int main(int argc, const char * argv[]) {
     Maze mazePath;
     mazePath.DisplayMazePath_Reactive(0, 0, 2, 2, "");
     mazePath.DisplayMazePath_WithObstracle(maze,visited, 0, 0, 3, 3, "");
+    
+    vector<vector<int>> myIsland;
+    
+    myIsland.push_back({1,1,0,0});
+    myIsland.push_back({0,1,0,0});
+    myIsland.push_back({1,0,1,1});
+    myIsland.push_back({1,1,0,1});
+    
+    
+    cout<<endl<<"Total Number of Island:"<<mazePath.Display_ConnectedIsland(myIsland)<<endl;
+    
+    
+    // Sample code to perform I/O:
+
+    /*
+    int num;
+     cin >> num;                                        // Reading input from STDIN
+     cout << "Input number is " << num << endl;
+       */
+    int* arr;
+    int size;
+    cout << "Enter size of array";
+    cin >> size;
+    cin.ignore();
+    arr = new int[size];
+    string input;
+    
+    cout << "Enter numbers, separated by single space:\n";
+    getline(cin, input);
+    istringstream iss(input);
+    string str;
+
+    int i = 0;
+    while (getline(iss, str, ' ') && i < size) {
+        int num = atoi(str.c_str());
+        arr[i] = num;
+        printf("%d\n", num);
+        ++i;
+    }
+    
+    int min=0;
+    for(int i = 0;i<size;i++)
+    {
+        if(i==0)
+            {
+            min=arr[i]; //smallest_element=arr[0];
+            }
+        else if(arr[i]<min)
+            {
+            min = arr[i];
+            }
+    }
+    
+    cout<< min;
+    
+    
+    /*
+     int myNumber;
+     for (int i=0; i<num; i++) {
+         cin>>myNumber;
+         arr[i]=myNumber;
+     }
+     */
+    
+    
+    // Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+    
+    
     return 0;
 }
