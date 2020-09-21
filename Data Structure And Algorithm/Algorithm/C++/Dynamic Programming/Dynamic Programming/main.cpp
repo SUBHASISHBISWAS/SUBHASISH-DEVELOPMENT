@@ -269,7 +269,7 @@ int main(int argc, const char * argv[]) {
     // Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
     
     
-    
+    /*
     int* arr;
     int n;
     cin >> n;
@@ -293,5 +293,6 @@ int main(int argc, const char * argv[]) {
         printf("%d\n", num);
         ++i;
     }
+     */
     return 0;
 }

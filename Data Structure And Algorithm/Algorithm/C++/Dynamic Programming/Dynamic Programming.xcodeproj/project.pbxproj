@@ -127,7 +127,7 @@
 		A6FD71EC24F1A26D00FAF286 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = "SUBHASISH BISWAS";
 				TargetAttributes = {
 					A6FD71F324F1A26D00FAF286 = {
@@ -280,6 +280,7 @@
 		A6FD71FC24F1A26D00FAF286 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -288,6 +289,7 @@
 		A6FD71FD24F1A26D00FAF286 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

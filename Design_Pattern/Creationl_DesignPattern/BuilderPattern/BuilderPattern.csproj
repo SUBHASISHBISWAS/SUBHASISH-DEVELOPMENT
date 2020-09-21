@@ -50,9 +50,32 @@
     <Compile Include="Sandwich.cs" />
     <Compile Include="SandwichBuilder.cs" />
     <Compile Include="SandwichMaker.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Builders\PersonBuilder.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Models\Person.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Interface\ITicketHolder.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Interface\IUser.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Interface\IUserIdentity.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Models\IdentityCard.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Common\UninitializedString.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Common\NonEmptyString.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Common\INonEmptyStringState.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Main\Program.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Interface\IContactInfo.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Common\IPrimaryContactState.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Common\UninitializedPrimaryContact.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Common\ValidPrimaryContact.cs" />
+    <Compile Include="PS_SimpleBuilderWithStatePattern\Models\EmailAddress.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PS_SimpleBuilderWithStatePattern\" />
+    <Folder Include="PS_SimpleBuilderWithStatePattern\Interface\" />
+    <Folder Include="PS_SimpleBuilderWithStatePattern\Builders\" />
+    <Folder Include="PS_SimpleBuilderWithStatePattern\Models\" />
+    <Folder Include="PS_SimpleBuilderWithStatePattern\Common\" />
+    <Folder Include="PS_SimpleBuilderWithStatePattern\Main\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
