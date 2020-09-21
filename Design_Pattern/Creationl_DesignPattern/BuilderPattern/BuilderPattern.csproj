@@ -65,6 +65,21 @@
     <Compile Include="PS_SimpleBuilderWithStatePattern\Common\UninitializedPrimaryContact.cs" />
     <Compile Include="PS_SimpleBuilderWithStatePattern\Common\ValidPrimaryContact.cs" />
     <Compile Include="PS_SimpleBuilderWithStatePattern\Models\EmailAddress.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Builders\PersonBuilder.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Common\INonEmptyStringState.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Common\IPrimaryContactState.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Common\NonEmptyString.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Common\UninitializedPrimaryContact.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Common\UninitializedString.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Common\ValidPrimaryContact.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Interface\IContactInfo.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Interface\ITicketHolder.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Interface\IUser.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Interface\IUserIdentity.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Main\Program.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Models\EmailAddress.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Models\IdentityCard.cs" />
+    <Compile Include="PS_Embedding_Calling_Protocols_Into_Builder\Models\Person.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -76,6 +91,7 @@
     <Folder Include="PS_SimpleBuilderWithStatePattern\Models\" />
     <Folder Include="PS_SimpleBuilderWithStatePattern\Common\" />
     <Folder Include="PS_SimpleBuilderWithStatePattern\Main\" />
+    <Folder Include="PS_Embedding_Calling_Protocols_Into_Builder\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using BuilderDemo.Interfaces;
 
-namespace BuilderDemo.Models
+namespace Embedding_Calling_Protocols_Into_Builder
 {
     public class Person : IUser
     {
@@ -31,14 +31,14 @@ namespace BuilderDemo.Models
 
         public void Add(IContactInfo contact)
         {
-            if (contact==null)
+            if (contact == null)
             {
                 throw new ArgumentException();
             }
             this.Contacts.Add(contact);
         }
 
-        
+
         public void SetPrimaryContact(IContactInfo contact)
         {
             if (contact == null)
