@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9DD19CB3-A4CB-4633-B160-54C0E481DE6D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ChainOfResponsibility</RootNamespace>
+    <AssemblyName>ChainOfResponsibility</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="YT_CheckUser\Interfaces\ICheckId.cs" />
+    <Compile Include="YT_CheckUser\Interfaces\ICheckName.cs" />
+    <Compile Include="YT_CheckUser\Interfaces\ICheckPassword.cs" />
+    <Compile Include="YT_CheckUser\Common\CheckUser.cs" />
+    <Compile Include="YT_CheckUser\Interfaces\ICheckUser.cs" />
+    <Compile Include="YT_CheckUser\Interfaces\IUser.cs" />
+    <Compile Include="YT_CheckUser\Common\CheckId.cs" />
+    <Compile Include="YT_CheckUser\Common\CheckName.cs" />
+    <Compile Include="YT_CheckUser\Common\CheckPassword.cs" />
+    <Compile Include="YT_CheckUser\Main\Main.cs" />
+    <Compile Include="YT_CheckUser\Common\User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="YT_CheckUser\" />
+    <Folder Include="YT_CheckUser\Interfaces\" />
+    <Folder Include="YT_CheckUser\Common\" />
+    <Folder Include="YT_CheckUser\Main\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
