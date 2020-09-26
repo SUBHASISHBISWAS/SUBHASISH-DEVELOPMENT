@@ -46,13 +46,13 @@
     <Compile Include="PS_DynamicDownCast\Interfaces\IExtractReceipt.cs" />
     <Compile Include="PS_DynamicDownCast\Interfaces\IExtractCustomer.cs" />
     <Compile Include="PS_DynamicDownCast\Interfaces\IExtractInvoice.cs" />
-    <Compile Include="PS_DynamicDownCast\Common\ExtractComponent.cs" />
-    <Compile Include="PS_DynamicDownCast\Common\ExtractCustomer.cs" />
-    <Compile Include="PS_DynamicDownCast\Common\ExtractInvoice.cs" />
-    <Compile Include="PS_DynamicDownCast\Common\ExtractReceipt.cs" />
+    <Compile Include="PS_DynamicDownCast\Components\ExtractComponent.cs" />
+    <Compile Include="PS_DynamicDownCast\Components\ExtractCustomer.cs" />
+    <Compile Include="PS_DynamicDownCast\Components\ExtractInvoice.cs" />
+    <Compile Include="PS_DynamicDownCast\Components\ExtractReceipt.cs" />
     <Compile Include="PS_DynamicDownCast\Interfaces\IExtractComponent.cs" />
-    <Compile Include="PS_DynamicDownCast\Common\Component.cs" />
-    <Compile Include="PS_DynamicDownCast\Common\InvoiceComponents.cs" />
+    <Compile Include="PS_DynamicDownCast\Components\Component.cs" />
+    <Compile Include="PS_DynamicDownCast\Components\InvoiceComponents.cs" />
     <Compile Include="PS_DynamicDownCast\NullComponents\NullExtractComponent.cs" />
     <Compile Include="PS_DynamicDownCast\NullComponents\NullExtractCustomer.cs" />
     <Compile Include="PS_DynamicDownCast\NullComponents\NullExtractInvoice.cs" />
@@ -66,7 +66,7 @@
     <Folder Include="YT_CheckUser\Main\" />
     <Folder Include="PS_DynamicDownCast\" />
     <Folder Include="PS_DynamicDownCast\Interfaces\" />
-    <Folder Include="PS_DynamicDownCast\Common\" />
+    <Folder Include="PS_DynamicDownCast\Components\" />
     <Folder Include="PS_DynamicDownCast\Main\" />
     <Folder Include="PS_DynamicDownCast\NullComponents\" />
   </ItemGroup>
