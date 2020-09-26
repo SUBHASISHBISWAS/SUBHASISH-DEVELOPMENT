@@ -7,6 +7,7 @@ namespace ChainOfResponsibility.YT_CheckUser.Main
     {
         class MainClass
         {
+            /*
             public static void Main(string[] args)
             {
                 var user = new User();
@@ -19,6 +20,7 @@ namespace ChainOfResponsibility.YT_CheckUser.Main
 
                 id.Check(user);
             }
+            */
         }
     }
 }

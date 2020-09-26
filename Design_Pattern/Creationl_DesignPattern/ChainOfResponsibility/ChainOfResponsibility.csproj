@@ -43,12 +43,32 @@
     <Compile Include="YT_CheckUser\Common\CheckPassword.cs" />
     <Compile Include="YT_CheckUser\Main\Main.cs" />
     <Compile Include="YT_CheckUser\Common\User.cs" />
+    <Compile Include="PS_DynamicDownCast\Interfaces\IExtractReceipt.cs" />
+    <Compile Include="PS_DynamicDownCast\Interfaces\IExtractCustomer.cs" />
+    <Compile Include="PS_DynamicDownCast\Interfaces\IExtractInvoice.cs" />
+    <Compile Include="PS_DynamicDownCast\Common\ExtractComponent.cs" />
+    <Compile Include="PS_DynamicDownCast\Common\ExtractCustomer.cs" />
+    <Compile Include="PS_DynamicDownCast\Common\ExtractInvoice.cs" />
+    <Compile Include="PS_DynamicDownCast\Common\ExtractReceipt.cs" />
+    <Compile Include="PS_DynamicDownCast\Interfaces\IExtractComponent.cs" />
+    <Compile Include="PS_DynamicDownCast\Common\Component.cs" />
+    <Compile Include="PS_DynamicDownCast\Common\InvoiceComponents.cs" />
+    <Compile Include="PS_DynamicDownCast\NullComponents\NullExtractComponent.cs" />
+    <Compile Include="PS_DynamicDownCast\NullComponents\NullExtractCustomer.cs" />
+    <Compile Include="PS_DynamicDownCast\NullComponents\NullExtractInvoice.cs" />
+    <Compile Include="PS_DynamicDownCast\NullComponents\NullExtractReceipt.cs" />
+    <Compile Include="PS_DynamicDownCast\Main\Main.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="YT_CheckUser\" />
     <Folder Include="YT_CheckUser\Interfaces\" />
     <Folder Include="YT_CheckUser\Common\" />
     <Folder Include="YT_CheckUser\Main\" />
+    <Folder Include="PS_DynamicDownCast\" />
+    <Folder Include="PS_DynamicDownCast\Interfaces\" />
+    <Folder Include="PS_DynamicDownCast\Common\" />
+    <Folder Include="PS_DynamicDownCast\Main\" />
+    <Folder Include="PS_DynamicDownCast\NullComponents\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
