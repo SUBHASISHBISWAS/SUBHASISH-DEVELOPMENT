@@ -58,6 +58,12 @@
     <Compile Include="PS_DynamicDownCast\NullComponents\NullExtractInvoice.cs" />
     <Compile Include="PS_DynamicDownCast\NullComponents\NullExtractReceipt.cs" />
     <Compile Include="PS_DynamicDownCast\Main\Main.cs" />
+    <Compile Include="YT_POApprover\Component\POApprover.cs" />
+    <Compile Include="YT_POApprover\Component\Manager.cs" />
+    <Compile Include="YT_POApprover\Component\VicePresident.cs" />
+    <Compile Include="YT_POApprover\Component\CEO.cs" />
+    <Compile Include="YT_POApprover\Component\POSystem.cs" />
+    <Compile Include="YT_POApprover\Component\MainClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="YT_CheckUser\" />
@@ -69,6 +75,8 @@
     <Folder Include="PS_DynamicDownCast\Components\" />
     <Folder Include="PS_DynamicDownCast\Main\" />
     <Folder Include="PS_DynamicDownCast\NullComponents\" />
+    <Folder Include="YT_POApprover\" />
+    <Folder Include="YT_POApprover\Component\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

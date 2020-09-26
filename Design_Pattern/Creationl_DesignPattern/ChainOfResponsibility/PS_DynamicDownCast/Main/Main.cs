@@ -5,7 +5,7 @@ namespace ChainOfResponsibility.PS_DynamicDownCast.Main
 {
     public class MainClass
     {
-       
+       /*
         static void Main(string[] args)
         {
             Component components =
@@ -19,5 +19,6 @@ namespace ChainOfResponsibility.PS_DynamicDownCast.Main
 
             invoiceComponent.PerformInvoiceExtraction();
         }
+       */
     }
 }
