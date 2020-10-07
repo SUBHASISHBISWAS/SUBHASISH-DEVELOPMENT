@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IProduct } from './Medicine';
 
 @Component({
   selector: 'app-medicines',
@@ -7,8 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MedicinesComponent implements OnInit {
 
-  myPageTitle :string ="Medicine List"
-  products : any []=[
+  myPageTitle :string ="Medicine List";
+  imageWidth: number = 50;
+  imageMargin: number = 2;
+  showImage: boolean = false;
+  filteredProducts=[];
+  //products: IProduct[] = [];
+  _listFilter :string;
+  get listFilter() :string
+  {
+    return this._listFilter;
+  }
+
+  set listFilter(value:string){
+    this._listFilter=value;
+    this.filteredProducts=this.listFilter ? this.performFilter(this.listFilter) : this.products
+  }
+
+  constructor()
+  {
+    this.filteredProducts = this.products;
+    this.listFilter = 'cart';
+  }
+  performFilter(filterBy: string): IProduct[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.products.filter((product: IProduct) =>
+      product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  }
+
+  products : IProduct []=[
     {
       "productId": 1,
       "productName": "Leaf Rake",
@@ -61,9 +89,12 @@ export class MedicinesComponent implements OnInit {
     }
   ]
 
-  constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggleImage():void{
+    this.showImage=!this.showImage;
   }
 
 
