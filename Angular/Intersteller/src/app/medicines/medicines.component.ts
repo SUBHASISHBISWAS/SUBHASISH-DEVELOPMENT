@@ -36,6 +36,10 @@ export class MedicinesComponent implements OnInit {
       product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
+  onRatingClicked(message: string): void {
+    this.myPageTitle = 'Product List: ' + message;
+  }
+
   products : IProduct []=[
     {
       "productId": 1,

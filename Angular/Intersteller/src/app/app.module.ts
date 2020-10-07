@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { MedicinesComponent } from './medicines/medicines.component';
 import { FormsModule } from '@angular/forms';
 import { SpaceConverterPipe } from './space-converter.pipe';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MedicinesComponent,
-    SpaceConverterPipe
+    SpaceConverterPipe,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
