@@ -14,8 +14,32 @@
 
 #include "KnapSack.hpp"
 #include "MazePaths.hpp"
+#include "Subset_Sum.hpp"
+
 using namespace::std;
 
+int main(int argc, const char * argv[]) {
+    
+    Subset_Sum subsetSum;
+    
+    int set[] = {3, 34, 4, 12, 5, 2};
+    int sum=9;
+    int numberOfItems=sizeof(set)/sizeof(set[0]);
+    
+    bool result=subsetSum.Calculate_Subset_sum(set, sum, numberOfItems);
+    cout<<endl<<"Result::"<<result<<endl;
+    
+    if (result == true)
+        cout<<endl<<"Found a subset with given sum"<<endl;
+    else
+        cout<<endl<<"No subset with given sum"<<endl;
+    
+    
+    return 0;
+}
+
+
+/*
 int main(int argc, const char * argv[]) {
     
     KanpSack knapsack;
@@ -39,6 +63,8 @@ int main(int argc, const char * argv[]) {
     
     return 0;
 }
+ 
+ */
 
 /*
 int main(int argc, const char * argv[]) {

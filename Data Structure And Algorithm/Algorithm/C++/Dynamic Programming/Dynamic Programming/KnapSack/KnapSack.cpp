@@ -18,8 +18,8 @@ int KanpSack::KanpSack_TopDown(int *weights, int *values, int bagCapacity, int n
     this->_topDownMatrix=matrix->GetMatrix();
     matrix->Display();
     
-    for (int i=0; i<numberOfItems; i++) {
-        for (int j=0; j<bagCapacity; j++) {
+    for (int i=0; i<=numberOfItems; i++) {
+        for (int j=0; j<=bagCapacity; j++) {
             if (i==0 || j==0) {
                 _topDownMatrix[i][j]=0;
             }

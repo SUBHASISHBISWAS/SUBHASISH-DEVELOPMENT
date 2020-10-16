@@ -19,7 +19,7 @@ class Subset_Sum
 private:
     int ** _matrix;
 public:
-    bool Calculate_Subset_sum(int weights[],int bagCapacity, int numberOfItems);
+    bool Calculate_Subset_sum(int arr[],int arraySum, int numberOfItems);
     
 };
 #endif /* Subset_Sum_hpp */
