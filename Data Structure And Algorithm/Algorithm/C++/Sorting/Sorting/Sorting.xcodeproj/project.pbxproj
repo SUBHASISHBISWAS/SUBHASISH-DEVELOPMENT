@@ -69,17 +69,25 @@
 		A65D3ECC25374DCD00A9C56D /* Sorting */ = {
 			isa = PBXGroup;
 			children = (
+				A6F905BC253B12BA006C1ECC /* HeaderFiles */,
 				A65D3ECD25374DCD00A9C56D /* main.cpp */,
 				A65D3ED525374DEE00A9C56D /* RadixSort.cpp */,
-				A65D3ED625374DEE00A9C56D /* RadixSort.hpp */,
 				A65D3ED925374DFD00A9C56D /* CountSort.cpp */,
-				A65D3EDA25374DFD00A9C56D /* CountSort.hpp */,
 				A65D3EDD2537692000A9C56D /* LinkedList.cpp */,
-				A65D3EDE2537692000A9C56D /* LinkedList.hpp */,
 				A65D3EE12537696000A9C56D /* BinSort.cpp */,
-				A65D3EE22537696000A9C56D /* BinSort.hpp */,
 			);
 			path = Sorting;
+			sourceTree = "<group>";
+		};
+		A6F905BC253B12BA006C1ECC /* HeaderFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A65D3ED625374DEE00A9C56D /* RadixSort.hpp */,
+				A65D3EDA25374DFD00A9C56D /* CountSort.hpp */,
+				A65D3EDE2537692000A9C56D /* LinkedList.hpp */,
+				A65D3EE22537696000A9C56D /* BinSort.hpp */,
+			);
+			path = HeaderFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
