@@ -14,7 +14,7 @@
 #include <iostream>
 using namespace::std;
 
-class Stack
+class StackA
 {
 private:
     int size;

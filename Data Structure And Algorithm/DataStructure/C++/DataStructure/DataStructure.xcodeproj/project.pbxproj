@@ -11,8 +11,9 @@
 		A64E8B0324E92BA2001B84EB /* Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A64E8B0124E92BA2001B84EB /* Array.cpp */; };
 		A64E8B0824EA6ADB001B84EB /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A64E8B0624EA6ADB001B84EB /* Node.cpp */; };
 		A64E8B0B24EA6AF5001B84EB /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A64E8B0924EA6AF5001B84EB /* LinkedList.cpp */; };
-		A6F905C1253C13D9006C1ECC /* Stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6F905BF253C13D9006C1ECC /* Stack.cpp */; };
+		A6F905C1253C13D9006C1ECC /* StackUsingArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6F905BF253C13D9006C1ECC /* StackUsingArray.cpp */; };
 		A6F905C9253C5E5A006C1ECC /* StackUsingLinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6F905C7253C5E5A006C1ECC /* StackUsingLinkedList.cpp */; };
+		A6F905CF253C6557006C1ECC /* ParenthesesMatching.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6F905CD253C6557006C1ECC /* ParenthesesMatching.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,10 +37,12 @@
 		A64E8B0724EA6ADB001B84EB /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Node.hpp; sourceTree = "<group>"; };
 		A64E8B0924EA6AF5001B84EB /* LinkedList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LinkedList.cpp; sourceTree = "<group>"; };
 		A64E8B0A24EA6AF5001B84EB /* LinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LinkedList.hpp; sourceTree = "<group>"; };
-		A6F905BF253C13D9006C1ECC /* Stack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Stack.cpp; sourceTree = "<group>"; };
-		A6F905C0253C13D9006C1ECC /* Stack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stack.hpp; sourceTree = "<group>"; };
+		A6F905BF253C13D9006C1ECC /* StackUsingArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StackUsingArray.cpp; sourceTree = "<group>"; };
+		A6F905C0253C13D9006C1ECC /* StackUsingArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StackUsingArray.hpp; sourceTree = "<group>"; };
 		A6F905C7253C5E5A006C1ECC /* StackUsingLinkedList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StackUsingLinkedList.cpp; sourceTree = "<group>"; };
 		A6F905C8253C5E5A006C1ECC /* StackUsingLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StackUsingLinkedList.hpp; sourceTree = "<group>"; };
+		A6F905CD253C6557006C1ECC /* ParenthesesMatching.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ParenthesesMatching.cpp; sourceTree = "<group>"; };
+		A6F905CE253C6557006C1ECC /* ParenthesesMatching.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ParenthesesMatching.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,8 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				A6F905CB253C6150006C1ECC /* HeaderFiles */,
-				A6F905BF253C13D9006C1ECC /* Stack.cpp */,
+				A6F905BF253C13D9006C1ECC /* StackUsingArray.cpp */,
 				A6F905C7253C5E5A006C1ECC /* StackUsingLinkedList.cpp */,
+				A6F905CD253C6557006C1ECC /* ParenthesesMatching.cpp */,
 			);
 			path = Stack;
 			sourceTree = "<group>";
@@ -130,7 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				A6F905C8253C5E5A006C1ECC /* StackUsingLinkedList.hpp */,
-				A6F905C0253C13D9006C1ECC /* Stack.hpp */,
+				A6F905C0253C13D9006C1ECC /* StackUsingArray.hpp */,
+				A6F905CE253C6557006C1ECC /* ParenthesesMatching.hpp */,
 			);
 			path = HeaderFiles;
 			sourceTree = "<group>";
@@ -192,10 +197,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6F905C1253C13D9006C1ECC /* Stack.cpp in Sources */,
+				A6F905C1253C13D9006C1ECC /* StackUsingArray.cpp in Sources */,
 				A64E8B0824EA6ADB001B84EB /* Node.cpp in Sources */,
 				A6F905C9253C5E5A006C1ECC /* StackUsingLinkedList.cpp in Sources */,
 				A64E8AFD24E9240D001B84EB /* main.cpp in Sources */,
+				A6F905CF253C6557006C1ECC /* ParenthesesMatching.cpp in Sources */,
 				A64E8B0B24EA6AF5001B84EB /* LinkedList.cpp in Sources */,
 				A64E8B0324E92BA2001B84EB /* Array.cpp in Sources */,
 			);

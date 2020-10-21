@@ -1,14 +1,36 @@
 //
-//  StackUsingLinkedList.cpp
+//  ParenthesesMatching.cpp
 //  DataStructure
 //
 //  Created by SUBHASISH BISWAS on 18/10/20.
 //  Copyright © 2020 SUBHASISH BISWAS. All rights reserved.
 //
 
-#include "HeaderFiles/StackUsingLinkedList.hpp"
+#include "ParenthesesMatching.hpp"
 
-void Stack::Push(int data)
+
+bool ParenthesesMatching::IsBalanced(char *expression)
+{
+    for (int i=0; expression[i]!='\0'; i++)
+    {
+        if (expression[i]=='(')
+        {
+            Push(expression[i]);
+        }
+        else if(expression[i]==')')
+        {
+            if (IsEmpty())
+            {
+                return false;
+            }
+            Pop();
+        }
+    }
+    
+    return IsEmpty()?true:false;
+}
+
+void ParenthesesMatching::Push(char data)
 {
     Node *t=new Node();
     if (t==NULL)
@@ -23,7 +45,7 @@ void Stack::Push(int data)
     }
 }
 
-int Stack::Pop()
+int ParenthesesMatching::Pop()
 {
     int x=-1;
     if (top==NULL)
@@ -40,7 +62,13 @@ int Stack::Pop()
     }
     return x;
 }
-int Stack::Peek(int position)
+
+bool ParenthesesMatching::IsEmpty()
+{
+    return top?true:false;
+}
+
+int ParenthesesMatching::Peek(int position)
 {
     Node *p=top;
     
@@ -58,7 +86,7 @@ int Stack::Peek(int position)
     }
 }
 
-void Stack :: Display()
+void ParenthesesMatching :: Display()
 {
     Node *p=top;
     while (p!=NULL)
@@ -67,7 +95,7 @@ void Stack :: Display()
         p=p->next;
     }
 }
-Stack::Stack()
+ParenthesesMatching::ParenthesesMatching()
 {
     top=NULL;
 }

@@ -6,9 +6,9 @@
 //  Copyright © 2020 SUBHASISH BISWAS. All rights reserved.
 //
 
-#include "Stack.hpp"
+#include "HeaderFiles/StackUsingArray.hpp"
 
-int Stack::Pop()
+int StackA::Pop()
 {
     int x=-1;
     if (IsEmpty())
@@ -20,7 +20,7 @@ int Stack::Pop()
     top--;
     return x;
 }
-void Stack::Push(int x)
+void StackA::Push(int x)
 {
     if (IsFull())
     {
@@ -31,7 +31,7 @@ void Stack::Push(int x)
     arr[top]=x;
     
 }
-int Stack::StackTop()
+int StackA::StackTop()
 {
     if (IsEmpty())
     {
@@ -43,7 +43,7 @@ int Stack::StackTop()
         return arr[top];
     }
 }
-int Stack::Peek(int position)
+int StackA::Peek(int position)
 {
     int x=-1;
     // Can not get any element from stack if position is not valid
@@ -56,7 +56,7 @@ int Stack::Peek(int position)
     x=arr[top-position+1];
     return x;
 }
-bool Stack::IsFull()
+bool StackA::IsFull()
 {
     //is stack top points to array size then its full
     if (top==size-1)
@@ -66,7 +66,7 @@ bool Stack::IsFull()
     }
     return false;
 }
-bool Stack::IsEmpty()
+bool StackA::IsEmpty()
 {
     //is stack top points to -1 then its empty
     if (top==-1)
