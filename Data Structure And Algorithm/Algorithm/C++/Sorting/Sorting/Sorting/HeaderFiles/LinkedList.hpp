@@ -32,6 +32,7 @@ public:
     int Lenght(Node * p);
     void Display();
     LinkedList(int data);
+    LinkedList();
     
     
 };

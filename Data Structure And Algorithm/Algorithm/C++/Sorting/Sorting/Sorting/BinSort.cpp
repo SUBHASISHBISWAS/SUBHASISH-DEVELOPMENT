@@ -13,6 +13,8 @@ void BinSort::PerformBinSort(int arr[], int n)
     Node **Bins;
     max=findMax(arr, n);
     Bins=new Node*[max+1];
+    LinkedList linkedList;
+    
     for (int i=0; i<max+1; i++)
     {
         Bins[i]=NULL;
@@ -20,7 +22,7 @@ void BinSort::PerformBinSort(int arr[], int n)
     //Updaing count array index with original array value
     for (int i=0; i<n; i++)
     {
-        
+        linkedList.Insert(Bins[arr[i]], arr[i]);
     }
     int i=0;
     int j=0;
