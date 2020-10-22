@@ -41,11 +41,17 @@ export class MedicinesComponent implements OnInit {
   onRatingClicked(message: string): void {
     this.myPageTitle = 'Product List: ' + message;
   }
-
+  errorMessage : string =''
   ngOnInit(): void
   {
-    this.medicines=this.medicineService.getMedicines();
-    this.filteredProducts = this.medicines;
+    this.medicineService.getMedicines().subscribe({
+      next : medicines =>
+      {
+        this.medicines=medicines;
+        this.filteredProducts = this.medicines;
+      },
+      error: err=> this.errorMessage=err
+    })
   }
 
   toggleImage():void{
