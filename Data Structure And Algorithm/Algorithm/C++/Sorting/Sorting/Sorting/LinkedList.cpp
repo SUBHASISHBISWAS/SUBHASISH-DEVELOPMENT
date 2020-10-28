@@ -15,6 +15,10 @@ LinkedList::LinkedList(int data)
     head->data=data;
     tail=head;
 }
+LinkedList::LinkedList()
+{
+    
+}
 
 void LinkedList::Display()
 {
@@ -92,3 +96,4 @@ void LinkedList::Insert(int data)
         tail=t;
     }
 }
+

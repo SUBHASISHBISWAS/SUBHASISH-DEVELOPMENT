@@ -1,13 +1,13 @@
 //
-//  StackUsingLinkedList.hpp
+//  ParenthesesMatching.hpp
 //  DataStructure
 //
 //  Created by SUBHASISH BISWAS on 18/10/20.
 //  Copyright © 2020 SUBHASISH BISWAS. All rights reserved.
 //
 
-#ifndef StackUsingLinkedList_hpp
-#define StackUsingLinkedList_hpp
+#ifndef ParenthesesMatching_hpp
+#define ParenthesesMatching_hpp
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,22 +17,23 @@ using namespace::std;
 class Node
 {
 public:
-    int data;
+    char data;
     Node * next;
 };
 
-class Stack
+class ParenthesesMatching
 {
 private:
     Node * top;
 public:
-    Stack();
+    bool IsBalanced(char *expression);
+    ParenthesesMatching();
     void Display();
-    void Push(int data);
+    void Push(char data);
     int Pop();
     int Peek(int position);
     int StackTop();
     bool IsFull();
     bool IsEmpty();
 };
-#endif /* StackUsingLinkedList_hpp */
+#endif /* ParenthesesMatching_hpp */
