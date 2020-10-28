@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
+using WebApiContrib.Formatting.Jsonp;
+using System.Web.Http.Cors;
 
 namespace SB_APIBasics
 {
@@ -29,6 +31,21 @@ namespace SB_APIBasics
     {
         public static void Register(HttpConfiguration config)
         {
+
+            config.Filters.Add(new BasicAuthenticationAttribute());
+
+            //config.Filters.Add(new RequireHTTPSAttribute());
+
+
+            /*
+            var jsonpFormatter = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
+            config.Formatters.Insert(0, jsonpFormatter);
+            */
+
+            EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
+
+
             // Web API configuration and services
 
             // Web API routes
