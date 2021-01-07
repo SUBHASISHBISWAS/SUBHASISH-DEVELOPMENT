@@ -22,6 +22,18 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.expenseAmountDidChanged), name: UITextField.textDidChangeNotification, object: nil)
         
+        fetchExpense();
+        
+    }
+    
+    func fetchExpense()
+    {
+        do
+        {
+            ExpenseManager.expenses = try  context.fetch(Expense.fetchRequest())
+            
+        }
+        catch{}
     }
 
     @objc func expenseTypeDidChanged() {

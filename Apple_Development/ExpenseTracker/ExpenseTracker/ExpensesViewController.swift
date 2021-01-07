@@ -18,10 +18,14 @@ class ExpensesViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         tableView.delegate=self
         tableView.dataSource=self
+        
         tableView.rowHeight=70
+        
         tableView.backgroundView=UIImageView(image: UIImage(named: "Background-PDF"))
+        
         fetchExpense();
     }
     
@@ -61,11 +65,13 @@ extension ExpensesViewController :UITableViewDataSource
     {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return ExpenseManager.GetExpenses().count
     }
     
+    //showing data into table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell=tableView.dequeueReusableCell(withIdentifier: "customcell", for: indexPath) as! ExpenseTableViewCell
@@ -86,6 +92,7 @@ extension ExpensesViewController :UITableViewDataSource
         return cell
     }
     
+    //Passing data to another view Controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         
@@ -96,6 +103,7 @@ extension ExpensesViewController :UITableViewDataSource
         }
     }
     
+    //Enable Delete Functionality in Row
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
     {
         if(editingStyle == .delete)
