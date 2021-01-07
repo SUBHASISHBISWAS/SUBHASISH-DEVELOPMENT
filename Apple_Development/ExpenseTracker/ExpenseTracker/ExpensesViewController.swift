@@ -87,7 +87,7 @@ extension ExpensesViewController :UITableViewDataSource
         }
         
         let expense = ExpenseManager.expenses[indexPath.item]
-        cell.textLabel?.text = expense.expenseType
+        cell.textLabel?.text = expense.transactionType
         cell.Expense=cell.textLabel?.text
         return cell
     }

@@ -13,11 +13,15 @@ class ExpenseManager: NSObject {
     
     static var expenses=[Expense]()
     
-    class func AddExpense(amount :Double, expenseType :String, expenseMedium :String) {
+    class func AddExpense(amount :Double, transactionDescription :String, transactionType :String , transactionDate : Date) {
         let expense=Expense(context: context)
+        
+        expense.id=UUID()
         expense.amount=amount
-        expense.expenseType=expenseType
-        expense.expenseMedium=expenseMedium
+        expense.transactionDescription=transactionDescription
+        expense.transactionType=transactionType
+        expense.transactionDate=transactionDate
+        
         do
         {
             try self.context.save()
@@ -64,5 +68,23 @@ class ExpenseManager: NSObject {
         catch{}
         
         return expenses
+    }
+    
+    class func GetTotalExpenses()->Double
+    {
+        var totalExpense : Double=0;
+        
+        do
+        {
+            
+            for expense in GetExpenses() {
+                totalExpense+=expense.amount
+            }
+            
+        }
+        catch{}
+        
+        
+        return totalExpense
     }
 }
