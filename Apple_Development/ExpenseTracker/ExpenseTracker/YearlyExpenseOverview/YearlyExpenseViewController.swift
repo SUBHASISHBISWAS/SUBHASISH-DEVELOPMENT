@@ -50,3 +50,17 @@ extension YearlyExpenseViewController : UICollectionViewDataSource {
     
     
 }
+
+extension YearlyExpenseViewController : UICollectionViewDelegateFlowLayout
+{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let columns : CGFloat = 3
+        let collectionViewWidth=collectionView.bounds.width
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        let spaceBetweenCells = flowLayout.minimumInteritemSpacing * (columns - 1)
+        let adjustedWidth=collectionViewWidth - spaceBetweenCells
+        let width : CGFloat = floor(adjustedWidth/columns)
+        return CGSize(width: width, height: 100)
+    }
+}
