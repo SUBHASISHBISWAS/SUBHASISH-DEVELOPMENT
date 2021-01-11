@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct MonthyOveviewModel {
+struct ExpenseByMonthModel {
     var id: UUID
     var description: String
     var image: UIImage

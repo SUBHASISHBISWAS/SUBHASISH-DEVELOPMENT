@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A62484B825A89ADD00CD62DF /* MonthyOveviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62484B725A89ADD00CD62DF /* MonthyOveviewModel.swift */; };
+		A62484B825A89ADD00CD62DF /* ExpenseByMonthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62484B725A89ADD00CD62DF /* ExpenseByMonthModel.swift */; };
 		A62484BD25A89B2F00CD62DF /* MothlyOverviewAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A62484BC25A89B2F00CD62DF /* MothlyOverviewAsset.xcassets */; };
-		A62484C225A89BCD00CD62DF /* MonthlyExpenseOverviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62484C125A89BCD00CD62DF /* MonthlyExpenseOverviewManager.swift */; };
+		A62484C225A89BCD00CD62DF /* ExpenseByMonthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62484C125A89BCD00CD62DF /* ExpenseByMonthManager.swift */; };
 		A659848D25A39BAA005E6AAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A659848C25A39BAA005E6AAE /* AppDelegate.swift */; };
 		A659848F25A39BAA005E6AAE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A659848E25A39BAA005E6AAE /* SceneDelegate.swift */; };
 		A659849125A39BAA005E6AAE /* AddExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A659849025A39BAA005E6AAE /* AddExpenseViewController.swift */; };
@@ -23,12 +23,14 @@
 		A65984E525A47025005E6AAE /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65984E425A47025005E6AAE /* ExpenseTableViewCell.swift */; };
 		A65984EA25A472D9005E6AAE /* MonthlyExpenseOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65984E925A472D9005E6AAE /* MonthlyExpenseOverview.swift */; };
 		A65984F425A47B4A005E6AAE /* ExpenseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65984F325A47B4A005E6AAE /* ExpenseManager.swift */; };
+		A65CB4A925ACA7EC00674AD4 /* ExpenseByTypeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65CB4A825ACA7EC00674AD4 /* ExpenseByTypeCVCell.swift */; };
+		A65CB4BF25ACAB5C00674AD4 /* ExpenByTypeManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65CB4BE25ACAB5C00674AD4 /* ExpenByTypeManger.swift */; };
+		A66FBD3F25ACAE3800731680 /* ExpenseByTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FBD3E25ACAE3700731680 /* ExpenseByTypeModel.swift */; };
 		A69F7F5725A79C390021C3B1 /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69F7F5525A79C390021C3B1 /* Expense+CoreDataClass.swift */; };
 		A69F7F5825A79C390021C3B1 /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69F7F5625A79C390021C3B1 /* Expense+CoreDataProperties.swift */; };
 		A6A3593F25A5E659008F68E2 /* YearlyExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3593E25A5E659008F68E2 /* YearlyExpenseViewController.swift */; };
 		A6D12AC025A84DD6003DD31F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D12ABF25A84DD6003DD31F /* Extensions.swift */; };
-		A6D12ACB25A8806D003DD31F /* MonthlyExpenseOverViewCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D12ACA25A8806C003DD31F /* MonthlyExpenseOverViewCellCollectionViewCell.swift */; };
-		A6D12AD025A88492003DD31F /* ExpenseHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D12ACF25A88492003DD31F /* ExpenseHeaderCollectionReusableView.swift */; };
+		A6D12ACB25A8806D003DD31F /* ExpenseByMonthCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D12ACA25A8806C003DD31F /* ExpenseByMonthCVCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,9 +51,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A62484B725A89ADD00CD62DF /* MonthyOveviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthyOveviewModel.swift; sourceTree = "<group>"; };
+		A62484B725A89ADD00CD62DF /* ExpenseByMonthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByMonthModel.swift; sourceTree = "<group>"; };
 		A62484BC25A89B2F00CD62DF /* MothlyOverviewAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MothlyOverviewAsset.xcassets; sourceTree = "<group>"; };
-		A62484C125A89BCD00CD62DF /* MonthlyExpenseOverviewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthlyExpenseOverviewManager.swift; sourceTree = "<group>"; };
+		A62484C125A89BCD00CD62DF /* ExpenseByMonthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseByMonthManager.swift; sourceTree = "<group>"; };
 		A659848925A39BAA005E6AAE /* ExpenseTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A659848C25A39BAA005E6AAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A659848E25A39BAA005E6AAE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,12 +73,14 @@
 		A65984E425A47025005E6AAE /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		A65984E925A472D9005E6AAE /* MonthlyExpenseOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyExpenseOverview.swift; sourceTree = "<group>"; };
 		A65984F325A47B4A005E6AAE /* ExpenseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseManager.swift; sourceTree = "<group>"; };
+		A65CB4A825ACA7EC00674AD4 /* ExpenseByTypeCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByTypeCVCell.swift; sourceTree = "<group>"; };
+		A65CB4BE25ACAB5C00674AD4 /* ExpenByTypeManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenByTypeManger.swift; sourceTree = "<group>"; };
+		A66FBD3E25ACAE3700731680 /* ExpenseByTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByTypeModel.swift; sourceTree = "<group>"; };
 		A69F7F5525A79C390021C3B1 /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A69F7F5625A79C390021C3B1 /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A6A3593E25A5E659008F68E2 /* YearlyExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyExpenseViewController.swift; sourceTree = "<group>"; };
 		A6D12ABF25A84DD6003DD31F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		A6D12ACA25A8806C003DD31F /* MonthlyExpenseOverViewCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyExpenseOverViewCellCollectionViewCell.swift; sourceTree = "<group>"; };
-		A6D12ACF25A88492003DD31F /* ExpenseHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		A6D12ACA25A8806C003DD31F /* ExpenseByMonthCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByMonthCVCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,19 +108,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A62484C725AA159500CD62DF /* MonthlyExpenseOverview */ = {
-			isa = PBXGroup;
-			children = (
-				A6D12ACA25A8806C003DD31F /* MonthlyExpenseOverViewCellCollectionViewCell.swift */,
-				A65984E925A472D9005E6AAE /* MonthlyExpenseOverview.swift */,
-				A6D12ACF25A88492003DD31F /* ExpenseHeaderCollectionReusableView.swift */,
-			);
-			path = MonthlyExpenseOverview;
-			sourceTree = "<group>";
-		};
 		A62484CB25AA160600CD62DF /* ExpenseOverview */ = {
 			isa = PBXGroup;
 			children = (
+				A65CB4B725ACA89800674AD4 /* Managers */,
+				A6A3593E25A5E659008F68E2 /* YearlyExpenseViewController.swift */,
 				A65984DF25A3B57C005E6AAE /* ExpensesViewController.swift */,
 				A659849025A39BAA005E6AAE /* AddExpenseViewController.swift */,
 				A65984E425A47025005E6AAE /* ExpenseTableViewCell.swift */,
@@ -124,21 +120,14 @@
 			path = ExpenseOverview;
 			sourceTree = "<group>";
 		};
-		A62484CC25AA166100CD62DF /* ExpenseManagers */ = {
+		A62484CD25AA169900CD62DF /* ExpenseByMonth */ = {
 			isa = PBXGroup;
 			children = (
-				A62484C125A89BCD00CD62DF /* MonthlyExpenseOverviewManager.swift */,
-				A65984F325A47B4A005E6AAE /* ExpenseManager.swift */,
+				A65CB4B625ACA88700674AD4 /* Manages */,
+				A6D12ACA25A8806C003DD31F /* ExpenseByMonthCVCell.swift */,
+				A65984E925A472D9005E6AAE /* MonthlyExpenseOverview.swift */,
 			);
-			path = ExpenseManagers;
-			sourceTree = "<group>";
-		};
-		A62484CD25AA169900CD62DF /* YearlyExpenseOverview */ = {
-			isa = PBXGroup;
-			children = (
-				A6A3593E25A5E659008F68E2 /* YearlyExpenseViewController.swift */,
-			);
-			path = YearlyExpenseOverview;
+			path = ExpenseByMonth;
 			sourceTree = "<group>";
 		};
 		A62484CE25AA16FA00CD62DF /* Scene */ = {
@@ -174,10 +163,9 @@
 		A659848B25A39BAA005E6AAE /* ExpenseTracker */ = {
 			isa = PBXGroup;
 			children = (
-				A62484CD25AA169900CD62DF /* YearlyExpenseOverview */,
-				A62484CC25AA166100CD62DF /* ExpenseManagers */,
+				A65CB4A625ACA73300674AD4 /* ExpenseByType */,
+				A62484CD25AA169900CD62DF /* ExpenseByMonth */,
 				A62484CB25AA160600CD62DF /* ExpenseOverview */,
-				A62484C725AA159500CD62DF /* MonthlyExpenseOverview */,
 				A6D12ABE25A84DB2003DD31F /* Extensions */,
 				A6E231C925A4CBCB00C0CA64 /* Models */,
 				A659849825A39BAB005E6AAE /* Assets.xcassets */,
@@ -207,6 +195,39 @@
 			path = ExpenseTrackerUITests;
 			sourceTree = "<group>";
 		};
+		A65CB4A625ACA73300674AD4 /* ExpenseByType */ = {
+			isa = PBXGroup;
+			children = (
+				A65CB4C325ACAB6700674AD4 /* Manager */,
+				A65CB4A825ACA7EC00674AD4 /* ExpenseByTypeCVCell.swift */,
+			);
+			path = ExpenseByType;
+			sourceTree = "<group>";
+		};
+		A65CB4B625ACA88700674AD4 /* Manages */ = {
+			isa = PBXGroup;
+			children = (
+				A62484C125A89BCD00CD62DF /* ExpenseByMonthManager.swift */,
+			);
+			path = Manages;
+			sourceTree = "<group>";
+		};
+		A65CB4B725ACA89800674AD4 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A65984F325A47B4A005E6AAE /* ExpenseManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		A65CB4C325ACAB6700674AD4 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				A65CB4BE25ACAB5C00674AD4 /* ExpenByTypeManger.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		A6D12ABE25A84DB2003DD31F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,8 +241,9 @@
 			children = (
 				A69F7F5525A79C390021C3B1 /* Expense+CoreDataClass.swift */,
 				A69F7F5625A79C390021C3B1 /* Expense+CoreDataProperties.swift */,
-				A62484B725A89ADD00CD62DF /* MonthyOveviewModel.swift */,
+				A62484B725A89ADD00CD62DF /* ExpenseByMonthModel.swift */,
 				A62484BC25A89B2F00CD62DF /* MothlyOverviewAsset.xcassets */,
+				A66FBD3E25ACAE3700731680 /* ExpenseByTypeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -357,22 +379,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6D12ACB25A8806D003DD31F /* MonthlyExpenseOverViewCellCollectionViewCell.swift in Sources */,
+				A6D12ACB25A8806D003DD31F /* ExpenseByMonthCVCell.swift in Sources */,
 				A6A3593F25A5E659008F68E2 /* YearlyExpenseViewController.swift in Sources */,
 				A659849125A39BAA005E6AAE /* AddExpenseViewController.swift in Sources */,
-				A62484B825A89ADD00CD62DF /* MonthyOveviewModel.swift in Sources */,
-				A6D12AD025A88492003DD31F /* ExpenseHeaderCollectionReusableView.swift in Sources */,
+				A62484B825A89ADD00CD62DF /* ExpenseByMonthModel.swift in Sources */,
 				A659848D25A39BAA005E6AAE /* AppDelegate.swift in Sources */,
 				A65984E525A47025005E6AAE /* ExpenseTableViewCell.swift in Sources */,
 				A65984F425A47B4A005E6AAE /* ExpenseManager.swift in Sources */,
+				A65CB4A925ACA7EC00674AD4 /* ExpenseByTypeCVCell.swift in Sources */,
 				A659848F25A39BAA005E6AAE /* SceneDelegate.swift in Sources */,
+				A66FBD3F25ACAE3800731680 /* ExpenseByTypeModel.swift in Sources */,
 				A65984E025A3B57C005E6AAE /* ExpensesViewController.swift in Sources */,
 				A6D12AC025A84DD6003DD31F /* Extensions.swift in Sources */,
 				A65984EA25A472D9005E6AAE /* MonthlyExpenseOverview.swift in Sources */,
 				A69F7F5725A79C390021C3B1 /* Expense+CoreDataClass.swift in Sources */,
 				A69F7F5825A79C390021C3B1 /* Expense+CoreDataProperties.swift in Sources */,
+				A65CB4BF25ACAB5C00674AD4 /* ExpenByTypeManger.swift in Sources */,
 				A659849725A39BAA005E6AAE /* ExpenseTracker.xcdatamodeld in Sources */,
-				A62484C225A89BCD00CD62DF /* MonthlyExpenseOverviewManager.swift in Sources */,
+				A62484C225A89BCD00CD62DF /* ExpenseByMonthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

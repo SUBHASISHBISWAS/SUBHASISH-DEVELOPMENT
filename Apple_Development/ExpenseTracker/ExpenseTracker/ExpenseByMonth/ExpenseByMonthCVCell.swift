@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MonthlyExpenseOverViewCellCollectionViewCell: UICollectionViewCell {
+class ExpenseByMonthCVCell: UICollectionViewCell {
     
     @IBOutlet weak var _monthsImage: UIImageView!
     @IBOutlet weak var _monthLabel: UILabel!
@@ -18,7 +18,7 @@ class MonthlyExpenseOverViewCellCollectionViewCell: UICollectionViewCell {
         _totalExpenseLabel.text = "\(count)"
     }
     
-    func setup(monthlyOverviewModel : MonthyOveviewModel) {
+    func setup(monthlyOverviewModel : ExpenseByMonthModel) {
         
         //_totalExpenseLabel.text = "\(monthlyOverviewModel.description)"
         _monthsImage.image=monthlyOverviewModel.image
