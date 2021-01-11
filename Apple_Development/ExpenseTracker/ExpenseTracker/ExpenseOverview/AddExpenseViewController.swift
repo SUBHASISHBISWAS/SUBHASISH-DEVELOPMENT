@@ -15,37 +15,24 @@ class AddExpenseViewController: UIViewController {
     @IBOutlet weak var _expenseDate: UITextField!
     @IBOutlet weak var _totalExpense: UILabel!
     @IBOutlet weak var _transactionType: UITextField!
-    
     @IBOutlet weak var _expenseByMonthHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var expenseByTypeHeightConstraint: NSLayoutConstraint!
     @IBOutlet var _addExpense :UIButton!
     @IBOutlet weak var _activityIndicator: UIActivityIndicatorView!
-
     @IBOutlet weak var _expenseTrackerNavItem: UINavigationItem!
-    @IBOutlet weak var _expenseByExpenseType: UILabel!
-    @IBOutlet weak var _expenseByMonth: UILabel!
-    
     @IBOutlet weak var _expenseByMonthCView: UICollectionView!
     @IBOutlet weak var _expenseByTypeCView: UICollectionView!
     
     let _expenseDatePicker=UIDatePicker()
     let _transactionTypePickerView = UIPickerView()
-    
     let _context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let _typeOfTransactions = ["Cash", "Card", "HDFC", "ICICI"]
     
     let _colorData = [#colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1),#colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1),#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1),#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1),#colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1),#colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1),#colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1),#colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1),#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1),#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1),#colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1),#colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1),#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1),#colorLiteral(red: 0.5058823824, green: 0.3372549117, blue: 0.06666667014, alpha: 1),#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1),#colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1),#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1),#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1),#colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1),#colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1),#colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1),#colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1),#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1),#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1),#colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1),#colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1),#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1),#colorLiteral(red: 0.5058823824, green: 0.3372549117, blue: 0.06666667014, alpha: 1),#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)]
-    
     //let _months = ["Jan", "Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-    
     let _collectionViewDynamicWidhthFactor :CGFloat = 1.5;
     var _expenseByMonths = [ExpenseByMonthModel]()
-    
     var _expenseByTypes = [ExpenseByTypeModel]()
-    
-    
-    
     let expenseDateFormatter: DateFormatter =
         {
             let expenseDateFormatter = DateFormatter()
@@ -224,136 +211,4 @@ class AddExpenseViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    
-    
-    
 }
-
-extension AddExpenseViewController : UIPickerViewDataSource
-{
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    // Sets the number of rows in the picker view
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            return _typeOfTransactions.count
-        }
-    
-        // This function sets the text of the picker view to the content of the "salutations" array
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            return _typeOfTransactions[row]
-        }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        _transactionType.text=_typeOfTransactions[row]
-        _transactionType.resignFirstResponder()
-    }
-}
-
-extension AddExpenseViewController : UIPickerViewDelegate
-{
-    // Sets number of columns in picker view
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-            return 1
-        }
-}
-
-extension AddExpenseViewController:UICollectionViewDelegate
-{
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        
-        if (collectionView == _expenseByTypeCView) {
-            return 1
-        }
-        if (collectionView == _expenseByMonthCView) {
-            return 1
-        }
-        return 1
-    }
-}
-
-extension AddExpenseViewController : UICollectionViewDataSource {
-    
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-    {
-        
-            if (collectionView == _expenseByTypeCView)
-            {
-                return _expenseByTypes.count
-            }
-            if (collectionView == _expenseByMonthCView)
-            {
-                return _expenseByMonths.count
-            }
-        
-            return 0
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    {
-        
-        if (collectionView == _expenseByMonthCView)
-        {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "expenseByMonthCell", for: indexPath) as! ExpenseByMonthCVCell
-            cell.setup(monthlyOverviewModel: _expenseByMonths[indexPath.item])
-            return cell
-        }
-        if (collectionView == _expenseByTypeCView)
-        {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "expenseByTypeCell", for: indexPath) as! ExpenseByTypeCVCell
-            cell.setup(expenseByType: _expenseByTypes[indexPath.item])
-            return cell
-        }
-        
-        return UICollectionViewCell()
-        
-        
-        //cell.setup(backgroundColor: _months[indexPath.item], count: indexPath.item)
-        //cell.backgroundColor=_colorData[indexPath.item]
-        //return cell
-    }
-}
-
-extension AddExpenseViewController : UICollectionViewDelegateFlowLayout
-{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        /*
-        let rows : CGFloat = 1
-        
-        let collectionViewHeight=collectionView.bounds.height
-        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        let spaceBetweenCells = flowLayout.minimumInteritemSpacing * (rows - 1)
-        let adjustedHeight=collectionViewHeight - spaceBetweenCells
-        let height : CGFloat = floor(adjustedHeight/rows)
-        let width :CGFloat = height/1.5
-        return CGSize(width: width, height: height)
-         */
-        
-        
-        if (collectionView == _expenseByMonthCView)
-        {
-            let width=_expenseByMonthCView.bounds.width/_collectionViewDynamicWidhthFactor-50;
-            let height=width/1.5
-            return CGSize(width: width, height: height)
-        }
-        if (collectionView == _expenseByTypeCView)
-        {
-            let width=_expenseByTypeCView.bounds.width/_collectionViewDynamicWidhthFactor-50;
-            let height=width/1.5
-            return CGSize(width: width, height: height)
-        }
-        
-        
-        return CGSize(width: 0, height: 0)
- 
-    }
-}
-
-
-
