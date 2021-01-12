@@ -24,7 +24,7 @@ class ExpenseByMonthCVCell: UICollectionViewCell {
         _monthsImage.image=monthlyOverviewModel.image
         _monthLabel.text = monthlyOverviewModel.description
         
-        _totalExpenseLabel.text = "\(monthlyOverviewModel.totalAmaount)"
+        _totalExpenseLabel.text = "\(Int(monthlyOverviewModel.totalAmaount))"
     }
     
     override func awakeFromNib() {

@@ -12,6 +12,8 @@ class ExpenseByTypeCVCell: UICollectionViewCell {
     @IBOutlet weak var _expenTypeImage: UIImageView!
     @IBOutlet weak var _typeOfExpenseLabel: UILabel!
     @IBOutlet weak var _totalExpenseLabel: UILabel!
+    @IBOutlet weak var _currentMonthLabel: UILabel!
+    @IBOutlet weak var _currentMonthTotalAmaountLabel: UILabel!
     
     func setup(backgroundColor : UIColor, count : Int) {
         self.backgroundColor=backgroundColor
@@ -24,7 +26,10 @@ class ExpenseByTypeCVCell: UICollectionViewCell {
         _expenTypeImage.image=expenseByType.image
         _typeOfExpenseLabel.text = expenseByType.description
         
-        _totalExpenseLabel.text = "\(expenseByType.totalAmaount)"
+        _totalExpenseLabel.text = ": " + "\(Int(expenseByType.totalAmaount))"
+        _currentMonthTotalAmaountLabel.text = ": " + "\(Int(expenseByType.totalAmaountInCurrentMonth))"
+        _currentMonthLabel.text = expenseByType.month
+        
     }
     
     override func awakeFromNib() {
