@@ -24,7 +24,7 @@
 		A65984EA25A472D9005E6AAE /* MonthlyExpenseOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65984E925A472D9005E6AAE /* MonthlyExpenseOverview.swift */; };
 		A65984F425A47B4A005E6AAE /* ExpenseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65984F325A47B4A005E6AAE /* ExpenseManager.swift */; };
 		A65CB4A925ACA7EC00674AD4 /* ExpenseByTypeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65CB4A825ACA7EC00674AD4 /* ExpenseByTypeCVCell.swift */; };
-		A65CB4BF25ACAB5C00674AD4 /* ExpenByTypeManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65CB4BE25ACAB5C00674AD4 /* ExpenByTypeManger.swift */; };
+		A65CB4BF25ACAB5C00674AD4 /* ExpenseByTypeManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65CB4BE25ACAB5C00674AD4 /* ExpenseByTypeManger.swift */; };
 		A66FBD3F25ACAE3800731680 /* ExpenseByTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FBD3E25ACAE3700731680 /* ExpenseByTypeModel.swift */; };
 		A66FBD4425ACE3CE00731680 /* CVFlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FBD4325ACE3CE00731680 /* CVFlowLayoutDelegate.swift */; };
 		A66FBD5525ACE58100731680 /* CVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FBD5425ACE58100731680 /* CVDataSource.swift */; };
@@ -80,7 +80,7 @@
 		A65984E925A472D9005E6AAE /* MonthlyExpenseOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyExpenseOverview.swift; sourceTree = "<group>"; };
 		A65984F325A47B4A005E6AAE /* ExpenseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseManager.swift; sourceTree = "<group>"; };
 		A65CB4A825ACA7EC00674AD4 /* ExpenseByTypeCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByTypeCVCell.swift; sourceTree = "<group>"; };
-		A65CB4BE25ACAB5C00674AD4 /* ExpenByTypeManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenByTypeManger.swift; sourceTree = "<group>"; };
+		A65CB4BE25ACAB5C00674AD4 /* ExpenseByTypeManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByTypeManger.swift; sourceTree = "<group>"; };
 		A66FBD3E25ACAE3700731680 /* ExpenseByTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByTypeModel.swift; sourceTree = "<group>"; };
 		A66FBD4325ACE3CE00731680 /* CVFlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVFlowLayoutDelegate.swift; sourceTree = "<group>"; };
 		A66FBD5425ACE58100731680 /* CVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVDataSource.swift; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 		A65CB4C325ACAB6700674AD4 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				A65CB4BE25ACAB5C00674AD4 /* ExpenByTypeManger.swift */,
+				A65CB4BE25ACAB5C00674AD4 /* ExpenseByTypeManger.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -418,7 +418,7 @@
 				A65984EA25A472D9005E6AAE /* MonthlyExpenseOverview.swift in Sources */,
 				A69F7F5725A79C390021C3B1 /* Expense+CoreDataClass.swift in Sources */,
 				A69F7F5825A79C390021C3B1 /* Expense+CoreDataProperties.swift in Sources */,
-				A65CB4BF25ACAB5C00674AD4 /* ExpenByTypeManger.swift in Sources */,
+				A65CB4BF25ACAB5C00674AD4 /* ExpenseByTypeManger.swift in Sources */,
 				A659849725A39BAA005E6AAE /* ExpenseTracker.xcdatamodeld in Sources */,
 				A62484C225A89BCD00CD62DF /* ExpenseByMonthManager.swift in Sources */,
 			);

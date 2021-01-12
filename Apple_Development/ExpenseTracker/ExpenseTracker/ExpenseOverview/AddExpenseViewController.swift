@@ -83,7 +83,7 @@ class AddExpenseViewController: UIViewController {
             self._expenseByMonthCView.reloadData()
         }
         
-        ExpenByTypeManger.GetExpenesByTranctaionType { [weak self] (ExpenseByTypeModels) in
+        ExpenseByTypeManger.GetExpenesByTranctaionType { [weak self] (ExpenseByTypeModels) in
             guard let self = self else { return }
             self._expenseByTypes=ExpenseByTypeModels
             self._expenseByTypeCView.reloadData()
@@ -181,7 +181,7 @@ class AddExpenseViewController: UIViewController {
             self._expenseByMonths=MonthyOveviewModels
             self._expenseByMonthCView.reloadData()
         }
-        ExpenByTypeManger.GetExpenesByTranctaionType { [weak self] (ExpenseByTypeModels) in
+        ExpenseByTypeManger.GetExpenesByTranctaionType { [weak self] (ExpenseByTypeModels) in
             guard let self = self else { return }
             self._expenseByTypes=ExpenseByTypeModels
             self._expenseByTypeCView.reloadData()

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class ExpenByTypeManger {
+class ExpenseByTypeManger {
     
     static let _typeOfTransactions = ["Cash", "HDFC", "ICICI","AMEX","CITY","RBL","INDUS","SC"]
     
