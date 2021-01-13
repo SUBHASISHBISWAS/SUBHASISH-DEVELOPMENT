@@ -32,6 +32,7 @@
 		A66FBD5F25ACE63200731680 /* UIPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FBD5E25ACE63200731680 /* UIPickerViewDelegate.swift */; };
 		A66FBD6425ACE65F00731680 /* UIPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FBD6325ACE65F00731680 /* UIPickerViewDataSource.swift */; };
 		A66FBD6925ACE77700731680 /* UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FBD6825ACE77700731680 /* UIPickerView.swift */; };
+		A687848825AF242E006487C3 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A687848725AF242E006487C3 /* CloudKit.framework */; };
 		A69F7F5725A79C390021C3B1 /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69F7F5525A79C390021C3B1 /* Expense+CoreDataClass.swift */; };
 		A69F7F5825A79C390021C3B1 /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69F7F5625A79C390021C3B1 /* Expense+CoreDataProperties.swift */; };
 		A6A3593F25A5E659008F68E2 /* YearlyExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3593E25A5E659008F68E2 /* YearlyExpenseViewController.swift */; };
@@ -88,6 +89,9 @@
 		A66FBD5E25ACE63200731680 /* UIPickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerViewDelegate.swift; sourceTree = "<group>"; };
 		A66FBD6325ACE65F00731680 /* UIPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerViewDataSource.swift; sourceTree = "<group>"; };
 		A66FBD6825ACE77700731680 /* UIPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerView.swift; sourceTree = "<group>"; };
+		A687848525AF2269006487C3 /* ExpenseTrackerDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExpenseTrackerDebug.entitlements; sourceTree = "<group>"; };
+		A687848725AF242E006487C3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		A687849225AF34B4006487C3 /* ET-1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ET-1.xcdatamodel"; sourceTree = "<group>"; };
 		A69F7F5525A79C390021C3B1 /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A69F7F5625A79C390021C3B1 /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A6A3593E25A5E659008F68E2 /* YearlyExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyExpenseViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A687848825AF242E006487C3 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +170,7 @@
 				A65984A525A39BAC005E6AAE /* ExpenseTrackerTests */,
 				A65984B025A39BAC005E6AAE /* ExpenseTrackerUITests */,
 				A659848A25A39BAA005E6AAE /* Products */,
+				A687848625AF242E006487C3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,6 +187,7 @@
 		A659848B25A39BAA005E6AAE /* ExpenseTracker */ = {
 			isa = PBXGroup;
 			children = (
+				A687848525AF2269006487C3 /* ExpenseTrackerDebug.entitlements */,
 				A65CB4A625ACA73300674AD4 /* ExpenseByType */,
 				A62484CD25AA169900CD62DF /* ExpenseByMonth */,
 				A62484CB25AA160600CD62DF /* ExpenseOverview */,
@@ -244,6 +251,14 @@
 				A65CB4BE25ACAB5C00674AD4 /* ExpenseByTypeManger.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		A687848625AF242E006487C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A687848725AF242E006487C3 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A6D12ABE25A84DB2003DD31F /* Extensions */ = {
@@ -596,6 +611,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ExpenseTracker/ExpenseTrackerDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CKLZ6PKF8N;
 				INFOPLIST_FILE = ExpenseTracker/Info.plist;
@@ -758,6 +774,7 @@
 		A659849525A39BAA005E6AAE /* ExpenseTracker.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A687849225AF34B4006487C3 /* ET-1.xcdatamodel */,
 				A659849625A39BAA005E6AAE /* ExpenseTracker.xcdatamodel */,
 			);
 			currentVersion = A659849625A39BAA005E6AAE /* ExpenseTracker.xcdatamodel */;
