@@ -36,7 +36,7 @@
 		A687848825AF242E006487C3 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A687848725AF242E006487C3 /* CloudKit.framework */; };
 		A69F7F5725A79C390021C3B1 /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69F7F5525A79C390021C3B1 /* Expense+CoreDataClass.swift */; };
 		A69F7F5825A79C390021C3B1 /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69F7F5625A79C390021C3B1 /* Expense+CoreDataProperties.swift */; };
-		A6A3593F25A5E659008F68E2 /* YearlyExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3593E25A5E659008F68E2 /* YearlyExpenseViewController.swift */; };
+		A6A3593F25A5E659008F68E2 /* MonthlyExpenseByTypeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3593E25A5E659008F68E2 /* MonthlyExpenseByTypeCollectionView.swift */; };
 		A6D12AC025A84DD6003DD31F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D12ABF25A84DD6003DD31F /* Extensions.swift */; };
 		A6D12ACB25A8806D003DD31F /* ExpenseByMonthCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D12ACA25A8806C003DD31F /* ExpenseByMonthCVCell.swift */; };
 /* End PBXBuildFile section */
@@ -96,7 +96,7 @@
 		A687849225AF34B4006487C3 /* ET-1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ET-1.xcdatamodel"; sourceTree = "<group>"; };
 		A69F7F5525A79C390021C3B1 /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A69F7F5625A79C390021C3B1 /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A6A3593E25A5E659008F68E2 /* YearlyExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyExpenseViewController.swift; sourceTree = "<group>"; };
+		A6A3593E25A5E659008F68E2 /* MonthlyExpenseByTypeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyExpenseByTypeCollectionView.swift; sourceTree = "<group>"; };
 		A6D12ABF25A84DD6003DD31F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A6D12ACA25A8806C003DD31F /* ExpenseByMonthCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByMonthCVCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,7 +167,7 @@
 		A6295BE625B0A9D10095B742 /* MonthlyExpenseByType */ = {
 			isa = PBXGroup;
 			children = (
-				A6A3593E25A5E659008F68E2 /* YearlyExpenseViewController.swift */,
+				A6A3593E25A5E659008F68E2 /* MonthlyExpenseByTypeCollectionView.swift */,
 				A6295BE725B0AA570095B742 /* MonthlyExpenseByTypeCollectionViewCell.swift */,
 			);
 			path = MonthlyExpenseByType;
@@ -424,7 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6D12ACB25A8806D003DD31F /* ExpenseByMonthCVCell.swift in Sources */,
-				A6A3593F25A5E659008F68E2 /* YearlyExpenseViewController.swift in Sources */,
+				A6A3593F25A5E659008F68E2 /* MonthlyExpenseByTypeCollectionView.swift in Sources */,
 				A659849125A39BAA005E6AAE /* AddExpenseViewController.swift in Sources */,
 				A66FBD4425ACE3CE00731680 /* CVFlowLayoutDelegate.swift in Sources */,
 				A66FBD6425ACE65F00731680 /* UIPickerViewDataSource.swift in Sources */,

@@ -428,10 +428,10 @@
             </objects>
             <point key="canvasLocation" x="2380" y="834"/>
         </scene>
-        <!--Yearly Expense View Controller-->
+        <!--Monthly Expense By Type Collection View-->
         <scene sceneID="G0t-9b-J5S">
             <objects>
-                <viewController storyboardIdentifier="monthlyExpenseTypeOverview" id="wBw-rx-i4L" customClass="YearlyExpenseViewController" customModule="ExpenseTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="monthlyExpenseTypeOverview" id="wBw-rx-i4L" customClass="MonthlyExpenseByTypeCollectionView" customModule="ExpenseTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l0m-5E-ocJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -450,11 +450,11 @@
                                     <size key="itemSize" width="200" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ExpenseCell" id="Cpo-L9-qfl" customClass="MonthlyExpenseByTypeCollectionViewCell" customModule="ExpenseTracker" customModuleProvider="target">
-                                        <rect key="frame" x="97" y="0.0" width="200" height="200"/>
+                                        <rect key="frame" x="97" y="5" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>

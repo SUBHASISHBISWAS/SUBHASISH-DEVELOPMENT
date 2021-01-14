@@ -46,7 +46,7 @@ class ExpenseByMonthManager {
                 if let date = _expenseDateFormatter.date(from: month)
                 {
                     let totalExpense=GetExpenseByMonth(expenseDate: date)
-                    giftCardModels.append(ExpenseByMonthModel(id: UUID(), description: date.month, image: #imageLiteral(resourceName: "SeasonalGiftCard1"),totalAmaount: totalExpense))
+                    giftCardModels.append(ExpenseByMonthModel(id: UUID(), transactionDate: date, image: #imageLiteral(resourceName: "SeasonalGiftCard1"),totalAmaount: totalExpense))
                 }
                 DispatchQueue.main.async
                 {

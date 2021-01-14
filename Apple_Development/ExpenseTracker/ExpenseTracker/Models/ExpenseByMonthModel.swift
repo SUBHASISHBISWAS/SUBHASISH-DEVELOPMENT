@@ -9,7 +9,7 @@ import UIKit
 
 struct ExpenseByMonthModel {
     var id: UUID
-    var description: String
+    var transactionDate: Date
     var image: UIImage
     var totalAmaount : Double
 }

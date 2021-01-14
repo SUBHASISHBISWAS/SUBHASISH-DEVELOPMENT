@@ -20,7 +20,7 @@ class ExpenseByTypeManger {
         {
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            dateFormatter.dateFormat = "dd-MM-yyyy"
+            dateFormatter.dateFormat = "yyyy-MMMM-dd"
             return dateFormatter
         }()
     
@@ -57,7 +57,7 @@ class ExpenseByTypeManger {
         }
     }
     
-    class func GetExpenseOfAllTypeByMonth(completion: @escaping ([ExpenseByTypeModel]) -> (),month :String)
+    class func GetExpenseOfAllTypeByMonth(completion: @escaping ([ExpenseByTypeModel]) -> (),transactionDate :Date)
     {
         DispatchQueue.global(qos: .userInitiated).async
         {
@@ -66,8 +66,8 @@ class ExpenseByTypeManger {
             for transactionType in _typeOfTransactions
             {
             
-                let totalExpenseByTransactionType = ExpenseOfAllTypeByMonth(month: month)
-                expenseByType.append(ExpenseByTypeModel(id: UUID(), description: transactionType, image: #imageLiteral(resourceName: "SeasonalGiftCard1"),totalAmaount: 0, totalAmaountInCurrentMonth: totalExpenseByTransactionType[transactionType] ?? 0,month:month ))
+                let totalExpenseByTransactionType = ExpenseOfAllTypeByMonth(transactionDate: transactionDate)
+                expenseByType.append(ExpenseByTypeModel(id: UUID(), description: transactionType, image: #imageLiteral(resourceName: "SeasonalGiftCard1"),totalAmaount: 0, totalAmaountInCurrentMonth: totalExpenseByTransactionType[transactionType] ?? 0,month: transactionDate.month ))
                 DispatchQueue.main.async
                 {
                     completion(expenseByType)
@@ -131,14 +131,14 @@ class ExpenseByTypeManger {
     }
     
     
-    class func ExpenseOfAllTypeByMonth(month : String) -> [String: Double]  {
+    class func ExpenseOfAllTypeByMonth(transactionDate : Date) -> [String: Double]  {
         
         var expenseByType: [String: Double] = [:]
         
         do
         {
-            let monthStartDate=Date().startOfMonth()!
-            let monthEndDate=Date().endOfMonth()!
+            let monthStartDate=transactionDate.startOfMonth()!
+            let monthEndDate=transactionDate.endOfMonth()!
             
             let request = Expense.fetchRequest() as NSFetchRequest<Expense>
             let monthPred = NSPredicate(format: "(transactionDate >= %@) AND (transactionDate <= %@)", argumentArray: [monthStartDate,monthEndDate])
@@ -162,8 +162,8 @@ class ExpenseByTypeManger {
         var sumExpense : Double = 0
         for expense in expenses
         {
-            print(expenses.description)
-            if expense.transactionType == transactionType
+            
+            if (expense.transactionType == transactionType)
             {
                 sumExpense+=expense.amount
             }

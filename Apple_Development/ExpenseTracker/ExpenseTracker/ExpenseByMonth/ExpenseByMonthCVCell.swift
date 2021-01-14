@@ -22,7 +22,7 @@ class ExpenseByMonthCVCell: UICollectionViewCell {
         
         //_totalExpenseLabel.text = "\(monthlyOverviewModel.description)"
         _monthsImage.image=monthlyOverviewModel.image
-        _monthLabel.text = monthlyOverviewModel.description
+        _monthLabel.text = "\(monthlyOverviewModel.transactionDate.month)"
         
         _totalExpenseLabel.text = "\(Int(monthlyOverviewModel.totalAmaount))"
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YearlyExpenseViewController: UIViewController {
+class MonthlyExpenseByTypeCollectionView: UIViewController {
 
     @IBOutlet weak var expenceCollectionView: UICollectionView!
     
@@ -15,7 +15,7 @@ class YearlyExpenseViewController: UIViewController {
     
     let _typeOfTransactions = ["Cash", "HDFC", "ICICI","AMEX","CITY","RBL","INDUS","SC"]
     
-    var monthName : String?
+    var transactionDate : Date?
     
     var _expenseByTypes = [ExpenseByTypeModel]()
     
@@ -30,7 +30,7 @@ class YearlyExpenseViewController: UIViewController {
             guard let self = self else { return }
             self._expenseByTypes=ExpenseByTypeModels
             self.expenceCollectionView.reloadData()
-        },month: monthName!)
+        },transactionDate: transactionDate! )
         
     }
     
@@ -39,14 +39,14 @@ class YearlyExpenseViewController: UIViewController {
     }
     
 }
-extension YearlyExpenseViewController:UICollectionViewDelegate
+extension MonthlyExpenseByTypeCollectionView:UICollectionViewDelegate
 {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 }
 
-extension YearlyExpenseViewController : UICollectionViewDataSource {
+extension MonthlyExpenseByTypeCollectionView : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _expenseByTypes.count
@@ -63,7 +63,7 @@ extension YearlyExpenseViewController : UICollectionViewDataSource {
     
 }
 
-extension YearlyExpenseViewController : UICollectionViewDelegateFlowLayout
+extension MonthlyExpenseByTypeCollectionView : UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

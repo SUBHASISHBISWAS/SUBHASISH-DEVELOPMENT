@@ -55,8 +55,8 @@ extension AddExpenseViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if (collectionView == _expenseByMonthCView)
         {
-            let yearlyExpenseViewController = storyboard?.instantiateViewController(identifier: "monthlyExpenseTypeOverview") as? YearlyExpenseViewController
-            yearlyExpenseViewController?.monthName = _expenseByMonths[indexPath.item].description
+            let yearlyExpenseViewController = storyboard?.instantiateViewController(identifier: "monthlyExpenseTypeOverview") as? MonthlyExpenseByTypeCollectionView
+            yearlyExpenseViewController?.transactionDate = _expenseByMonths[indexPath.item].transactionDate
             self.navigationController?.pushViewController(yearlyExpenseViewController!, animated: true)
         }
         
