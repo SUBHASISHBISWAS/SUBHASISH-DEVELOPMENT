@@ -12,7 +12,7 @@ import UIKit
 
 class ExpenseByTypeManger {
     
-    static let _typeOfTransactions = ["Cash", "HDFC", "ICICI","AMEX","CITY","RBL","INDUS","SC"]
+    static let _typeOfTransactions = ["Cash", "HDFC", "ICICI","AMEX","SBI","CITY","RBL","INDUS","SC"]
     
     static let _months=["2-1-2021","1-2-2021","1-3-2021","1-4-2021","1-5-2021","1-6-2021","1-7-2021","1-8-2021","1-9-2021","1-10-2021","1-11-2021","1-12-2021",]
     
@@ -46,8 +46,28 @@ class ExpenseByTypeManger {
             for transactionType in _typeOfTransactions
             {
             
-                let (totalExpenseByTransactionType, totalExpenseByMonth)=GetExpenseByTypeInCurrentMonth(transactionType: transactionType)
-                expenseByType.append(ExpenseByTypeModel(id: UUID(), description: transactionType, image: #imageLiteral(resourceName: "SeasonalGiftCard1"),totalAmaount: totalExpenseByTransactionType, totalAmaountInCurrentMonth: totalExpenseByMonth,month:Date().month ))
+                let (totalExpenseByTransactionType, totalExpenseByMonth)=ExpenseByTypeInCurrentMonth(transactionType: transactionType)
+                expenseByType.append(ExpenseByTypeModel(id: UUID(), description: transactionType, image: #imageLiteral(resourceName: "month1"),totalAmaount: totalExpenseByTransactionType, totalAmaountInCurrentMonth: totalExpenseByMonth,month:Date().month ))
+                DispatchQueue.main.async
+                {
+                    completion(expenseByType)
+                }
+            }
+        
+        }
+    }
+    
+    class func GetExpenseOfAllTypeByMonth(completion: @escaping ([ExpenseByTypeModel]) -> (),month :String)
+    {
+        DispatchQueue.global(qos: .userInitiated).async
+        {
+            var expenseByType = [ExpenseByTypeModel]()
+            
+            for transactionType in _typeOfTransactions
+            {
+            
+                let totalExpenseByTransactionType = ExpenseOfAllTypeByMonth(month: month)
+                expenseByType.append(ExpenseByTypeModel(id: UUID(), description: transactionType, image: #imageLiteral(resourceName: "SeasonalGiftCard1"),totalAmaount: 0, totalAmaountInCurrentMonth: totalExpenseByTransactionType[transactionType] ?? 0,month:month ))
                 DispatchQueue.main.async
                 {
                     completion(expenseByType)
@@ -58,9 +78,7 @@ class ExpenseByTypeManger {
     }
     
     
-    
-    
-    class func GetExpenseByExpensType(transactionType : String) -> Double  {
+    class func ExpenseByExpensType(transactionType : String) -> Double  {
         
         var totalExpenseByTransactionType :Double = 0
         
@@ -73,7 +91,7 @@ class ExpenseByTypeManger {
             request.predicate=NSPredicate(format: "transactionType CONTAINS '\(transactionType)'")
             
             let expenses=try? context.fetch(request)
-            totalExpenseByTransactionType = GetSumOfExpenses(expenses: expenses!)
+            totalExpenseByTransactionType = SumOfExpenses(expenses: expenses!)
             
         }
         catch{}
@@ -83,7 +101,7 @@ class ExpenseByTypeManger {
     
     
     
-    class func GetExpenseByTypeInCurrentMonth(transactionType : String) -> (Double,Double)  {
+    class func ExpenseByTypeInCurrentMonth(transactionType : String) -> (Double,Double)  {
         
         var totalExpenseByMonth :Double = 0
         var totalExpenseByTransactionType :Double = 0
@@ -96,14 +114,14 @@ class ExpenseByTypeManger {
             let trasactionTypePred = NSPredicate(format: "transactionType CONTAINS '\(transactionType)'")
             request.predicate = trasactionTypePred
             var expenses=try  context.fetch(request)
-            totalExpenseByTransactionType=GetSumOfExpenses(expenses: expenses)
+            totalExpenseByTransactionType=SumOfExpenses(expenses: expenses)
             
             let monthPred = NSPredicate(format: "(transactionDate >= %@) AND (transactionDate <= %@)", argumentArray: [monthStartDate,monthEndDate])
             let compoundPred = NSCompoundPredicate(andPredicateWithSubpredicates: [monthPred, trasactionTypePred])
             request.predicate = compoundPred
             
             expenses=try  context.fetch(request)
-            totalExpenseByMonth=GetSumOfExpenses(expenses: expenses)
+            totalExpenseByMonth=SumOfExpenses(expenses: expenses)
             
             return (totalExpenseByTransactionType, totalExpenseByMonth)
             
@@ -113,7 +131,49 @@ class ExpenseByTypeManger {
     }
     
     
-    class func GetSumOfExpenses(expenses : [Expense]) -> Double  {
+    class func ExpenseOfAllTypeByMonth(month : String) -> [String: Double]  {
+        
+        var expenseByType: [String: Double] = [:]
+        
+        do
+        {
+            let monthStartDate=Date().startOfMonth()!
+            let monthEndDate=Date().endOfMonth()!
+            
+            let request = Expense.fetchRequest() as NSFetchRequest<Expense>
+            let monthPred = NSPredicate(format: "(transactionDate >= %@) AND (transactionDate <= %@)", argumentArray: [monthStartDate,monthEndDate])
+            request.predicate = monthPred
+            let expenses=try  context.fetch(request)
+            
+            for transactioType in _typeOfTransactions
+            {
+                expenseByType[transactioType]=SumOfExpensesByType(expenses: expenses, transactionType: transactioType)
+            }
+           
+            return expenseByType
+            
+        }
+        catch{}
+        return expenseByType
+    }
+    
+    class func SumOfExpensesByType(expenses : [Expense], transactionType : String) -> Double  {
+        
+        var sumExpense : Double = 0
+        for expense in expenses
+        {
+            print(expenses.description)
+            if expense.transactionType == transactionType
+            {
+                sumExpense+=expense.amount
+            }
+            
+        }
+        return sumExpense
+    }
+    
+    
+    class func SumOfExpenses(expenses : [Expense]) -> Double  {
         var sumExpense : Double = 0
         for expense in expenses {
             sumExpense+=expense.amount

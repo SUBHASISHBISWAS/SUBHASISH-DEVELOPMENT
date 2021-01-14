@@ -51,4 +51,14 @@ extension AddExpenseViewController : UICollectionViewDataSource {
         //cell.backgroundColor=_colorData[indexPath.item]
         //return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if (collectionView == _expenseByMonthCView)
+        {
+            let yearlyExpenseViewController = storyboard?.instantiateViewController(identifier: "monthlyExpenseTypeOverview") as? YearlyExpenseViewController
+            yearlyExpenseViewController?.monthName = _expenseByMonths[indexPath.item].description
+            self.navigationController?.pushViewController(yearlyExpenseViewController!, animated: true)
+        }
+        
+    }
 }

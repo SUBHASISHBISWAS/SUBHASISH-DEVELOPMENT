@@ -431,34 +431,55 @@
         <!--Yearly Expense View Controller-->
         <scene sceneID="G0t-9b-J5S">
             <objects>
-                <viewController id="wBw-rx-i4L" customClass="YearlyExpenseViewController" customModule="ExpenseTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="monthlyExpenseTypeOverview" id="wBw-rx-i4L" customClass="YearlyExpenseViewController" customModule="ExpenseTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l0m-5E-ocJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KNf-0Y-eC2">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KNf-0Y-eC2">
                                 <rect key="frame" x="42" y="44" width="372" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="1pl-Th-5EM"/>
                                 </items>
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="foW-G3-HZi">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="10" y="98" width="394" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gbr-vD-ee5">
                                     <size key="itemSize" width="200" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ExpenseCell" id="Cpo-L9-qfl">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ExpenseCell" id="Cpo-L9-qfl" customClass="MonthlyExpenseByTypeCollectionViewCell" customModule="ExpenseTracker" customModuleProvider="target">
+                                        <rect key="frame" x="97" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoi-ZF-hv4">
+                                                    <rect key="frame" x="66" y="20" width="61" height="39"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUe-76-aSd">
+                                                    <rect key="frame" x="53" y="63" width="111" height="33"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
+                                        <connections>
+                                            <outlet property="transactionAmount" destination="EUe-76-aSd" id="nRA-Ka-fW8"/>
+                                            <outlet property="transactionType" destination="Qoi-ZF-hv4" id="1C7-aE-xfe"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -466,11 +487,10 @@
                         <viewLayoutGuide key="safeArea" id="4oK-sj-WLx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="foW-G3-HZi" firstAttribute="top" secondItem="KNf-0Y-eC2" secondAttribute="bottom" id="1XC-pp-ODm"/>
-                            <constraint firstItem="foW-G3-HZi" firstAttribute="leading" secondItem="4oK-sj-WLx" secondAttribute="leading" id="Ika-pZ-lmp"/>
-                            <constraint firstAttribute="bottom" secondItem="foW-G3-HZi" secondAttribute="bottom" id="ddV-D3-YYE"/>
-                            <constraint firstItem="foW-G3-HZi" firstAttribute="height" secondItem="l0m-5E-ocJ" secondAttribute="height" multiplier="0.901786" id="iZz-Ql-qZd"/>
-                            <constraint firstItem="foW-G3-HZi" firstAttribute="trailing" secondItem="4oK-sj-WLx" secondAttribute="trailing" id="mKO-8l-Oeo"/>
+                            <constraint firstItem="foW-G3-HZi" firstAttribute="leading" secondItem="4oK-sj-WLx" secondAttribute="leading" constant="10" id="2C2-0D-B5m"/>
+                            <constraint firstAttribute="trailing" secondItem="foW-G3-HZi" secondAttribute="trailing" constant="10" id="chr-iu-eTl"/>
+                            <constraint firstItem="foW-G3-HZi" firstAttribute="top" secondItem="4oK-sj-WLx" secondAttribute="top" constant="10" id="kil-cm-bmp"/>
+                            <constraint firstItem="foW-G3-HZi" firstAttribute="bottom" secondItem="4oK-sj-WLx" secondAttribute="bottom" id="rUB-wE-BPw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0Uk-aa-eSd"/>
@@ -480,7 +500,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3W3-7m-u9h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3019" y="834"/>
+            <point key="canvasLocation" x="3018.840579710145" y="833.70535714285711"/>
         </scene>
         <!--Expenses-->
         <scene sceneID="e60-gp-pt0">
