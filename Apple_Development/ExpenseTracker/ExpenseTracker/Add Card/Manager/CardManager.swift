@@ -130,6 +130,7 @@ class CardManager: NSObject {
         let trasactionTypePred = NSPredicate(format: "cardName CONTAINS '\(cardName)'")
         request.predicate = trasactionTypePred
         cards=try! context.fetch(request)
+        if cards.count == 0 {return}
         completion(cards.first!)
         
         /*
@@ -152,21 +153,16 @@ class CardManager: NSObject {
         let cardNamePred = NSPredicate(format: "cardName CONTAINS '\(cardName)'")
         request.predicate = cardNamePred
         let cards = try! context.fetch(request)
-        
-        if (try! context.fetch(request).count == 0)
-        {
-            return 0
-        }
-        
+        if (cards.count == 0){return 0}
         
         let card=cards.first!
         switch expenseDuration {
             case .currentMonth:
                 
                 
-                let originalStatementDate=card.statementDate!
+                let originalStatementDate=card.statementDate
                 
-                let originalStatementDateComponents = Calendar.current.dateComponents([.day, .month,.year],from: originalStatementDate)
+                let originalStatementDateComponents = Calendar.current.dateComponents([.day, .month,.year],from: originalStatementDate!)
                 var currentDateComponents = Calendar.current.dateComponents([.day, .month,.year],from: Date())
                 currentDateComponents.day = originalStatementDateComponents.day
                 currentDateComponents.month = currentDateComponents.month
@@ -219,17 +215,6 @@ class CardManager: NSObject {
         }
     
     }
-    
-    /*
-    class func GetTotalExpenses()->Int64
-    {
-        var totalExpense : Int64=0;
-        for card in GetCards() {
-            totalExpense+=card.creditLimit
-        }
-        return totalExpense
-    }
-    */
     
     class func getCurrentTimeZone() -> String{
 

@@ -24,8 +24,6 @@ class ExpenseByTypeManger {
             return context!
         }()
     
-    
-    
     class func GetExpenesByTranctaionType(completion: @escaping ([ExpenseByTypeModel]) -> ())
     {
         DispatchQueue.global(qos: .userInitiated).async
@@ -45,17 +43,42 @@ class ExpenseByTypeManger {
         }
     }
     
-    class func UpdateTransactionTypeModel(completion: @escaping ([ExpenseByTypeModel]) -> ())
+    class func map(cards : [Card],completion: @escaping ([ExpenseByTypeModel]) -> ())
     {
-        var expenseByType = [ExpenseByTypeModel]()
-        for transactionType in CardManager._cardTypes
+        DispatchQueue.global(qos: .userInitiated).async
         {
+            var expenseByType = [ExpenseByTypeModel]()
+            var currentMonthExpense : Double = 0
+            var currentYearExpense : Double = 0
+            var totalExpense : Double = 0
+            for card in cards
+            {
+                let transactionType = card.cardName!
+                
+                GetExpenseByExpenseDuration(transactionType: transactionType, expenseDuration: .currentMonth) { (transactionType,expenseDuration) -> () in
+                    currentMonthExpense = CardManager.GetExpenseByCardType(cardName: transactionType, expenseDuration: expenseDuration)
+                }
+                
+                GetExpenseByExpenseDuration(transactionType: transactionType, expenseDuration: .currentYear) { (transactionType,expenseDuration) -> () in
+                    currentYearExpense = CardManager.GetExpenseByCardType(cardName: transactionType, expenseDuration: expenseDuration)
+                }
+                
+                GetExpenseByExpenseDuration(transactionType: transactionType, expenseDuration: .all) { (transactionType,expenseDuration) -> () in
+                    totalExpense = CardManager.GetExpenseByCardType(cardName: transactionType, expenseDuration: expenseDuration)
+                }
+                
+                
+                expenseByType.append(ExpenseByTypeModel(id: UUID(), description: transactionType, image: #imageLiteral(resourceName: "Card BG"),totalAmaount: totalExpense, totalAmaountInCurrentMonth: currentMonthExpense,totalAmaountInCurrentYear:currentYearExpense,month:Date().month ))
+                
+                DispatchQueue.main.async
+                {
+                    completion(expenseByType)
+                }
+            }
         
-            let (totalExpenseByMonth,totalExpenseByYear,totalExpense)=AllExpenseByCardType(transactionType: transactionType)
-            expenseByType.append(ExpenseByTypeModel(id: UUID(), description: transactionType, image: #imageLiteral(resourceName: "Card BG"),totalAmaount: totalExpense, totalAmaountInCurrentMonth: totalExpenseByMonth,totalAmaountInCurrentYear:totalExpenseByYear,month:Date().month ))
-            completion(expenseByType)
         }
     }
+    
     
     class func GetExpenseOfAllTypeByMonth(completion: @escaping ([ExpenseByTypeModel]) -> (),transactionDate :Date)
     {
@@ -76,7 +99,7 @@ class ExpenseByTypeManger {
         
         }
     }
-    
+    /*
     class func ExpenseByExpensType(transactionType : String) -> Double  {
         
         var totalExpenseByTransactionType :Double = 0
@@ -89,6 +112,32 @@ class ExpenseByTypeManger {
         
         return totalExpenseByTransactionType
     }
+    */
+    
+    /*
+    class func UpdateTransactionTypeModel(completion: @escaping ([ExpenseByTypeModel]) -> ())
+    {
+        var expenseByType = [ExpenseByTypeModel]()
+        for transactionType in CardManager._cardTypes
+        {
+        
+            let (totalExpenseByMonth,totalExpenseByYear,totalExpense)=AllExpenseByCardType(transactionType: transactionType)
+            expenseByType.append(ExpenseByTypeModel(id: UUID(), description: transactionType, image: #imageLiteral(resourceName: "Card BG"),totalAmaount: totalExpense, totalAmaountInCurrentMonth: totalExpenseByMonth,totalAmaountInCurrentYear:totalExpenseByYear,month:Date().month ))
+            completion(expenseByType)
+        }
+    }
+    */
+    
+    /*
+    class func SumOfExpenses(expenses : [Expense]) -> Double  {
+        var sumExpense : Double = 0
+        for expense in expenses {
+            sumExpense+=expense.amount
+        }
+        return sumExpense
+    }
+    */
+    
     
     private class func AllExpenseByCardType(transactionType : String) -> (Double,Double,Double)  {
         
@@ -99,6 +148,14 @@ class ExpenseByTypeManger {
         totalExpenseByYear = CardManager.GetExpenseByCardType(cardName: transactionType, expenseDuration: .currentYear)
         totalExpense = CardManager.GetExpenseByCardType(cardName: transactionType, expenseDuration: .all)
         return (totalExpenseByMonth, totalExpenseByYear,totalExpense)
+        
+        
+    }
+    
+    private class func GetExpenseByExpenseDuration(transactionType : String, expenseDuration : ExpenseDuration, getExpense: (String, ExpenseDuration)->())  {
+        
+        getExpense(transactionType,.currentYear)
+
     }
     
     class func ExpenseOfAllTypeByMonth(transactionDate : Date) -> [String: Double]  {
@@ -138,14 +195,6 @@ class ExpenseByTypeManger {
                 sumExpense+=expense.amount
             }
             
-        }
-        return sumExpense
-    }
-    
-    class func SumOfExpenses(expenses : [Expense]) -> Double  {
-        var sumExpense : Double = 0
-        for expense in expenses {
-            sumExpense+=expense.amount
         }
         return sumExpense
     }
