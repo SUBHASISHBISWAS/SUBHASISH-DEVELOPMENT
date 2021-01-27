@@ -15,6 +15,7 @@ class ExpenseByTypeCVCell: UICollectionViewCell {
     @IBOutlet weak var _currentMonthLabel: UILabel!
     @IBOutlet weak var _currentMonthTotalAmaountLabel: UILabel!
     
+    @IBOutlet weak var _currentYearExpense: UILabel!
     func setup(backgroundColor : UIColor, count : Int) {
         self.backgroundColor=backgroundColor
         _totalExpenseLabel.text = "\(count)"
@@ -22,12 +23,12 @@ class ExpenseByTypeCVCell: UICollectionViewCell {
     
     func setup(expenseByType : ExpenseByTypeModel) {
         
-        //_totalExpenseLabel.text = "\(monthlyOverviewModel.description)"
+        
         _expenTypeImage.image=expenseByType.image
         _typeOfExpenseLabel.text = expenseByType.description
-        
-        _totalExpenseLabel.text = ": " + "\(Int(expenseByType.totalAmaount))"
-        _currentMonthTotalAmaountLabel.text = ": " + "\(Int(expenseByType.totalAmaountInCurrentMonth))"
+        _totalExpenseLabel.text = "\(Int(expenseByType.totalAmaount))"
+        _currentMonthTotalAmaountLabel.text = "\(Int(expenseByType.totalAmaountInCurrentMonth))"
+        _currentYearExpense.text = "\(Int(expenseByType.totalAmaountInCurrentYear))"
         _currentMonthLabel.text = expenseByType.month
         
     }

@@ -12,48 +12,48 @@ import UIKit
 
 class ExpenseByTypeManger {
     
-    static let _typeOfTransactions = ["Cash", "HDFC", "ICICI","AMEX","SBI","CITY","RBL","INDUS","SC"]
-    
-    static let _months=["2-1-2021","1-2-2021","1-3-2021","1-4-2021","1-5-2021","1-6-2021","1-7-2021","1-8-2021","1-9-2021","1-10-2021","1-11-2021","1-12-2021",]
-    
-    static let _expenseDateFormatter: DateFormatter =
-        {
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            dateFormatter.dateFormat = "yyyy-MMMM-dd"
-            return dateFormatter
-        }()
-    
+    /*
+    static var _typeOfTransactions : [String]={
+        return CardManager._cardTypes
+    }()
+    */
     static let context : NSManagedObjectContext =
         {
             var context : NSManagedObjectContext?
             context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            DispatchQueue.main.async
-            {
-                //context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            }
             return context!
         }()
     
-    //static let  context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     
     class func GetExpenesByTranctaionType(completion: @escaping ([ExpenseByTypeModel]) -> ())
     {
         DispatchQueue.global(qos: .userInitiated).async
         {
-            var expenseByType = [ExpenseByTypeModel
-            ]()
-            for transactionType in _typeOfTransactions
+            var expenseByType = [ExpenseByTypeModel]()
+            for transactionType in CardManager._cardTypes
             {
             
-                let (totalExpenseByTransactionType, totalExpenseByMonth)=ExpenseByTypeInCurrentMonth(transactionType: transactionType)
-                expenseByType.append(ExpenseByTypeModel(id: UUID(), description: transactionType, image: #imageLiteral(resourceName: "month1"),totalAmaount: totalExpenseByTransactionType, totalAmaountInCurrentMonth: totalExpenseByMonth,month:Date().month ))
+                let (totalExpenseByMonth,totalExpenseByYear,totalExpense)=AllExpenseByCardType(transactionType: transactionType)
+                expenseByType.append(ExpenseByTypeModel(id: UUID(), description: transactionType, image: #imageLiteral(resourceName: "Card BG"),totalAmaount: totalExpense, totalAmaountInCurrentMonth: totalExpenseByMonth,totalAmaountInCurrentYear:totalExpenseByYear,month:Date().month ))
                 DispatchQueue.main.async
                 {
                     completion(expenseByType)
                 }
             }
         
+        }
+    }
+    
+    class func UpdateTransactionTypeModel(completion: @escaping ([ExpenseByTypeModel]) -> ())
+    {
+        var expenseByType = [ExpenseByTypeModel]()
+        for transactionType in CardManager._cardTypes
+        {
+        
+            let (totalExpenseByMonth,totalExpenseByYear,totalExpense)=AllExpenseByCardType(transactionType: transactionType)
+            expenseByType.append(ExpenseByTypeModel(id: UUID(), description: transactionType, image: #imageLiteral(resourceName: "Card BG"),totalAmaount: totalExpense, totalAmaountInCurrentMonth: totalExpenseByMonth,totalAmaountInCurrentYear:totalExpenseByYear,month:Date().month ))
+            completion(expenseByType)
         }
     }
     
@@ -63,11 +63,11 @@ class ExpenseByTypeManger {
         {
             var expenseByType = [ExpenseByTypeModel]()
             
-            for transactionType in _typeOfTransactions
+            for transactionType in CardManager._cardTypes
             {
             
                 let totalExpenseByTransactionType = ExpenseOfAllTypeByMonth(transactionDate: transactionDate)
-                expenseByType.append(ExpenseByTypeModel(id: UUID(), description: transactionType, image: #imageLiteral(resourceName: "SeasonalGiftCard1"),totalAmaount: 0, totalAmaountInCurrentMonth: totalExpenseByTransactionType[transactionType] ?? 0,month: transactionDate.month ))
+                expenseByType.append(ExpenseByTypeModel(id: UUID(), description: transactionType, image: #imageLiteral(resourceName: "Card BG"),totalAmaount: 0, totalAmaountInCurrentMonth: totalExpenseByTransactionType[transactionType] ?? 0,totalAmaountInCurrentYear:0,month: transactionDate.month ))
                 DispatchQueue.main.async
                 {
                     completion(expenseByType)
@@ -77,59 +77,29 @@ class ExpenseByTypeManger {
         }
     }
     
-    
     class func ExpenseByExpensType(transactionType : String) -> Double  {
         
         var totalExpenseByTransactionType :Double = 0
         
-        do
-        {
-            //let monthStartDate=Date().startOfMonth()
-            //let monthEndDate=Date().endOfMonth()
-            
-            let request = Expense.fetchRequest() as NSFetchRequest<Expense>
-            request.predicate=NSPredicate(format: "transactionType CONTAINS '\(transactionType)'")
-            
-            let expenses=try? context.fetch(request)
-            totalExpenseByTransactionType = SumOfExpenses(expenses: expenses!)
-            
-        }
-        catch{}
+        let request = Expense.fetchRequest() as NSFetchRequest<Expense>
+        request.predicate=NSPredicate(format: "transactionType CONTAINS '\(transactionType)'")
+        
+        let expenses=try! context.fetch(request)
+        totalExpenseByTransactionType = SumOfExpenses(expenses: expenses)
         
         return totalExpenseByTransactionType
     }
     
-    
-    
-    class func ExpenseByTypeInCurrentMonth(transactionType : String) -> (Double,Double)  {
+    private class func AllExpenseByCardType(transactionType : String) -> (Double,Double,Double)  {
         
         var totalExpenseByMonth :Double = 0
-        var totalExpenseByTransactionType :Double = 0
-        do
-        {
-            let monthStartDate=Date().startOfMonth()!
-            let monthEndDate=Date().endOfMonth()!
-            
-            let request = Expense.fetchRequest() as NSFetchRequest<Expense>
-            let trasactionTypePred = NSPredicate(format: "transactionType CONTAINS '\(transactionType)'")
-            request.predicate = trasactionTypePred
-            var expenses=try  context.fetch(request)
-            totalExpenseByTransactionType=SumOfExpenses(expenses: expenses)
-            
-            let monthPred = NSPredicate(format: "(transactionDate >= %@) AND (transactionDate <= %@)", argumentArray: [monthStartDate,monthEndDate])
-            let compoundPred = NSCompoundPredicate(andPredicateWithSubpredicates: [monthPred, trasactionTypePred])
-            request.predicate = compoundPred
-            
-            expenses=try  context.fetch(request)
-            totalExpenseByMonth=SumOfExpenses(expenses: expenses)
-            
-            return (totalExpenseByTransactionType, totalExpenseByMonth)
-            
-        }
-        catch{}
-        return (totalExpenseByTransactionType, totalExpenseByMonth)
+        var totalExpenseByYear :Double = 0
+        var totalExpense :Double = 0
+        totalExpenseByMonth = CardManager.GetExpenseByCardType(cardName: transactionType, expenseDuration: .currentMonth)
+        totalExpenseByYear = CardManager.GetExpenseByCardType(cardName: transactionType, expenseDuration: .currentYear)
+        totalExpense = CardManager.GetExpenseByCardType(cardName: transactionType, expenseDuration: .all)
+        return (totalExpenseByMonth, totalExpenseByYear,totalExpense)
     }
-    
     
     class func ExpenseOfAllTypeByMonth(transactionDate : Date) -> [String: Double]  {
         
@@ -145,7 +115,7 @@ class ExpenseByTypeManger {
             request.predicate = monthPred
             let expenses=try  context.fetch(request)
             
-            for transactioType in _typeOfTransactions
+            for transactioType in CardManager._cardTypes
             {
                 expenseByType[transactioType]=SumOfExpensesByType(expenses: expenses, transactionType: transactioType)
             }
@@ -171,7 +141,6 @@ class ExpenseByTypeManger {
         }
         return sumExpense
     }
-    
     
     class func SumOfExpenses(expenses : [Expense]) -> Double  {
         var sumExpense : Double = 0

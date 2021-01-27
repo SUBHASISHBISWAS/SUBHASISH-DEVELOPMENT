@@ -111,5 +111,6 @@ extension ExpensesViewController :UITableViewDataSource
             ExpenseManager.DeleteExpense(id: indexPath.item)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
         }
+        
     }
 }

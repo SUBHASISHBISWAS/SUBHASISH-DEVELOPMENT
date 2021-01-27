@@ -2,7 +2,7 @@
 //  Expense+CoreDataProperties.swift
 //  ExpenseTracker
 //
-//  Created by SUBHASISH BISWAS on 08/01/21.
+//  Created by SUBHASISH BISWAS on 19/01/21.
 //
 //
 
@@ -17,10 +17,11 @@ extension Expense {
     }
 
     @NSManaged public var amount: Double
-    @NSManaged public var transactionDescription: String?
-    @NSManaged public var transactionType: String?
     @NSManaged public var id: UUID?
     @NSManaged public var transactionDate: Date?
+    @NSManaged public var transactionDescription: String?
+    @NSManaged public var transactionType: String?
+    @NSManaged public var card: Card?
 
 }
 

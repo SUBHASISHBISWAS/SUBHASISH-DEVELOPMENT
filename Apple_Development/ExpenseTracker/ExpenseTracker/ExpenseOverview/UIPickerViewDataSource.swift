@@ -8,25 +8,166 @@
 import Foundation
 import UIKit
 
-extension AddExpenseViewController : UIPickerViewDataSource
+
+class ExpensePickerViewDataSource : NSObject,UIPickerViewDataSource,UIPickerViewDelegate
 {
+    var _delegate : UpdateDateSource?
+    
+    let _expensePickerViewDataProvider : ExpensePickerViewDataProvider
+    
+    init(expensePickerViewDataProvider : ExpensePickerViewDataProvider)
+    {
+        _expensePickerViewDataProvider = expensePickerViewDataProvider
+        self._delegate = self._expensePickerViewDataProvider
+    }
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return _expensePickerViewDataProvider.numberOfComponents(in: pickerView)
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return _expensePickerViewDataProvider.numberOfComponentsInPickerView(pickerView: pickerView)
+        }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return _expensePickerViewDataProvider.pickerView(pickerView, numberOfRowsInComponent: component)
+        }
+    
+        
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return _expensePickerViewDataProvider.pickerView(pickerView, titleForRow: row, forComponent: component)
+        }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        _expensePickerViewDataProvider.pickerView(pickerView, didSelectRow: row, inComponent: component)
+    }
+}
+
+protocol ExpensePickerViewDataProvider : UpdateDateSource {
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+}
+
+class ExpenseTypePickerViewDataProvider: ExpensePickerViewDataProvider {
+    func UpdateDataSource(data: Any?) {
+        
+        _data = data as! [String]
+    }
+    
+    
+    var _data : [String]
+    let _viewController : UIViewController
+    init(data : [String],viewController : UIViewController) {
+        _data=data
+        _viewController = viewController
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return _data.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return _data[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let viewController = _viewController as! AddExpenseViewController
+        viewController._transactionType.text = _data[row]
+        viewController._transactionType.resignFirstResponder()
+        
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    // Sets the number of rows in the picker view
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            return _typeOfTransactions.count
-        }
+}
+
+class CardeTypePickerViewDataProvider: ExpensePickerViewDataProvider {
+    func UpdateDataSource(data: Any?) {
+        _data = data as! [String]
+    }
     
-        // This function sets the text of the picker view to the content of the "salutations" array
+    
+    var _data : [String]
+    let _viewController : UIViewController
+    init(data : [String],viewController : UIViewController) {
+        _data=data
+        _viewController = viewController
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return _data.count
+    }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            return _typeOfTransactions[row]
-        }
+        return _data[row]
+    }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let viewController = _viewController as! AddCardViewController
+        viewController._cardTypeText.text = _data[row]
+        viewController._cardTypeText.resignFirstResponder()
         
-        _transactionType.text=_typeOfTransactions[row]
-        _transactionType.resignFirstResponder()
     }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
 }
+
+class TransactionTypePickerViewDataProvider: ExpensePickerViewDataProvider {
+    func UpdateDataSource(data: Any?) {
+        _data = data as! [Card]
+    }
+    
+    
+    var _data : [Card]
+    let _viewController : UIViewController
+    init(data : [Card],viewController : UIViewController) {
+        _data=data
+        _viewController = viewController
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return _data.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return _data[row].cardName
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let viewController = _viewController as! AddExpenseViewController
+        viewController._transactionType.text = _data[row].cardName
+        viewController._transactionType.resignFirstResponder()
+        
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+}
+
+

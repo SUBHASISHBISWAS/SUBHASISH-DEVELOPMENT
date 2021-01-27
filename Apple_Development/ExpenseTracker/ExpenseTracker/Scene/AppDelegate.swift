@@ -38,11 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let container = NSPersistentCloudKitContainer(name: "ExpenseTracker")
         
-        let localStoreLocation = assetFilesDirectory(name: "ExpenseTracker/local.store", shouldCreate: true)!//
-        let localStoreDescription =
-                    NSPersistentStoreDescription(url: localStoreLocation)
-                localStoreDescription.configuration = "Local"
+        //let localStoreLocation = assetFilesDirectory(name: "ExpenseTracker/local.store", shouldCreate: true)!//
+        //let localStoreDescription =
+                  //  NSPersistentStoreDescription(url: localStoreLocation)
+                //localStoreDescription.configuration = "Local"
         
+        /*
         let cloudStoreLocation  = assetFilesDirectory(name: "ExpenseTracker/icloud.store", shouldCreate: true)!
                let cloudStoreDescription =
                    NSPersistentStoreDescription(url: cloudStoreLocation)
@@ -52,10 +53,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         cloudStoreDescription.cloudKitContainerOptions =
                     NSPersistentCloudKitContainerOptions(
                         containerIdentifier: "iCloud.com.subhasishbiswas.expensetracker")
-        container.persistentStoreDescriptions = [
-                   cloudStoreDescription,
-                   localStoreDescription
-               ]
+ */
+        //container.persistentStoreDescriptions = [
+                   //cloudStoreDescription,
+                  // localStoreDescription
+               //]
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {

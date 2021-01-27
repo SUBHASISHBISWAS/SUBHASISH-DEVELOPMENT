@@ -14,5 +14,6 @@ struct ExpenseByTypeModel {
     var image: UIImage
     var totalAmaount : Double
     var totalAmaountInCurrentMonth : Double
+    var totalAmaountInCurrentYear : Double
     var month : String
 }

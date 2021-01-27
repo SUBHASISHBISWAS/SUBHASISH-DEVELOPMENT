@@ -28,6 +28,12 @@ class ExpenseManager: NSObject {
         }()
     
     class func AddExpense(amount :Double, transactionDescription :String, transactionType :String , transactionDate : Date) {
+        
+        var transactionCard : Card?
+        CardManager.GetCard(cardName: transactionType) { (card) in
+            transactionCard=card
+        }
+        
         let expense=Expense(context: context)
         
         expense.id=UUID()
@@ -35,13 +41,21 @@ class ExpenseManager: NSObject {
         expense.transactionDescription=transactionDescription
         expense.transactionType=transactionType
         expense.transactionDate=transactionDate
+
+        var currentMonthExpense=CardManager.GetExpenseByCardType(cardName: transactionType, expenseDuration: .currentMonth)
+        currentMonthExpense+=amount
+        var currentYearExpense=CardManager.GetExpenseByCardType(cardName: transactionType, expenseDuration: .currentYear)
+        currentYearExpense+=amount
+        var allExpense=CardManager.GetExpenseByCardType(cardName: transactionType, expenseDuration: .all)
+        allExpense+=amount
         
-        do
-        {
-            try self.context.save()
-            expenses.append(expense)
-        }
-        catch{}
+        transactionCard?.addToExpenses(expense)
+        transactionCard?.currentMonthExpense = currentMonthExpense
+        transactionCard?.currentYearExpense = currentYearExpense
+        transactionCard?.totalExpense = allExpense
+        
+        try! self.context.save()
+        expenses.append(expense)
     }
     
     class func DeleteExpense(id :Int)
@@ -50,21 +64,13 @@ class ExpenseManager: NSObject {
         expenses.remove(at: id)
         self.context.delete(expenseToRemove)
         
-        do
-        {
-            try self.context.save()
-        }
-        catch{}
+        try! self.context.save()
         
     }
     
     class func GetExpense(id :Int) -> Expense
     {
-        do
-        {
-            self.expenses = try  context.fetch(Expense.fetchRequest())
-        }
-        catch{}
+        self.expenses = try!  context.fetch(Expense.fetchRequest())
         
         if (expenses.count > 0)
         {
@@ -75,11 +81,7 @@ class ExpenseManager: NSObject {
     
     class func GetExpenses() -> [Expense]
     {
-        do
-        {
-            self.expenses = try  context.fetch(Expense.fetchRequest())
-        }
-        catch{}
+        self.expenses = try!  context.fetch(Expense.fetchRequest())
         
         return expenses
     }
@@ -88,51 +90,37 @@ class ExpenseManager: NSObject {
     {
         var totalExpense : Double=0;
         
-        do
-        {
-            for expense in GetExpenses() {
-                totalExpense+=expense.amount
-            }
-            
+        for expense in GetExpenses() {
+            totalExpense+=expense.amount
         }
-        catch{}
         return totalExpense
     }
     
     class func GetExpenseByMonth(expenseDate : Date) -> Double  {
         
         var totalExpenseByMonth :Double = 0
-        do
-        {
-            let monthStartDate=expenseDate.startOfMonth()!
-            let monthEndDate=expenseDate.endOfMonth()!
-            
-            let request = Expense.fetchRequest() as NSFetchRequest<Expense>
-            request.predicate = NSPredicate(format: "(transactionDate >= %@) AND (transactionDate <= %@)", argumentArray: [monthStartDate,monthEndDate])
-            let expenses=try  context.fetch(request)
-            
-            totalExpenseByMonth=GetSumOfExpenses(expenses: expenses)
-        }
-        catch{}
+        let monthStartDate=expenseDate.startOfMonth()!
+        let monthEndDate=expenseDate.endOfMonth()!
+        
+        let request = Expense.fetchRequest() as NSFetchRequest<Expense>
+        request.predicate = NSPredicate(format: "(transactionDate >= %@) AND (transactionDate <= %@)", argumentArray: [monthStartDate,monthEndDate])
+        let expenses=try!  context.fetch(request)
+        
+        totalExpenseByMonth=GetSumOfExpenses(expenses: expenses)
         return totalExpenseByMonth
     }
     
     class func GetExpenseByExpensType(transactionType : String) -> Double  {
         
         var totalExpenseByTransactionType :Double = 0
-        do
-        {
-            //let monthStartDate=Date().startOfMonth()
-            //let monthEndDate=Date().endOfMonth()
-            
-            let request = Expense.fetchRequest() as NSFetchRequest<Expense>
-            request.predicate=NSPredicate(format: "transactionType CONTAINS '\(transactionType)'")
+        //let monthStartDate=Date().startOfMonth()
+        //let monthEndDate=Date().endOfMonth()
+        
+        let request = Expense.fetchRequest() as NSFetchRequest<Expense>
+        request.predicate=NSPredicate(format: "transactionType CONTAINS '\(transactionType)'")
 
-            let expenses=try context.fetch(request)
-            totalExpenseByTransactionType = GetSumOfExpenses(expenses: expenses)
-            
-        }
-        catch{}
+        let expenses=try! context.fetch(request)
+        totalExpenseByTransactionType = GetSumOfExpenses(expenses: expenses)
         
         return totalExpenseByTransactionType
     }
