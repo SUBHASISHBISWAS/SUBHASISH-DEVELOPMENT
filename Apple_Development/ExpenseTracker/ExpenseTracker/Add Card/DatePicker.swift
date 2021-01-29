@@ -11,7 +11,10 @@ import UIKit
 extension AddCardViewController : UITextFieldDelegate
 {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.openDatePicker(textField : textField)
+        if textField != self._cardNumberText {
+            self.openDatePicker(textField : textField)
+        }
+        
     }
     
     func openDatePicker(textField : UITextField) {

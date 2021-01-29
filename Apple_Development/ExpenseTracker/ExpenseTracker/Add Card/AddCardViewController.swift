@@ -37,7 +37,7 @@ class AddCardViewController: UIViewController {
         _expiryDate.delegate=self
         _statementDateText.delegate = self
         _dueDateText.delegate = self
-
+        _cardNumberText.delegate = self
         self._cardTypePickerViewDataSource=ExpensePickerViewDataSource(expensePickerViewDataProvider: CardeTypePickerViewDataProvider(data: _cardType, viewController: self))
         _cardTypePickerView.dataSource = _cardTypePickerViewDataSource
         _cardTypePickerView.delegate = _cardTypePickerViewDataSource
@@ -84,10 +84,56 @@ class AddCardViewController: UIViewController {
        
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
-        guard CharacterSet(charactersIn: "0123456789").isSuperset(of: CharacterSet(charactersIn: string)) else {
-            return false
+        
+        if (textField == _cardNumberText)
+        {
+            if [6, 11, 16].contains(textField.text?.count ?? 0) && string.isEmpty
+            {
+                    textField.text = String(textField.text!.dropLast())
+                    return true
+            }
+            let text = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string).replacingOccurrences(of: "-", with: "")
+            
+            if text.count >= 4 && text.count <= 16
+            {
+                var newString = ""
+                for i in stride(from: 0, to: text.count, by: 4)
+                {
+                    let upperBoundIndex = i + 4
+                    let lowerBound = String.Index.init(encodedOffset: i)
+                    let upperBound = String.Index.init(encodedOffset: upperBoundIndex)
+                    if upperBoundIndex <= text.count
+                    {
+                        newString += String(text[lowerBound..<upperBound]) + "-"
+                        if newString.count > 19
+                        {
+                            newString = String(newString.dropLast())
+                        }
+                    }
+                    else if i <= text.count
+                    {
+                        newString += String(text[lowerBound...])
+                    }
+                }
+                textField.text = newString
+                return false
+            }
+            if text.count > 16
+            {
+                return false
+            }
+            return true
         }
-        return true
+        else
+        {
+            guard CharacterSet(charactersIn: "0123456789").isSuperset(of: CharacterSet(charactersIn: string)) else
+            {
+                return false
+            }
+            return true
+        }
+        
+        
     }
     
     

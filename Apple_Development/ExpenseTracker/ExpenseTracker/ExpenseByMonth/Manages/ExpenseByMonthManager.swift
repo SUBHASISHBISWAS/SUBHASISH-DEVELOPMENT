@@ -49,7 +49,7 @@ class ExpenseByMonthManager {
                 if let date = _expenseDateFormatter.date(from: month)?.dateInLocalTimeZone()
                 {
                     let totalExpense=GetExpenseByMonth(expenseDate: date)
-                    giftCardModels.append(ExpenseByMonthModel(id: UUID(), transactionDate: date, image: #imageLiteral(resourceName: "SeasonalGiftCard1"),totalAmaount: totalExpense))
+                    giftCardModels.append(ExpenseByMonthModel(id: UUID(), transactionDate: date, image: #imageLiteral(resourceName: "Month"),totalAmaount: totalExpense))
                 }
                 DispatchQueue.main.async
                 {
@@ -69,7 +69,7 @@ class ExpenseByMonthManager {
             {
                 let date = _expenseDateFormatter.date(from: month)?.dateInLocalTimeZone()
                 let totalExpense=GetYearlyExpenseByMonth(cards,expenseDate: date!)
-                giftCardModels.append(ExpenseByMonthModel(id: UUID(), transactionDate: date!, image: #imageLiteral(resourceName: "SeasonalGiftCard1"),totalAmaount: totalExpense))
+                giftCardModels.append(ExpenseByMonthModel(id: UUID(), transactionDate: date!, image: #imageLiteral(resourceName: "Month"),totalAmaount: totalExpense))
                 
                 DispatchQueue.main.async
                 {
@@ -98,7 +98,6 @@ class ExpenseByMonthManager {
                 
                 let date = Calendar.current.date(from: components)!.dateInLocalTimeZone()
                 statementsDates?.append(date)
-                //print(date)
             }
             
             for statementDate in statementsDates! {
@@ -108,6 +107,7 @@ class ExpenseByMonthManager {
                 if (expenseMonth == statementMonth) {
                     monthlyTotalExpense+=CardManager.GetExpenseByCardType(cardName: card.cardName!, expenseDuration: .byMonth,statementDate: statementDate)
                 }
+                
             }
             
         }

@@ -43,6 +43,8 @@ class AddExpenseViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.expenseAmountDidChanged), name: UITextField.textDidChangeNotification, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.cardTypeDidChanged), name: UITextField.textDidChangeNotification, object: nil)
+        
         
         
         _totalExpense.textColor = UIColor.red
@@ -54,8 +56,9 @@ class AddExpenseViewController: UIViewController {
         
         _transactionType.inputView = _transactionTypePickerView
         _transactionType.textAlignment = .center
-        _transactionType.placeholder = "Select Transaction Type "
-        _transactionType.text = "HDFC"
+        _transactionType.placeholder = "Card Type "
+        //_transactionType.text = "---EXEPNSE TYPE---"
+        _expenseAmount.textAlignment = .center
         
     
         
@@ -82,7 +85,13 @@ class AddExpenseViewController: UIViewController {
             self._transactionTypePickerView.dataSource = self._expenseTypePickerViewDataSource
             self._transactionTypePickerView.delegate = self._expenseTypePickerViewDataSource
             
+            if (Cards.count > 0){
+                self._transactionTypePickerView.selectRow(0, inComponent: 0, animated: true)
+                self._expenseTypePickerViewDataSource?.pickerView(self._transactionTypePickerView, didSelectRow: 0, inComponent: 0)
+            }
         })
+        
+       
         
         _expenseTrackerNavItem.title = "Hello"
         
@@ -160,7 +169,7 @@ class AddExpenseViewController: UIViewController {
         
         handleAddButtonState()
         
-        /*
+        
         ExpenseByMonthManager.GetMonthlyExpenes { [weak self] (monthyOveviewModels) in
             guard let self = self else { return }
             self._expenseByMonthDataSource?._delegate?.UpdateDataSource(data: monthyOveviewModels)
@@ -171,7 +180,7 @@ class AddExpenseViewController: UIViewController {
             self._expenseByCardTypeDataSource?._delegate?.UpdateDataSource(data: expenseByTypeModels)
             self._expenseByTypeCView.reloadData()
         }
-         */
+         
     }
     
     

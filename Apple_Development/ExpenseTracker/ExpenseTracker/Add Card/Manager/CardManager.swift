@@ -183,9 +183,12 @@ class CardManager: NSObject {
             case .byMonth:
                 
                 let statementEndDate = statementDate
-                let statementStartDate=Calendar.current.date(byAdding: .day, value: -statementEndDate.getDaysInMonth(), to: statementEndDate)
-                
-                let monthPred = NSPredicate(format: "(transactionDate >= %@) AND (transactionDate <= %@)", argumentArray: [statementStartDate!,statementEndDate])
+                var components=Calendar.current.dateComponents([.year,.month,.day], from: statementEndDate)
+                components.month = components.month! - 1
+                components.day = components.day
+                components.year = components.year
+                let statementStartDate=Calendar.current.date(from: components)!.dateInLocalTimeZone()
+                let monthPred = NSPredicate(format: "(transactionDate >= %@) AND (transactionDate <= %@)", argumentArray: [statementStartDate,statementEndDate])
                 let expenses =  card.expenses!.filtered(using: monthPred)
                 expenses.forEach { (expense) in
                     guard let expense = expense as? Expense else { return }
