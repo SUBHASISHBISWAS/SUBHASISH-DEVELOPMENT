@@ -19,7 +19,7 @@ class ExpenseByMonthCVCell: UICollectionViewCell {
     
     func setup(backgroundColor : UIColor, count : Int) {
         self.backgroundColor=backgroundColor
-        _totalExpenseLabel.text = "\(count)"
+        //_totalExpenseLabel.text = "\(count)"
     }
     
     func setup(monthlyOverviewModel : ExpenseByMonthModel) {

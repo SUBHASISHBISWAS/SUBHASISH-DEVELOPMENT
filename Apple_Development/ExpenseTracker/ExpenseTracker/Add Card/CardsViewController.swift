@@ -19,7 +19,7 @@ class CardsViewController: UIViewController, CardsCallBackDelegate {
     @IBOutlet weak var buttomNavBar: UINavigationBar!
     
     
-    var cardsDataSource : ExpenseCollectionViewDataSource?
+    var cardsDataSource : ExpenseDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class CardsViewController: UIViewController, CardsCallBackDelegate {
         CardManager.GetCards( completion: { [weak self] (Cards) in
             guard let self = self else { return }
             
-            self.cardsDataSource = ExpenseCollectionViewDataSource(expenseCollectionViewDataProvider: CardDataProvider(cards: Cards, viewController: self))
+            self.cardsDataSource = ExpenseDataSource(expenseDataProvider: CardDataProvider(cards: Cards, viewController: self))
             self._cardsCollectionView.dataSource = self.cardsDataSource
             self._cardsCollectionView.delegate = self.cardsDataSource
             self._cardsCollectionView.reloadData()

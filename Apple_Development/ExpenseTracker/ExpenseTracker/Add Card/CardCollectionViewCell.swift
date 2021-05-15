@@ -13,7 +13,6 @@ class CardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var _cardCvvText: UILabel!
     @IBOutlet weak var _cardNameText: UILabel!
     @IBOutlet weak var _creditLimitText: UILabel!
-    //@IBOutlet weak var _cardNumberLabel: UILabel!
     @IBOutlet weak var _cardNumberLabel: UILabel!
     
     @IBOutlet weak var _selectedLabel: UILabel!

@@ -30,8 +30,8 @@ class AddExpenseViewController: UIViewController {
     let _transactionTypePickerView = UIPickerView()
     let _context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let _collectionViewDynamicWidhthFactor :CGFloat = 1.5;
-    var _expenseByMonthDataSource :ExpenseCollectionViewDataSource?
-    var _expenseByCardTypeDataSource :ExpenseCollectionViewDataSource?
+    var _expenseByMonthDataSource :ExpenseDataSource?
+    var _expenseByCardTypeDataSource :ExpenseDataSource?
     var _expenseTypePickerViewDataSource :ExpensePickerViewDataSource?
     
     override func viewDidLoad() {
@@ -64,7 +64,7 @@ class AddExpenseViewController: UIViewController {
         
         ExpenseByMonthManager.GetMonthlyExpenes { [weak self] (ExpenseByMonthModels) in
             guard let self = self else { return }
-            self._expenseByMonthDataSource=ExpenseCollectionViewDataSource(expenseCollectionViewDataProvider: ExpenseByMonthDataProvider(expenseByMonths:ExpenseByMonthModels))
+            self._expenseByMonthDataSource=ExpenseDataSource(expenseDataProvider: ExpenseByMonthDataProvider(expenseByMonths:ExpenseByMonthModels))
             self._expenseByMonthCView.dataSource = self._expenseByMonthDataSource
             self._expenseByMonthCView.delegate = self._expenseByMonthDataSource
             self._expenseByMonthCView.reloadData()
@@ -72,7 +72,7 @@ class AddExpenseViewController: UIViewController {
         
         ExpenseByTypeManger.GetExpenesByTranctaionType { [weak self] (ExpenseByTypeModels) in
             guard let self = self else { return }
-            self._expenseByCardTypeDataSource=ExpenseCollectionViewDataSource(expenseCollectionViewDataProvider: ExpenseTypeDataProvider(expenseByTypes: ExpenseByTypeModels))
+            self._expenseByCardTypeDataSource=ExpenseDataSource(expenseDataProvider: ExpenseTypeDataProvider(expenseByTypes: ExpenseByTypeModels))
             self._expenseByTypeCView.dataSource = self._expenseByCardTypeDataSource
             self._expenseByTypeCView.delegate = self._expenseByCardTypeDataSource
             self._expenseByTypeCView.reloadData()

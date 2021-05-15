@@ -11,7 +11,7 @@ import UIKit
 
 class ExpensePickerViewDataSource : NSObject,UIPickerViewDataSource,UIPickerViewDelegate
 {
-    var _delegate : UpdateDateSource?
+    var _delegate : IUpdateDateSource?
     
     let _expensePickerViewDataProvider : ExpensePickerViewDataProvider
     
@@ -45,7 +45,7 @@ class ExpensePickerViewDataSource : NSObject,UIPickerViewDataSource,UIPickerView
     }
 }
 
-protocol ExpensePickerViewDataProvider : UpdateDateSource {
+protocol ExpensePickerViewDataProvider : IUpdateDateSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     

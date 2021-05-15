@@ -8,42 +8,40 @@
 import Foundation
 import UIKit
 
-class ExpenseCollectionViewDataSource: NSObject,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+class ExpenseDataSource: NSObject,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
-    var _delegate : UpdateDateSource?
+    var _delegate : IUpdateDateSource?
+    var _expenseDataProvider : IExpenseDataProvider?
     
-   
-    var _expenseCollectionViewDataProvider : ExpenseCollectionViewDataProvider?
-    
-     init(expenseCollectionViewDataProvider : ExpenseCollectionViewDataProvider) {
-        self._expenseCollectionViewDataProvider=expenseCollectionViewDataProvider
-        self._delegate = self._expenseCollectionViewDataProvider
+     init(expenseDataProvider : IExpenseDataProvider) {
+        self._expenseDataProvider=expenseDataProvider
+        self._delegate = self._expenseDataProvider
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return _expenseCollectionViewDataProvider!.collectionView(collectionView, numberOfItemsInSection: section)
+        return _expenseDataProvider!.collectionView(collectionView, numberOfItemsInSection: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        return _expenseCollectionViewDataProvider!.collectionView(collectionView, cellForItemAt: indexPath)
+        return _expenseDataProvider!.collectionView(collectionView, cellForItemAt: indexPath)
         
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return _expenseCollectionViewDataProvider!.numberOfSections(in: collectionView)
+        return _expenseDataProvider!.numberOfSections(in: collectionView)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return _expenseCollectionViewDataProvider!.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
+        return _expenseDataProvider!.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        _expenseCollectionViewDataProvider!.collectionView(collectionView, didSelectItemAt: indexPath)
+        _expenseDataProvider!.collectionView(collectionView, didSelectItemAt: indexPath)
     }
 }
 
-protocol ExpenseCollectionViewDataProvider : UpdateDateSource {
+protocol IExpenseDataProvider : IUpdateDateSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     
@@ -57,7 +55,7 @@ protocol ExpenseCollectionViewDataProvider : UpdateDateSource {
 
 }
 
-class ExpenseByMonthDataProvider: ExpenseCollectionViewDataProvider {
+class ExpenseByMonthDataProvider: IExpenseDataProvider {
     func UpdateDataSource(data: Any?) {
         _expenseByMonths = data as! [ExpenseByMonthModel]
     }
@@ -103,7 +101,7 @@ class ExpenseByMonthDataProvider: ExpenseCollectionViewDataProvider {
     
 }
 
-class ExpenseTypeDataProvider: ExpenseCollectionViewDataProvider {
+class ExpenseTypeDataProvider: IExpenseDataProvider {
     func UpdateDataSource(data: Any?) {
         _expenseByTypes = data as! [ExpenseByTypeModel]
     }
@@ -145,7 +143,7 @@ class ExpenseTypeDataProvider: ExpenseCollectionViewDataProvider {
     
 }
 
-class ExpenseByTypeByMonthDataProvider : ExpenseCollectionViewDataProvider
+class ExpenseByTypeByMonthDataProvider : IExpenseDataProvider
 {
     func UpdateDataSource(data: Any?) {
         _expenseByTypes = data as! [ExpenseByTypeModel]
@@ -192,7 +190,7 @@ class ExpenseByTypeByMonthDataProvider : ExpenseCollectionViewDataProvider
     
 }
 
-class CardDataProvider : ExpenseCollectionViewDataProvider
+class CardDataProvider : IExpenseDataProvider
 {
     func UpdateDataSource(data: Any?) {
         _cards = data as! [Card]
@@ -247,6 +245,6 @@ class CardDataProvider : ExpenseCollectionViewDataProvider
     
 }
 
-protocol UpdateDateSource {
+protocol IUpdateDateSource {
     func UpdateDataSource(data : Any?) -> ()
 }
