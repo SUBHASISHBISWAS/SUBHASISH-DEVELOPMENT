@@ -9,7 +9,7 @@ import UIKit
 
 class AddCardViewController: UIViewController {
 
-    var _delegate : CardsCallBackDelegate?
+    var _delegate : ICardsDelegate?
     
     let flexibleButton=UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
     

@@ -7,16 +7,18 @@
 
 import UIKit
 
-class CardsViewController: UIViewController, CardsCallBackDelegate {
+class CardsViewController: UIViewController, ICardsDelegate {
     
 
     @IBOutlet weak var _cardsCollectionView: UICollectionView!
     
+    
     @IBOutlet weak var addCardButton: UIBarButtonItem!
+    //@IBOutlet weak var addCardButton: UIBarButtonItem!
     
-    @IBOutlet weak var deleteCardsButton: UIBarButtonItem!
+    @IBOutlet weak var _deleteCardsButton: UIBarButtonItem!
     
-    @IBOutlet weak var buttomNavBar: UINavigationBar!
+    @IBOutlet weak var _buttomNavBar: UINavigationBar!
       
     
     var _cardsDataSource : CardsDataSource?
@@ -51,7 +53,7 @@ class CardsViewController: UIViewController, CardsCallBackDelegate {
         _cardsCollectionView.allowsMultipleSelection = editing
         
         addCardButton.isEnabled = !isEditing
-        buttomNavBar.isHidden = !isEditing
+        _buttomNavBar.isHidden = !isEditing
         
         _cardsCollectionView.indexPathsForSelectedItems?.forEach({ (indexPath) in
             _cardsCollectionView.deselectItem(at: indexPath, animated: true)
@@ -105,7 +107,7 @@ class CardsViewController: UIViewController, CardsCallBackDelegate {
 
 }
 
-protocol CardsCallBackDelegate {
+protocol ICardsDelegate {
     func GetCardsData(info: CardsData)
 }
 

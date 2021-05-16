@@ -9,15 +9,15 @@ import UIKit
 
 class CardsCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var cardImageView: UIImageView!
+    @IBOutlet weak var _cardImageView: UIImageView!
     @IBOutlet weak var _cardCvvText: UILabel!
     @IBOutlet weak var _cardNameText: UILabel!
     @IBOutlet weak var _creditLimitText: UILabel!
     @IBOutlet weak var _cardNumberLabel: UILabel!
-    
     @IBOutlet weak var _selectedLabel: UILabel!
     @IBOutlet weak var _validThroughLabel: UILabel!
-    
+    @IBOutlet weak var _statementLabel: UILabel!
+    @IBOutlet weak var _dueDateLabel: UILabel!
     var isEditing : Bool = false{
         didSet
         {
@@ -41,17 +41,27 @@ class CardsCollectionViewCell: UICollectionViewCell {
         
         _cardNameText.text = card.cardName
         _creditLimitText.text = "\(card.creditLimit)"
-       cardImageView.image = UIImage(data: card.cardImage!)
-       _cardCvvText.text = "\(card.cvv)"
+        _cardImageView.image = UIImage(data: card.cardImage!)
+        _cardCvvText.text = "\(card.cvv)"
         let cardNumber = arrangeUSFormat(strPhone: "\(card.cardNumber!)")
         _cardNumberLabel.text = cardNumber
-        let components = Calendar.current.dateComponents([.day, .year, .month], from: card.expiryDate!)
-        if let day = components.day, let month = components.month, let year = components.year {
+        let cardExpComponents = Calendar.current.dateComponents([.day, .year, .month], from: card.expiryDate!)
+        let cardStmtComponents = Calendar.current.dateComponents([.day, .year, .month], from: card.statementDate!)
+        let cardDueComponents = Calendar.current.dateComponents([.day, .year, .month], from: card.dueDate!)
+        if let month = cardExpComponents.month, let year = cardExpComponents.year {
             _validThroughLabel.text = "\(month)/\(year)"
-            
-            print("day: \(day), month: \(month), year: \(year)")
         }
-            DateFormatter().string(from: card.expiryDate!)
+        
+        if let day = cardStmtComponents.day, let month = cardStmtComponents.month {
+            _statementLabel.text = "\(day)/\(month)"
+            
+        }
+        if let day = cardDueComponents.day, let month = cardDueComponents.month {
+            _dueDateLabel.text = "\(day)/\(month)"
+           
+        }
+        
+        DateFormatter().string(from: card.expiryDate!)
     }
     
     func arrangeUSFormat(strPhone : String)-> String {

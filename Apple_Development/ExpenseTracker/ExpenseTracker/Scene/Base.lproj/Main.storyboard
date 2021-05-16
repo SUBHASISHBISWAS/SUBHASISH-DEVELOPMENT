@@ -473,51 +473,44 @@
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="1" height="-1"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="VALID" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0f-5l-G6O">
-                                                    <rect key="frame" x="9" y="82" width="35" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VALID" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0f-5l-G6O">
+                                                    <rect key="frame" x="9" y="83" width="35" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPh-nc-lkR">
-                                                    <rect key="frame" x="11" y="99" width="50" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPh-nc-lkR">
+                                                    <rect key="frame" x="11" y="100" width="31" height="14.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="STAEMENT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2am-jk-Dbq">
-                                                    <rect key="frame" x="62" y="82" width="79" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STAEMENT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2am-jk-Dbq">
+                                                    <rect key="frame" x="69.666666666666671" y="83" width="63.666666666666671" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DUE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9p-Tk-Ydt">
-                                                    <rect key="frame" x="151" y="80" width="32" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DUE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9p-Tk-Ydt">
+                                                    <rect key="frame" x="169" y="83" width="25" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70E-z6-2UB">
-                                                    <rect key="frame" x="11" y="27" width="87" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70E-z6-2UB">
+                                                    <rect key="frame" x="79.333333333333329" y="28" width="44.333333333333329" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemRedColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rla-Lt-uqM">
-                                                    <rect key="frame" x="151" y="94" width="50" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Nh-RR-Sal">
+                                                    <rect key="frame" x="77" y="100" width="31" height="14.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Nh-RR-Sal">
-                                                    <rect key="frame" x="65" y="97" width="50" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rla-Lt-uqM">
+                                                    <rect key="frame" x="160" y="100" width="31" height="14.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -525,31 +518,47 @@
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="8Nh-RR-Sal" firstAttribute="leading" secondItem="vPh-nc-lkR" secondAttribute="trailing" constant="35" id="3Rt-uV-vK2"/>
                                             <constraint firstItem="m2q-oE-RH7" firstAttribute="top" secondItem="dJQ-nX-IkL" secondAttribute="top" id="41s-ID-VVf"/>
                                             <constraint firstItem="t2l-js-eVf" firstAttribute="top" secondItem="VYk-yM-SRX" secondAttribute="bottom" constant="5" id="7w1-5Q-krH"/>
                                             <constraint firstItem="VYk-yM-SRX" firstAttribute="centerY" secondItem="dJQ-nX-IkL" secondAttribute="centerY" constant="-47.5" id="97c-Nt-Z9g"/>
                                             <constraint firstItem="dWW-Ua-Dek" firstAttribute="top" secondItem="VYk-yM-SRX" secondAttribute="bottom" constant="22" id="9jS-hI-Eqb"/>
+                                            <constraint firstItem="rla-Lt-uqM" firstAttribute="top" secondItem="n9p-Tk-Ydt" secondAttribute="bottom" constant="2" id="BOL-6L-tfW"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="x26-uX-dwl" secondAttribute="bottom" constant="8" id="CKj-ZV-R5Y"/>
                                             <constraint firstItem="dWW-Ua-Dek" firstAttribute="leading" secondItem="dJQ-nX-IkL" secondAttribute="leading" id="CzZ-0W-puJ"/>
+                                            <constraint firstItem="2am-jk-Dbq" firstAttribute="top" secondItem="dWW-Ua-Dek" secondAttribute="bottom" constant="10" id="IGY-ja-HZr"/>
+                                            <constraint firstItem="70E-z6-2UB" firstAttribute="top" secondItem="dJQ-nX-IkL" secondAttribute="topMargin" constant="20" id="LYt-cz-S0E"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="n9p-Tk-Ydt" secondAttribute="trailing" constant="1" id="Nn6-BY-wlW"/>
+                                            <constraint firstItem="rla-Lt-uqM" firstAttribute="leading" secondItem="8Nh-RR-Sal" secondAttribute="trailing" constant="52" id="ZAg-XH-ygJ"/>
                                             <constraint firstItem="VYk-yM-SRX" firstAttribute="centerX" secondItem="dJQ-nX-IkL" secondAttribute="centerX" id="bsH-Us-kzB"/>
+                                            <constraint firstItem="2am-jk-Dbq" firstAttribute="centerX" secondItem="dJQ-nX-IkL" secondAttribute="centerX" id="c6E-f9-Eh6"/>
+                                            <constraint firstItem="j0f-5l-G6O" firstAttribute="top" secondItem="dWW-Ua-Dek" secondAttribute="bottom" constant="10" id="eVg-Ei-ciW"/>
                                             <constraint firstAttribute="trailing" secondItem="m2q-oE-RH7" secondAttribute="trailing" id="ejx-R9-hOm"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="t2l-js-eVf" secondAttribute="trailing" constant="-23" id="eph-o7-C6e"/>
                                             <constraint firstAttribute="trailing" secondItem="dWW-Ua-Dek" secondAttribute="trailing" id="f2y-Zn-VW7"/>
+                                            <constraint firstItem="vPh-nc-lkR" firstAttribute="leading" secondItem="dJQ-nX-IkL" secondAttribute="leading" constant="11" id="gQa-My-DtM"/>
+                                            <constraint firstItem="n9p-Tk-Ydt" firstAttribute="top" secondItem="dWW-Ua-Dek" secondAttribute="bottom" constant="10" id="giY-nj-uG1"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="x26-uX-dwl" secondAttribute="trailing" constant="8" id="kgd-zm-JHj"/>
                                             <constraint firstItem="m2q-oE-RH7" firstAttribute="leading" secondItem="dJQ-nX-IkL" secondAttribute="leading" id="lua-5u-kfU"/>
                                             <constraint firstAttribute="bottom" secondItem="m2q-oE-RH7" secondAttribute="bottom" id="pRS-ea-iNV"/>
                                             <constraint firstItem="t2l-js-eVf" firstAttribute="leading" secondItem="dJQ-nX-IkL" secondAttribute="leadingMargin" constant="161" id="rUs-2q-x6q"/>
+                                            <constraint firstItem="vPh-nc-lkR" firstAttribute="top" secondItem="j0f-5l-G6O" secondAttribute="bottom" constant="2" id="sGo-Dr-CZY"/>
+                                            <constraint firstItem="70E-z6-2UB" firstAttribute="centerX" secondItem="dJQ-nX-IkL" secondAttribute="centerX" id="sKC-OE-fWY"/>
+                                            <constraint firstItem="8Nh-RR-Sal" firstAttribute="top" secondItem="2am-jk-Dbq" secondAttribute="bottom" constant="2" id="shb-yd-iWe"/>
+                                            <constraint firstItem="j0f-5l-G6O" firstAttribute="leading" secondItem="dJQ-nX-IkL" secondAttribute="leadingMargin" constant="1" id="uVR-s0-Bwv"/>
                                             <constraint firstItem="x26-uX-dwl" firstAttribute="top" secondItem="dWW-Ua-Dek" secondAttribute="bottom" constant="6" id="vLn-Ek-F5K"/>
                                         </constraints>
                                         <size key="customSize" width="203" height="125"/>
                                         <connections>
                                             <outlet property="_cardCvvText" destination="t2l-js-eVf" id="n5h-vo-M6S"/>
+                                            <outlet property="_cardImageView" destination="m2q-oE-RH7" id="9QL-tM-lLd"/>
                                             <outlet property="_cardNameText" destination="VYk-yM-SRX" id="zOT-Py-3n3"/>
                                             <outlet property="_cardNumberLabel" destination="dWW-Ua-Dek" id="NJG-A9-AT8"/>
                                             <outlet property="_creditLimitText" destination="70E-z6-2UB" id="btT-h3-7kR"/>
+                                            <outlet property="_dueDateLabel" destination="rla-Lt-uqM" id="ciA-lu-IUM"/>
                                             <outlet property="_selectedLabel" destination="x26-uX-dwl" id="Kro-tM-6kL"/>
+                                            <outlet property="_statementLabel" destination="8Nh-RR-Sal" id="thg-uP-rNz"/>
                                             <outlet property="_validThroughLabel" destination="vPh-nc-lkR" id="t7U-PI-GSK"/>
-                                            <outlet property="cardImageView" destination="m2q-oE-RH7" id="ccd-xA-H0x"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -572,10 +581,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="_buttomNavBar" destination="myh-3G-zzY" id="eRm-oc-5Qx"/>
                         <outlet property="_cardsCollectionView" destination="iq9-mZ-CLK" id="KbZ-K1-3La"/>
-                        <outlet property="addCardButton" destination="s4B-8Z-fsC" id="Ynv-hd-hSQ"/>
-                        <outlet property="buttomNavBar" destination="myh-3G-zzY" id="56F-og-9Uz"/>
-                        <outlet property="deleteCardsButton" destination="kju-4r-F7o" id="8D4-wH-iVY"/>
+                        <outlet property="_deleteCardsButton" destination="kju-4r-F7o" id="5n7-od-nY9"/>
+                        <outlet property="addCardButton" destination="s4B-8Z-fsC" id="hWA-S5-8dt"/>
                         <segue destination="FRa-Qg-nP6" kind="show" identifier="cardDetails" id="1mK-bx-0ii"/>
                         <segue destination="PGP-Ga-ud5" kind="show" identifier="addCard" id="JqI-NI-SNF"/>
                     </connections>

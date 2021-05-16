@@ -209,7 +209,7 @@ class AddExpenseViewController: UIViewController {
     
 }
 
-extension AddExpenseViewController : CardsCallBackDelegate
+extension AddExpenseViewController : ICardsDelegate
 {
     func GetCardsData(info: CardsData) {
         
