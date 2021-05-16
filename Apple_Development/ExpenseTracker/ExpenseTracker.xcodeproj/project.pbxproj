@@ -12,7 +12,7 @@
 		A62484C225A89BCD00CD62DF /* ExpenseByMonthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62484C125A89BCD00CD62DF /* ExpenseByMonthManager.swift */; };
 		A6295BE825B0AA570095B742 /* MonthlyExpenseByTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6295BE725B0AA570095B742 /* MonthlyExpenseByTypeCollectionViewCell.swift */; };
 		A62F9CCB25B5B4D80070C9AA /* ExpenseTracker.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = A659849525A39BAA005E6AAE /* ExpenseTracker.xcdatamodeld */; };
-		A62F9CDD25B5C73A0070C9AA /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62F9CDC25B5C73A0070C9AA /* CardCollectionViewCell.swift */; };
+		A62F9CDD25B5C73A0070C9AA /* CardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62F9CDC25B5C73A0070C9AA /* CardsCollectionViewCell.swift */; };
 		A62F9CED25B5CB7D0070C9AA /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62F9CEC25B5CB7D0070C9AA /* CardsViewController.swift */; };
 		A643D71325B584C70031A15D /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643D71225B584C70031A15D /* AddCardViewController.swift */; };
 		A643D71925B58EB80031A15D /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643D71825B58EB80031A15D /* CardManager.swift */; };
@@ -46,6 +46,7 @@
 		A6BC36B825C13A04009D1087 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BC36B725C13A04009D1087 /* Event.swift */; };
 		A6D12AC025A84DD6003DD31F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D12ABF25A84DD6003DD31F /* Extensions.swift */; };
 		A6D12ACB25A8806D003DD31F /* ExpenseByMonthCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D12ACA25A8806C003DD31F /* ExpenseByMonthCVCell.swift */; };
+		A6D280C626516EAE0057AF85 /* CardsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D280C526516EAE0057AF85 /* CardsDataSource.swift */; };
 		A6DE678C25B18B0D00E0F062 /* DynamicValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DE678B25B18B0D00E0F062 /* DynamicValue.swift */; };
 		A6FE16B125B9C7DE00CE3EA6 /* CardDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FE16B025B9C7DE00CE3EA6 /* CardDetailsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -72,7 +73,7 @@
 		A62484B725A89ADD00CD62DF /* ExpenseByMonthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByMonthModel.swift; sourceTree = "<group>"; };
 		A62484C125A89BCD00CD62DF /* ExpenseByMonthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseByMonthManager.swift; sourceTree = "<group>"; };
 		A6295BE725B0AA570095B742 /* MonthlyExpenseByTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyExpenseByTypeCollectionViewCell.swift; sourceTree = "<group>"; };
-		A62F9CDC25B5C73A0070C9AA /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		A62F9CDC25B5C73A0070C9AA /* CardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A62F9CEC25B5CB7D0070C9AA /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		A643D71225B584C70031A15D /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		A643D71825B58EB80031A15D /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
@@ -114,6 +115,7 @@
 		A6BC36B725C13A04009D1087 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		A6D12ABF25A84DD6003DD31F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A6D12ACA25A8806C003DD31F /* ExpenseByMonthCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByMonthCVCell.swift; sourceTree = "<group>"; };
+		A6D280C526516EAE0057AF85 /* CardsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsDataSource.swift; sourceTree = "<group>"; };
 		A6DE678B25B18B0D00E0F062 /* DynamicValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicValue.swift; sourceTree = "<group>"; };
 		A6FE16B025B9C7DE00CE3EA6 /* CardDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,16 +193,17 @@
 			path = MonthlyExpenseByType;
 			sourceTree = "<group>";
 		};
-		A643D71125B5849B0031A15D /* Add Card */ = {
+		A643D71125B5849B0031A15D /* Card */ = {
 			isa = PBXGroup;
 			children = (
+				A6D280C426516E710057AF85 /* DataSource */,
+				A6D280BD2651693A0057AF85 /* Models */,
+				A6FE16AF25B9C7C300CE3EA6 /* CardDetail */,
+				A6D280BC265168E40057AF85 /* Cards */,
+				A6D280BB265168D20057AF85 /* AddCard */,
 				A643D71725B58D360031A15D /* Manager */,
-				A643D71225B584C70031A15D /* AddCardViewController.swift */,
-				A6206F6725B8B5A7003ECBF6 /* DatePicker.swift */,
-				A62F9CDC25B5C73A0070C9AA /* CardCollectionViewCell.swift */,
-				A62F9CEC25B5CB7D0070C9AA /* CardsViewController.swift */,
 			);
-			path = "Add Card";
+			path = Card;
 			sourceTree = "<group>";
 		};
 		A643D71725B58D360031A15D /* Manager */ = {
@@ -236,8 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				A6BC36B625C139F0009D1087 /* Utility */,
-				A6FE16AF25B9C7C300CE3EA6 /* CardDetail */,
-				A643D71125B5849B0031A15D /* Add Card */,
+				A643D71125B5849B0031A15D /* Card */,
 				A6DE678A25B18AE900E0F062 /* Helpers */,
 				A6295BE625B0A9D10095B742 /* MonthlyExpenseByType */,
 				A65CB4A625ACA73300674AD4 /* ExpenseByType */,
@@ -328,6 +330,41 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		A6D280BB265168D20057AF85 /* AddCard */ = {
+			isa = PBXGroup;
+			children = (
+				A6206F6725B8B5A7003ECBF6 /* DatePicker.swift */,
+				A643D71225B584C70031A15D /* AddCardViewController.swift */,
+			);
+			path = AddCard;
+			sourceTree = "<group>";
+		};
+		A6D280BC265168E40057AF85 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				A62F9CEC25B5CB7D0070C9AA /* CardsViewController.swift */,
+				A62F9CDC25B5C73A0070C9AA /* CardsCollectionViewCell.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		A6D280BD2651693A0057AF85 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A6AF361725B61845004F80FB /* Card+CoreDataClass.swift */,
+				A6AF361825B61845004F80FB /* Card+CoreDataProperties.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A6D280C426516E710057AF85 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				A6D280C526516EAE0057AF85 /* CardsDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 		A6DE678A25B18AE900E0F062 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,8 +376,6 @@
 		A6E231C925A4CBCB00C0CA64 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A6AF361725B61845004F80FB /* Card+CoreDataClass.swift */,
-				A6AF361825B61845004F80FB /* Card+CoreDataProperties.swift */,
 				A6AF361925B61845004F80FB /* Expense+CoreDataClass.swift */,
 				A6AF361A25B61845004F80FB /* Expense+CoreDataProperties.swift */,
 				A62484B725A89ADD00CD62DF /* ExpenseByMonthModel.swift */,
@@ -503,7 +538,7 @@
 				A643D71325B584C70031A15D /* AddCardViewController.swift in Sources */,
 				A65984F425A47B4A005E6AAE /* ExpenseManager.swift in Sources */,
 				A65CB4A925ACA7EC00674AD4 /* ExpenseByTypeCVCell.swift in Sources */,
-				A62F9CDD25B5C73A0070C9AA /* CardCollectionViewCell.swift in Sources */,
+				A62F9CDD25B5C73A0070C9AA /* CardsCollectionViewCell.swift in Sources */,
 				A66FBD5F25ACE63200731680 /* AddExpenseUtility.swift in Sources */,
 				A659848F25A39BAA005E6AAE /* SceneDelegate.swift in Sources */,
 				A66FBD6925ACE77700731680 /* UIPickerView.swift in Sources */,
@@ -516,6 +551,7 @@
 				A6DE678C25B18B0D00E0F062 /* DynamicValue.swift in Sources */,
 				A6AF361D25B61845004F80FB /* Expense+CoreDataClass.swift in Sources */,
 				A6AF361B25B61845004F80FB /* Card+CoreDataClass.swift in Sources */,
+				A6D280C626516EAE0057AF85 /* CardsDataSource.swift in Sources */,
 				A62F9CED25B5CB7D0070C9AA /* CardsViewController.swift in Sources */,
 				A66FBD5A25ACE5DE00731680 /* AddExpenseDatePicker.swift in Sources */,
 				A65984EA25A472D9005E6AAE /* MonthlyExpenseOverview.swift in Sources */,

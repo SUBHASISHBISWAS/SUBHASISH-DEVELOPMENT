@@ -17,9 +17,9 @@ class CardsViewController: UIViewController, CardsCallBackDelegate {
     @IBOutlet weak var deleteCardsButton: UIBarButtonItem!
     
     @IBOutlet weak var buttomNavBar: UINavigationBar!
+      
     
-    
-    var cardsDataSource : ExpenseDataSource?
+    var _cardsDataSource : CardsDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +27,9 @@ class CardsViewController: UIViewController, CardsCallBackDelegate {
         CardManager.GetCards( completion: { [weak self] (Cards) in
             guard let self = self else { return }
             
-            self.cardsDataSource = ExpenseDataSource(expenseDataProvider: CardDataProvider(cards: Cards, viewController: self))
-            self._cardsCollectionView.dataSource = self.cardsDataSource
-            self._cardsCollectionView.delegate = self.cardsDataSource
+            self._cardsDataSource = CardsDataSource(cards: Cards, viewController: self)
+            self._cardsCollectionView.dataSource = self._cardsDataSource
+            self._cardsCollectionView.delegate = self._cardsDataSource
             self._cardsCollectionView.reloadData()
         })
         
@@ -41,7 +41,7 @@ class CardsViewController: UIViewController, CardsCallBackDelegate {
     
     func GetCardsData(info: CardsData) {
     
-        cardsDataSource?._delegate?.UpdateDataSource(data: info._cards)
+        _cardsDataSource?.UpdateDataSource(data: info._cards)
         _cardsCollectionView.insertItems(at: [info._indexPath])
         
     }
@@ -57,7 +57,7 @@ class CardsViewController: UIViewController, CardsCallBackDelegate {
             _cardsCollectionView.deselectItem(at: indexPath, animated: true)
         })
         _cardsCollectionView.indexPathsForVisibleItems.forEach { (indexPath) in
-            let cell = _cardsCollectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
+            let cell = _cardsCollectionView.cellForItem(at: indexPath) as! CardsCollectionViewCell
             cell.isEditing = editing
         }
     }
@@ -95,7 +95,7 @@ class CardsViewController: UIViewController, CardsCallBackDelegate {
                 CardManager.DeleteCard(id: card, completion: { [self](cards) in
                     
                     let indexPath = IndexPath(row: cards.count, section: 0)
-                    self.cardsDataSource?._delegate?.UpdateDataSource(data: cards)
+                    self._cardsDataSource?.UpdateDataSource(data: cards)
                     self._cardsCollectionView.deleteItems(at: [indexPath])
                     EventEmitter.publish(name: "AddExpenseViewController", args: cards)
                 } )
