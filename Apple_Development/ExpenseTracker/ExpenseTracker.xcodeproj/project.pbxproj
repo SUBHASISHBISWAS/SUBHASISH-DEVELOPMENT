@@ -47,6 +47,11 @@
 		A6D12AC025A84DD6003DD31F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D12ABF25A84DD6003DD31F /* Extensions.swift */; };
 		A6D12ACB25A8806D003DD31F /* ExpenseByMonthCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D12ACA25A8806C003DD31F /* ExpenseByMonthCVCell.swift */; };
 		A6D280C626516EAE0057AF85 /* CardsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D280C526516EAE0057AF85 /* CardsDataSource.swift */; };
+		A6D280D72651A8EA0057AF85 /* CVExpenseByMonthDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D280D62651A8EA0057AF85 /* CVExpenseByMonthDataSource.swift */; };
+		A6D280DF2651A90D0057AF85 /* CVExpenseTypeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D280DE2651A90D0057AF85 /* CVExpenseTypeDataSource.swift */; };
+		A6D280EE2651AE050057AF85 /* PVExpenseTypeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D280ED2651AE050057AF85 /* PVExpenseTypeDataSource.swift */; };
+		A6D280F62651AE1B0057AF85 /* PVCardeTypeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D280F52651AE1B0057AF85 /* PVCardeTypeDataSource.swift */; };
+		A6D280FB2651AE2E0057AF85 /* PVCardTypeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D280FA2651AE2E0057AF85 /* PVCardTypeDataSource.swift */; };
 		A6DE678C25B18B0D00E0F062 /* DynamicValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DE678B25B18B0D00E0F062 /* DynamicValue.swift */; };
 		A6FE16B125B9C7DE00CE3EA6 /* CardDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FE16B025B9C7DE00CE3EA6 /* CardDetailsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -116,6 +121,11 @@
 		A6D12ABF25A84DD6003DD31F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A6D12ACA25A8806C003DD31F /* ExpenseByMonthCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByMonthCVCell.swift; sourceTree = "<group>"; };
 		A6D280C526516EAE0057AF85 /* CardsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsDataSource.swift; sourceTree = "<group>"; };
+		A6D280D62651A8EA0057AF85 /* CVExpenseByMonthDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVExpenseByMonthDataSource.swift; sourceTree = "<group>"; };
+		A6D280DE2651A90D0057AF85 /* CVExpenseTypeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVExpenseTypeDataSource.swift; sourceTree = "<group>"; };
+		A6D280ED2651AE050057AF85 /* PVExpenseTypeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVExpenseTypeDataSource.swift; sourceTree = "<group>"; };
+		A6D280F52651AE1B0057AF85 /* PVCardeTypeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVCardeTypeDataSource.swift; sourceTree = "<group>"; };
+		A6D280FA2651AE2E0057AF85 /* PVCardTypeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVCardTypeDataSource.swift; sourceTree = "<group>"; };
 		A6DE678B25B18B0D00E0F062 /* DynamicValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicValue.swift; sourceTree = "<group>"; };
 		A6FE16B025B9C7DE00CE3EA6 /* CardDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,26 +156,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A62484CB25AA160600CD62DF /* ExpenseOverview */ = {
+		A62484CB25AA160600CD62DF /* Expense */ = {
 			isa = PBXGroup;
 			children = (
+				A6295BE625B0A9D10095B742 /* MonthlyExpenseByType */,
+				A65CB4A625ACA73300674AD4 /* ExpenseByType */,
+				A62484CD25AA169900CD62DF /* ExpenseByMonth */,
+				A6D280CD2651A71A0057AF85 /* Add Expense */,
 				A65CB4B725ACA89800674AD4 /* Managers */,
 				A65984DF25A3B57C005E6AAE /* ExpensesViewController.swift */,
-				A659849025A39BAA005E6AAE /* AddExpenseViewController.swift */,
-				A66FBD5925ACE5DE00731680 /* AddExpenseDatePicker.swift */,
-				A66FBD5E25ACE63200731680 /* AddExpenseUtility.swift */,
 				A65984E425A47025005E6AAE /* ExpenseTableViewCell.swift */,
-				A66FBD4325ACE3CE00731680 /* CVFlowLayoutDelegate.swift */,
 				A66FBD5425ACE58100731680 /* CVDataSource.swift */,
 				A66FBD6325ACE65F00731680 /* UIPickerViewDataSource.swift */,
 				A66FBD6825ACE77700731680 /* UIPickerView.swift */,
 			);
-			path = ExpenseOverview;
+			path = Expense;
 			sourceTree = "<group>";
 		};
 		A62484CD25AA169900CD62DF /* ExpenseByMonth */ = {
 			isa = PBXGroup;
 			children = (
+				A6D280D52651A8BE0057AF85 /* DataSource */,
 				A65CB4B625ACA88700674AD4 /* Manages */,
 				A6D12ACA25A8806C003DD31F /* ExpenseByMonthCVCell.swift */,
 				A65984E925A472D9005E6AAE /* MonthlyExpenseOverview.swift */,
@@ -241,10 +252,7 @@
 				A6BC36B625C139F0009D1087 /* Utility */,
 				A643D71125B5849B0031A15D /* Card */,
 				A6DE678A25B18AE900E0F062 /* Helpers */,
-				A6295BE625B0A9D10095B742 /* MonthlyExpenseByType */,
-				A65CB4A625ACA73300674AD4 /* ExpenseByType */,
-				A62484CD25AA169900CD62DF /* ExpenseByMonth */,
-				A62484CB25AA160600CD62DF /* ExpenseOverview */,
+				A62484CB25AA160600CD62DF /* Expense */,
 				A6D12ABE25A84DB2003DD31F /* Extensions */,
 				A6E231C925A4CBCB00C0CA64 /* Models */,
 				A659849825A39BAB005E6AAE /* Assets.xcassets */,
@@ -276,6 +284,7 @@
 		A65CB4A625ACA73300674AD4 /* ExpenseByType */ = {
 			isa = PBXGroup;
 			children = (
+				A6D280D42651A8B30057AF85 /* DataSource */,
 				A65CB4C325ACAB6700674AD4 /* Manager */,
 				A65CB4A825ACA7EC00674AD4 /* ExpenseByTypeCVCell.swift */,
 			);
@@ -361,6 +370,44 @@
 			isa = PBXGroup;
 			children = (
 				A6D280C526516EAE0057AF85 /* CardsDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		A6D280CD2651A71A0057AF85 /* Add Expense */ = {
+			isa = PBXGroup;
+			children = (
+				A6D280EC2651ADE20057AF85 /* DataSource */,
+				A66FBD4325ACE3CE00731680 /* CVFlowLayoutDelegate.swift */,
+				A66FBD5E25ACE63200731680 /* AddExpenseUtility.swift */,
+				A659849025A39BAA005E6AAE /* AddExpenseViewController.swift */,
+				A66FBD5925ACE5DE00731680 /* AddExpenseDatePicker.swift */,
+			);
+			path = "Add Expense";
+			sourceTree = "<group>";
+		};
+		A6D280D42651A8B30057AF85 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				A6D280DE2651A90D0057AF85 /* CVExpenseTypeDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		A6D280D52651A8BE0057AF85 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				A6D280D62651A8EA0057AF85 /* CVExpenseByMonthDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		A6D280EC2651ADE20057AF85 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				A6D280ED2651AE050057AF85 /* PVExpenseTypeDataSource.swift */,
+				A6D280F52651AE1B0057AF85 /* PVCardeTypeDataSource.swift */,
+				A6D280FA2651AE2E0057AF85 /* PVCardTypeDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -537,9 +584,12 @@
 				A65984E525A47025005E6AAE /* ExpenseTableViewCell.swift in Sources */,
 				A643D71325B584C70031A15D /* AddCardViewController.swift in Sources */,
 				A65984F425A47B4A005E6AAE /* ExpenseManager.swift in Sources */,
+				A6D280F62651AE1B0057AF85 /* PVCardeTypeDataSource.swift in Sources */,
 				A65CB4A925ACA7EC00674AD4 /* ExpenseByTypeCVCell.swift in Sources */,
+				A6D280FB2651AE2E0057AF85 /* PVCardTypeDataSource.swift in Sources */,
 				A62F9CDD25B5C73A0070C9AA /* CardsCollectionViewCell.swift in Sources */,
 				A66FBD5F25ACE63200731680 /* AddExpenseUtility.swift in Sources */,
+				A6D280D72651A8EA0057AF85 /* CVExpenseByMonthDataSource.swift in Sources */,
 				A659848F25A39BAA005E6AAE /* SceneDelegate.swift in Sources */,
 				A66FBD6925ACE77700731680 /* UIPickerView.swift in Sources */,
 				A66FBD3F25ACAE3800731680 /* ExpenseByTypeModel.swift in Sources */,
@@ -550,7 +600,9 @@
 				A66FBD5525ACE58100731680 /* CVDataSource.swift in Sources */,
 				A6DE678C25B18B0D00E0F062 /* DynamicValue.swift in Sources */,
 				A6AF361D25B61845004F80FB /* Expense+CoreDataClass.swift in Sources */,
+				A6D280DF2651A90D0057AF85 /* CVExpenseTypeDataSource.swift in Sources */,
 				A6AF361B25B61845004F80FB /* Card+CoreDataClass.swift in Sources */,
+				A6D280EE2651AE050057AF85 /* PVExpenseTypeDataSource.swift in Sources */,
 				A6D280C626516EAE0057AF85 /* CardsDataSource.swift in Sources */,
 				A62F9CED25B5CB7D0070C9AA /* CardsViewController.swift in Sources */,
 				A66FBD5A25ACE5DE00731680 /* AddExpenseDatePicker.swift in Sources */,
@@ -734,7 +786,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ExpenseTracker;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = CKLZ6PKF8N;
 				INFOPLIST_FILE = ExpenseTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -754,7 +806,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ExpenseTracker;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = CKLZ6PKF8N;
 				INFOPLIST_FILE = ExpenseTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

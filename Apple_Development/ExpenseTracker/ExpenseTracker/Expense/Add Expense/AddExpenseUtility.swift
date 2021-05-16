@@ -19,19 +19,12 @@ extension AddExpenseViewController
     
     func handleAddButtonState()
     {
-        if (_expenseDescription.text != "" && _expenseAmount.text != "" && _transactionType.text != "" ) {
+        if (_expenseDescription.text != "" && _expenseAmount.text != "" && _cardType.text != "" ) {
             _addExpense.isEnabled = true
+            _addExpense.setTitleColor(UIColor.white, for: UIControl.State.normal)
         }
         else{
             _addExpense.isEnabled = false
-        }
-        
-        if (_expenseDescription.text != "" && _expenseAmount.text != "" && _transactionType.text != "")
-        {
-            _addExpense.setTitleColor(UIColor.white, for: UIControl.State.normal)
-        }
-        else
-        {
             _addExpense.setTitleColor(UIColor.gray, for: UIControl.State.normal)
         }
     }

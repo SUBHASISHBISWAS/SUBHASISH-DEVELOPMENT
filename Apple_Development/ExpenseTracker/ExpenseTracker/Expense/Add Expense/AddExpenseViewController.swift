@@ -15,7 +15,7 @@ class AddExpenseViewController: UIViewController {
     @IBOutlet weak var _expenseAmount: UITextField!{didSet{showToolBarInNumberPad(textField: self._expenseAmount)}}
     @IBOutlet weak var _expenseDate: UITextField!
     @IBOutlet weak var _totalExpense: UILabel!
-    @IBOutlet weak var _transactionType: UITextField!
+    @IBOutlet weak var _cardType: UITextField!
     @IBOutlet weak var _expenseByMonthHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var expenseByTypeHeightConstraint: NSLayoutConstraint!
     @IBOutlet var _addExpense :UIButton!
@@ -27,15 +27,26 @@ class AddExpenseViewController: UIViewController {
     
     let flexibleButton=UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
     let _expenseDatePicker=UIDatePicker()
-    let _transactionTypePickerView = UIPickerView()
+    let _cardTypePickerView = UIPickerView()
     let _context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let _collectionViewDynamicWidhthFactor :CGFloat = 1.5;
-    var _expenseByMonthDataSource :ExpenseDataSource?
-    var _expenseByCardTypeDataSource :ExpenseDataSource?
-    var _expenseTypePickerViewDataSource :ExpensePickerViewDataSource?
+    var _expenseByMonthCVDataSource :CVExpenseByMonthDataSource?
+    var _expenseByCardTypeCVDataSource :CVExpenseTypeDataSource?
+    var _cardTypePVDataSource :PVCardTypeDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        _expenseTrackerNavItem.title = "Expense"
+        _totalExpense.textColor = UIColor.red
+        _expenseDate.delegate = self
+        _expenseDate.textAlignment = .center
+        _expenseDate.text=DateExtension.cardDateFormatter.string(from: Date())
+        _cardType.inputView = _cardTypePickerView
+        _cardType.textAlignment = .center
+        _cardType.placeholder = "Card Type"
+        _expenseAmount.textAlignment = .center
+        
         
         _expenseByMonthCView.register(ExpenseByMonthCVCell.nib(), forCellWithReuseIdentifier: ExpenseByMonthCVCell.cellIdetifier)
         
@@ -45,64 +56,43 @@ class AddExpenseViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.cardTypeDidChanged), name: UITextField.textDidChangeNotification, object: nil)
         
-        
-        
-        _totalExpense.textColor = UIColor.red
-        
-        _expenseDate.delegate = self
-        _expenseDate.textAlignment = .center
-        _expenseDate.text=DateExtension.cardDateFormatter.string(from: Date())
-        
-        
-        _transactionType.inputView = _transactionTypePickerView
-        _transactionType.textAlignment = .center
-        _transactionType.placeholder = "Card Type "
-        //_transactionType.text = "---EXEPNSE TYPE---"
-        _expenseAmount.textAlignment = .center
-        
-    
-        
+        // On Loading Application Show View
         ExpenseByMonthManager.GetMonthlyExpenes { [weak self] (ExpenseByMonthModels) in
             guard let self = self else { return }
-            self._expenseByMonthDataSource=ExpenseDataSource(expenseDataProvider: ExpenseByMonthDataProvider(expenseByMonths:ExpenseByMonthModels))
-            self._expenseByMonthCView.dataSource = self._expenseByMonthDataSource
-            self._expenseByMonthCView.delegate = self._expenseByMonthDataSource
+            self._expenseByMonthCVDataSource = CVExpenseByMonthDataSource(expenseByMonths:ExpenseByMonthModels)
+            self._expenseByMonthCView.dataSource = self._expenseByMonthCVDataSource
+            self._expenseByMonthCView.delegate = self._expenseByMonthCVDataSource
             self._expenseByMonthCView.reloadData()
         }
         
         ExpenseByTypeManger.GetExpenesByTranctaionType { [weak self] (ExpenseByTypeModels) in
             guard let self = self else { return }
-            self._expenseByCardTypeDataSource=ExpenseDataSource(expenseDataProvider: ExpenseTypeDataProvider(expenseByTypes: ExpenseByTypeModels))
-            self._expenseByTypeCView.dataSource = self._expenseByCardTypeDataSource
-            self._expenseByTypeCView.delegate = self._expenseByCardTypeDataSource
+            self._expenseByCardTypeCVDataSource = CVExpenseTypeDataSource(expenseByTypes: ExpenseByTypeModels)
+            self._expenseByTypeCView.dataSource = self._expenseByCardTypeCVDataSource
+            self._expenseByTypeCView.delegate = self._expenseByCardTypeCVDataSource
             self._expenseByTypeCView.reloadData()
         }
          
         CardManager.GetCards( completion: { [weak self] (Cards) in
             guard let self = self else { return }
             
-            self._expenseTypePickerViewDataSource=ExpensePickerViewDataSource(expensePickerViewDataProvider: TransactionTypePickerViewDataProvider(data: Cards, viewController: self))
-            self._transactionTypePickerView.dataSource = self._expenseTypePickerViewDataSource
-            self._transactionTypePickerView.delegate = self._expenseTypePickerViewDataSource
+            self._cardTypePVDataSource=PVCardTypeDataSource(data: Cards, viewController: self)
+            self._cardTypePickerView.dataSource = self._cardTypePVDataSource
+            self._cardTypePickerView.delegate = self._cardTypePVDataSource
             
             if (Cards.count > 0){
-                self._transactionTypePickerView.selectRow(0, inComponent: 0, animated: true)
-                self._expenseTypePickerViewDataSource?.pickerView(self._transactionTypePickerView, didSelectRow: 0, inComponent: 0)
+                self._cardTypePickerView.selectRow(0, inComponent: 0, animated: true)
+                self._cardTypePVDataSource?.pickerView(self._cardTypePickerView, didSelectRow: 0, inComponent: 0)
             }
         })
         
-       
-        
-        _expenseTrackerNavItem.title = "Hello"
-        
-        handleAddButtonState()
-        
+        // On Addition and Deletion Update View
         EventEmitter.subscribe(name: "AddExpenseViewController") { (data) in
             print((data as! [Card]).count)
             
             ExpenseByTypeManger.map(cards: data as! [Card], completion: { [weak self] (expenseByTypeModels) in
                 guard let self = self else { return }
-                self._expenseByCardTypeDataSource?._delegate?.UpdateDataSource(data: expenseByTypeModels)
+                self._expenseByCardTypeCVDataSource?.UpdateDataSource(data: expenseByTypeModels)
                 self._expenseByTypeCView.reloadData()
                 self._expenseByTypeCView.collectionViewLayout.invalidateLayout()
                 self._expenseByTypeCView.layoutSubviews()
@@ -111,17 +101,17 @@ class AddExpenseViewController: UIViewController {
             ExpenseByMonthManager.map(cards: data as! [Card], completion: { [weak self] (expenseByMonthModels) in
                 
                 guard let self = self else { return }
-                self._expenseByMonthDataSource?._delegate?.UpdateDataSource(data: expenseByMonthModels)
+                self._expenseByMonthCVDataSource?.UpdateDataSource(data: expenseByMonthModels)
                 self._expenseByMonthCView.reloadData()
                 self._expenseByMonthCView.collectionViewLayout.invalidateLayout()
                 self._expenseByMonthCView.layoutSubviews()
             })
             
-            
-            
-            self._expenseTypePickerViewDataSource?._delegate?.UpdateDataSource(data: data as! [Card])
-            self._transactionTypePickerView.reloadAllComponents()
+            self._cardTypePVDataSource?.UpdateDataSource(data: data as! [Card])
+            self._cardTypePickerView.reloadAllComponents()
         }
+        
+        handleAddButtonState()
     }
     
     
@@ -157,7 +147,7 @@ class AddExpenseViewController: UIViewController {
         
         let expenseAmount = Double(_expenseAmount.text!)!
         let expenseDescription = _expenseDescription.text!
-        let transactionType = _transactionType.text!
+        let transactionType = _cardType.text!
         guard let expenseDate = DateExtension.GetDate(stringDate: _expenseDate.text!) else { return }
         
         ExpenseManager.AddExpense(amount: expenseAmount, transactionDescription: expenseDescription, transactionType: transactionType,transactionDate: expenseDate)
@@ -172,12 +162,12 @@ class AddExpenseViewController: UIViewController {
         
         ExpenseByMonthManager.GetMonthlyExpenes { [weak self] (monthyOveviewModels) in
             guard let self = self else { return }
-            self._expenseByMonthDataSource?._delegate?.UpdateDataSource(data: monthyOveviewModels)
+            self._expenseByMonthCVDataSource?.UpdateDataSource(data: monthyOveviewModels)
             self._expenseByMonthCView.reloadData()
         }
         ExpenseByTypeManger.GetExpenesByTranctaionType { [weak self] (expenseByTypeModels) in
             guard let self = self else { return }
-            self._expenseByCardTypeDataSource?._delegate?.UpdateDataSource(data: expenseByTypeModels)
+            self._expenseByCardTypeCVDataSource?.UpdateDataSource(data: expenseByTypeModels)
             self._expenseByTypeCView.reloadData()
         }
          

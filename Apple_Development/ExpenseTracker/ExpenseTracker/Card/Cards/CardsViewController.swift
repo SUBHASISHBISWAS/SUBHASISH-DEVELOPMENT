@@ -11,16 +11,10 @@ class CardsViewController: UIViewController, ICardsDelegate {
     
 
     @IBOutlet weak var _cardsCollectionView: UICollectionView!
-    
-    
     @IBOutlet weak var addCardButton: UIBarButtonItem!
-    //@IBOutlet weak var addCardButton: UIBarButtonItem!
-    
     @IBOutlet weak var _deleteCardsButton: UIBarButtonItem!
-    
     @IBOutlet weak var _buttomNavBar: UINavigationBar!
       
-    
     var _cardsDataSource : CardsDataSource?
     
     override func viewDidLoad() {
@@ -89,6 +83,8 @@ class CardsViewController: UIViewController, ICardsDelegate {
     @IBAction func addCard(_ sender: Any) {
         self.performSegue(withIdentifier: "addCard", sender: nil)
     }
+    
+    
     @IBAction func deleteSelectedItem(_ sender : UIBarButtonItem){
         if let selectedCards = _cardsCollectionView.indexPathsForSelectedItems{
             let cards =  selectedCards.map{$0.item}.sorted().reversed()

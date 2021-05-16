@@ -295,6 +295,7 @@
                     <connections>
                         <outlet property="_activityIndicator" destination="kwU-yr-zIL" id="SNg-P6-EiV"/>
                         <outlet property="_addExpense" destination="DoB-Vi-NQ9" id="1eS-Re-rfg"/>
+                        <outlet property="_cardType" destination="xki-xX-WTe" id="lY5-eq-5pr"/>
                         <outlet property="_expenseAmount" destination="aE5-vp-PNw" id="EOo-Uk-IJ7"/>
                         <outlet property="_expenseByMonthCView" destination="Gd4-El-I8t" id="mJc-wz-mnL"/>
                         <outlet property="_expenseByMonthHeightConstraint" destination="5bJ-61-ccX" id="ka9-Xs-gkk"/>
@@ -303,7 +304,6 @@
                         <outlet property="_expenseDescription" destination="rsf-aC-dG5" id="d78-tN-Ddn"/>
                         <outlet property="_expenseTrackerNavItem" destination="H5h-k1-EYm" id="3B4-m0-7ZG"/>
                         <outlet property="_totalExpense" destination="RW1-ww-p80" id="enC-eP-uW1"/>
-                        <outlet property="_transactionType" destination="xki-xX-WTe" id="lY5-eq-5pr"/>
                         <outlet property="expenseByTypeHeightConstraint" destination="dxJ-bD-DnB" id="aZM-Sl-Ov2"/>
                     </connections>
                 </viewController>

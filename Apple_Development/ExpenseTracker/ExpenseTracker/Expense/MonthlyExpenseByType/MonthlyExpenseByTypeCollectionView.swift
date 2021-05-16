@@ -11,7 +11,7 @@ class MonthlyExpenseByTypeCollectionView: UIViewController {
 
     @IBOutlet weak var expenceCollectionView: UICollectionView!
     var transactionDate : Date?
-    var expenseByTypeByMonthSource : ExpenseDataSource?
+    var expenseByTypeByMonthSource : ExpenseByTypeByMonthDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class MonthlyExpenseByTypeCollectionView: UIViewController {
         ExpenseByTypeManger.GetExpenseOfAllTypeByMonth( completion: { [weak self] (ExpenseByTypeModels) in
             guard let self = self else { return }
             
-            self.expenseByTypeByMonthSource = ExpenseDataSource(expenseDataProvider: ExpenseByTypeByMonthDataProvider(expenseByTypes:ExpenseByTypeModels))
+            self.expenseByTypeByMonthSource = ExpenseByTypeByMonthDataSource(expenseByTypes:ExpenseByTypeModels)
             self.expenceCollectionView.dataSource = self.expenseByTypeByMonthSource
             self.expenceCollectionView.delegate = self.expenseByTypeByMonthSource
             self.expenceCollectionView.reloadData()

@@ -27,7 +27,7 @@ class AddCardViewController: UIViewController {
     @IBOutlet weak var _statementDateText: UITextField!
 
     let _cardTypePickerView = UIPickerView()
-    var _cardTypePickerViewDataSource :ExpensePickerViewDataSource?
+    var _cardTypePickerViewDataSource :PVCardeTypeDataSource?
     var _cardType = ["VISA","MASTER","AMEX"]
 
     
@@ -38,7 +38,7 @@ class AddCardViewController: UIViewController {
         _statementDateText.delegate = self
         _dueDateText.delegate = self
         _cardNumberText.delegate = self
-        self._cardTypePickerViewDataSource=ExpensePickerViewDataSource(expensePickerViewDataProvider: CardeTypePickerViewDataProvider(data: _cardType, viewController: self))
+        self._cardTypePickerViewDataSource = PVCardeTypeDataSource(data: _cardType, viewController: self)
         _cardTypePickerView.dataSource = _cardTypePickerViewDataSource
         _cardTypePickerView.delegate = _cardTypePickerViewDataSource
         _cardTypeText.inputView = _cardTypePickerView

@@ -1,62 +1,16 @@
 //
-//  CVDataSource.swift
+//  ExpenseByMonthDataSource.swift
 //  ExpenseTracker
 //
-//  Created by SUBHASISH BISWAS on 12/01/21.
+//  Created by SUBHASISH BISWAS on 17/05/21.
 //
 
 import Foundation
 import UIKit
 
-class ExpenseDataSource: NSObject,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
-    
-    var _delegate : IUpdateDateSource?
-    
-    var _expenseDataProvider : IExpenseDataProvider?
-    
-     init(expenseDataProvider : IExpenseDataProvider) {
-        self._expenseDataProvider=expenseDataProvider
-        self._delegate = self._expenseDataProvider
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return _expenseDataProvider!.collectionView(collectionView, numberOfItemsInSection: section)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        return _expenseDataProvider!.collectionView(collectionView, cellForItemAt: indexPath)
-        
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return _expenseDataProvider!.numberOfSections(in: collectionView)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        return _expenseDataProvider!.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        _expenseDataProvider!.collectionView(collectionView, didSelectItemAt: indexPath)
-    }
-}
 
-protocol IExpenseDataProvider : IUpdateDateSource {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int
 
-}
-
-class ExpenseByMonthDataProvider: IExpenseDataProvider {
+class CVExpenseByMonthDataSource: NSObject,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,IUpdateDateSource {
     func UpdateDataSource(data: Any?) {
         _expenseByMonths = data as! [ExpenseByMonthModel]
     }
@@ -102,49 +56,7 @@ class ExpenseByMonthDataProvider: IExpenseDataProvider {
     
 }
 
-class ExpenseTypeDataProvider: IExpenseDataProvider {
-    func UpdateDataSource(data: Any?) {
-        _expenseByTypes = data as! [ExpenseByTypeModel]
-    }
-    
-    
-    let _collectionViewDynamicWidhthFactor :CGFloat = 1.5;
-    var _expenseByTypes : [ExpenseByTypeModel]
-    
-    init(expenseByTypes :[ExpenseByTypeModel]) {
-        self._expenseByTypes = expenseByTypes
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let width=collectionView.bounds.width/_collectionViewDynamicWidhthFactor-50;
-        let height=width/1.5
-        return CGSize(width: width, height: height)
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return _expenseByTypes.count
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "expenseByTypeCell", for: indexPath) as! ExpenseByTypeCVCell
-        cell.setup(expenseByType: _expenseByTypes[indexPath.item])
-        return cell
-    }
-    
-}
-
-class ExpenseByTypeByMonthDataProvider : IExpenseDataProvider
+class ExpenseByTypeByMonthDataSource : NSObject,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,IUpdateDateSource
 {
     func UpdateDataSource(data: Any?) {
         _expenseByTypes = data as! [ExpenseByTypeModel]
@@ -189,14 +101,4 @@ class ExpenseByTypeByMonthDataProvider : IExpenseDataProvider
     }
     
     
-}
-
-
-
-class ExpenseDataSource_1: NSObject {
-    var _delegate : IUpdateDateSource?
-}
-
-protocol IUpdateDateSource {
-    func UpdateDataSource(data : Any?) -> ()
 }
