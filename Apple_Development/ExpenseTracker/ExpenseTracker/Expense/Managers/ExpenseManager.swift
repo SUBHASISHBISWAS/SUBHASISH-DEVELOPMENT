@@ -42,11 +42,11 @@ class ExpenseManager: NSObject {
         expense.transactionType=transactionType
         expense.transactionDate=transactionDate
 
-        var currentMonthExpense=CardManager.GetExpenseByCardType(cardName: transactionType, expenseDuration: .currentMonth)
+        var currentMonthExpense=CardManager.GetExpenseByCard(cardName: transactionType, expenseDuration: .currentMonth)
         currentMonthExpense+=amount
-        var currentYearExpense=CardManager.GetExpenseByCardType(cardName: transactionType, expenseDuration: .currentYear)
+        var currentYearExpense=CardManager.GetExpenseByCard(cardName: transactionType, expenseDuration: .currentYear)
         currentYearExpense+=amount
-        var allExpense=CardManager.GetExpenseByCardType(cardName: transactionType, expenseDuration: .all)
+        var allExpense=CardManager.GetExpenseByCard(cardName: transactionType, expenseDuration: .all)
         allExpense+=amount
         
         transactionCard?.addToExpenses(expense)

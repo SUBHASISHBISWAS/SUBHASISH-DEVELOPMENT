@@ -14,9 +14,9 @@ class CardManager: NSObject {
     static let  context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     static var cards=[Card]()
-    static var _cardTypes : [String] = {
-        let cardTypes = UserDefaults.standard.object(forKey: defaultsKeys.cardTypes) as? [String]
-        return cardTypes ?? []
+    static var _cardNames : [String] = {
+        let cardNames = UserDefaults.standard.object(forKey: defaultsKeys.cardTypes) as? [String]
+        return cardNames ?? []
     }()
     
     class func AddCard(cardName : String, cardNumber : String, cardType : String, cardCvv :Int16, creditLimit : Int64, bankName: String, userName :String, password :String, gracePeriod :Int32,expiryDate :Date, dueDate : Date,statementDate : Date,completion: @escaping ([Card]) -> () ) {
@@ -26,9 +26,7 @@ class CardManager: NSObject {
         {
             var cardModels = [Card]()
             cardModels = try!  context.fetch(Card.fetchRequest())
-            
             let card=Card(context: context)
-            
             card.cardName = cardName
             card.cardNumber = cardNumber
             card.cardType = cardType
@@ -48,12 +46,14 @@ class CardManager: NSObject {
             let imageData = UIImage(named: "Card BG")?.pngData()
             card.cardImage = imageData
             
+            
+            
             try! self.context.save()
             
             cards.append(card)
             cardModels.append(card)
-            _cardTypes.append(card.cardName!)
-            UserDefaults.standard.set(_cardTypes, forKey: defaultsKeys.cardTypes)
+            _cardNames.append(card.cardName!)
+            UserDefaults.standard.set(_cardNames, forKey: defaultsKeys.cardTypes)
             DispatchQueue.main.async
             {
                
@@ -71,28 +71,10 @@ class CardManager: NSObject {
         cardModels.remove(at: id)
         self.context.delete(cardToRemove)
         try! self.context.save()
-        _cardTypes.remove(at: id)
-        UserDefaults.standard.set(_cardTypes, forKey: defaultsKeys.cardTypes)
+        _cardNames.remove(at: id)
+        UserDefaults.standard.set(_cardNames, forKey: defaultsKeys.cardTypes)
         completion(cardModels)
         
-        /*
-        DispatchQueue.global(qos: .userInitiated).async
-        {
-            var cardModels = [Card]()
-            cardModels = try!  context.fetch(Card.fetchRequest())
-            let cardToRemove=cardModels[id]
-            cardModels.remove(at: id)
-            self.context.delete(cardToRemove)
-            try! self.context.save()
-        
-            
-            DispatchQueue.main.async
-            {
-                completion(cardModels)
-            }
-        
-        }
-         */
     }
     
     class func GetCards(completion: @escaping ([Card]) -> ())
@@ -102,22 +84,6 @@ class CardManager: NSObject {
         self.cards = try!  context.fetch(Card.fetchRequest())
         cards=self.cards
         completion(cards)
-        
-        /*
-        DispatchQueue.global(qos: .userInitiated).async
-        {
-            var cards = [Card]()
-            
-            self.cards = try!  context.fetch(Card.fetchRequest())
-            cards=self.cards
-            
-            DispatchQueue.main.async
-            {
-                completion(cards)
-            }
-        
-        }
-         */
         
     }
     
@@ -133,17 +99,34 @@ class CardManager: NSObject {
         if cards.count == 0 {return}
         completion(cards.first!)
         
-        /*
-        DispatchQueue.main.async
-        {
-            
-        }
- 
-        */
-        
     }
     
-    class func GetExpenseByCardType(cardName : String, expenseDuration : ExpenseDuration , statementDate : Date = Date() ) ->Double
+    class func GetExpenseByCardByDurationsSpecified(cardName : String, expenseDuration : [ExpenseDuration] , statementDate : Date = Date() ) ->(Double,Double,Double,Double)
+    {
+        var currentMonthExpense : Double = 0
+        var currentYearExpense : Double = 0
+        var totalExpense : Double = 0
+        var expenseByMonth : Double = 0
+        
+        for duration in expenseDuration
+        {
+            switch duration
+            {
+                case .currentMonth:
+                    currentMonthExpense=GetExpenseByCard(cardName: cardName, expenseDuration: duration)
+                case .currentYear:
+                    currentYearExpense=GetExpenseByCard(cardName: cardName, expenseDuration: duration)
+                case .byMonth:
+                    expenseByMonth=GetExpenseByCard(cardName: cardName, expenseDuration: duration)
+                case .all:
+                    totalExpense=GetExpenseByCard(cardName: cardName, expenseDuration: duration)
+               
+            }
+        }
+        return (currentMonthExpense,currentYearExpense,expenseByMonth,totalExpense)
+    }
+    
+    class func GetExpenseByCard(cardName : String, expenseDuration : ExpenseDuration , statementDate : Date = Date() ) ->Double
     {
         
         var currentMonthExpense : Double = 0

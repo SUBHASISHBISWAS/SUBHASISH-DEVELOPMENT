@@ -28,7 +28,7 @@ class AddCardViewController: UIViewController {
 
     let _cardTypePickerView = UIPickerView()
     var _cardTypePickerViewDataSource :PVCardeTypeDataSource?
-    var _cardType = ["VISA","MASTER","AMEX"]
+    var _cardType = ["--CARD--","VISA","MASTER","AMEX"]
 
     
     override func viewDidLoad() {
@@ -42,7 +42,9 @@ class AddCardViewController: UIViewController {
         _cardTypePickerView.dataSource = _cardTypePickerViewDataSource
         _cardTypePickerView.delegate = _cardTypePickerViewDataSource
         _cardTypeText.inputView = _cardTypePickerView
+        
     }
+ 
     
     func showToolBarInNumberPad(textField : UITextField)  {
         let toolbar = UIToolbar(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 0, height: 40)))
@@ -72,8 +74,8 @@ class AddCardViewController: UIViewController {
         CardManager.AddCard(cardName: cardName, cardNumber: cardNumber, cardType: cardType, cardCvv: cardCvv, creditLimit: creditLimit, bankName: bankName, userName: userName, password: password, gracePeriod: gracePeriod, expiryDate: experiyDate, dueDate: dueDate, statementDate: statementDate){ [unowned self] (cards) in
             let indexPath = IndexPath(row: cards.count-1, section: 0)
             self.navigationController?.popToRootViewController(animated: true)
-            self._delegate?.GetCardsData(info: CardsData(_cards: cards, _indexPath: indexPath))
-            EventEmitter.publish(name: "AddExpenseViewController", args: cards)
+            self._delegate?.UpdateCards(info: CardsData(_cards: cards, _indexPath: indexPath))
+            EventEmitter.publish(name: "UpdateCards", args: cards)
         }
         
         

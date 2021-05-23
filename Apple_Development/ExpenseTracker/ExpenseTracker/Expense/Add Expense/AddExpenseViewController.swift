@@ -65,7 +65,7 @@ class AddExpenseViewController: UIViewController {
             self._expenseByMonthCView.reloadData()
         }
         
-        ExpenseByTypeManger.GetExpenesByTranctaionType { [weak self] (ExpenseByTypeModels) in
+        ExpenseByCardManger.GetExpenesByCard { [weak self] (ExpenseByTypeModels) in
             guard let self = self else { return }
             self._expenseByCardTypeCVDataSource = CVExpenseTypeDataSource(expenseByTypes: ExpenseByTypeModels)
             self._expenseByTypeCView.dataSource = self._expenseByCardTypeCVDataSource
@@ -87,10 +87,10 @@ class AddExpenseViewController: UIViewController {
         })
         
         // On Addition and Deletion Update View
-        EventEmitter.subscribe(name: "AddExpenseViewController") { (data) in
+        EventEmitter.subscribe(name: "UpdateCards") { (data) in
             print((data as! [Card]).count)
             
-            ExpenseByTypeManger.map(cards: data as! [Card], completion: { [weak self] (expenseByTypeModels) in
+            ExpenseByCardManger.map(cards: data as! [Card], completion: { [weak self] (expenseByTypeModels) in
                 guard let self = self else { return }
                 self._expenseByCardTypeCVDataSource?.UpdateDataSource(data: expenseByTypeModels)
                 self._expenseByTypeCView.reloadData()
@@ -165,7 +165,7 @@ class AddExpenseViewController: UIViewController {
             self._expenseByMonthCVDataSource?.UpdateDataSource(data: monthyOveviewModels)
             self._expenseByMonthCView.reloadData()
         }
-        ExpenseByTypeManger.GetExpenesByTranctaionType { [weak self] (expenseByTypeModels) in
+        ExpenseByCardManger.GetExpenesByCard { [weak self] (expenseByTypeModels) in
             guard let self = self else { return }
             self._expenseByCardTypeCVDataSource?.UpdateDataSource(data: expenseByTypeModels)
             self._expenseByTypeCView.reloadData()
@@ -201,7 +201,7 @@ class AddExpenseViewController: UIViewController {
 
 extension AddExpenseViewController : ICardsDelegate
 {
-    func GetCardsData(info: CardsData) {
+    func UpdateCards(info: CardsData) {
         
     }
     

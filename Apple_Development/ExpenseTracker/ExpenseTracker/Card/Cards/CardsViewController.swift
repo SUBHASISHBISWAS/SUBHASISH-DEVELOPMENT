@@ -27,6 +27,16 @@ class CardsViewController: UIViewController, ICardsDelegate {
             self._cardsCollectionView.dataSource = self._cardsDataSource
             self._cardsCollectionView.delegate = self._cardsDataSource
             self._cardsCollectionView.reloadData()
+            
+            if (Cards.count==0)
+            {
+                CardManager.AddCard(cardName: "CASH", cardNumber: "CASH", cardType: "CASH", cardCvv: 0, creditLimit: 0, bankName: "CASH", userName: "SUBHASISH", password: "SUBHASISH", gracePeriod :0, expiryDate: DateExtension.GetDate(stringDate: "31-DEC-2021")!, dueDate: DateExtension.GetDate(stringDate: "31-DEC-2021")!, statementDate: DateExtension.GetDate(stringDate: "31-DEC-2021")!){ [unowned self] (cards) in
+                    let indexPath = IndexPath(row: cards.count-1, section: 0)
+                    self.navigationController?.popToRootViewController(animated: true)
+                    self.UpdateCards(info: CardsData(_cards: cards, _indexPath: indexPath))
+                    EventEmitter.publish(name: "UpdateCards", args: cards)
+                }
+            }
         })
         
         navigationItem.leftBarButtonItem = editButtonItem
@@ -35,7 +45,7 @@ class CardsViewController: UIViewController, ICardsDelegate {
            super.awakeFromNib()
     }
     
-    func GetCardsData(info: CardsData) {
+    func UpdateCards(info: CardsData) {
     
         _cardsDataSource?.UpdateDataSource(data: info._cards)
         _cardsCollectionView.insertItems(at: [info._indexPath])
@@ -104,7 +114,7 @@ class CardsViewController: UIViewController, ICardsDelegate {
 }
 
 protocol ICardsDelegate {
-    func GetCardsData(info: CardsData)
+    func UpdateCards(info: CardsData)
 }
 
 struct CardsData{

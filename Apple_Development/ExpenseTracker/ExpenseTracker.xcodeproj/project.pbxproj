@@ -29,7 +29,7 @@
 		A65984EA25A472D9005E6AAE /* MonthlyExpenseOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65984E925A472D9005E6AAE /* MonthlyExpenseOverview.swift */; };
 		A65984F425A47B4A005E6AAE /* ExpenseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65984F325A47B4A005E6AAE /* ExpenseManager.swift */; };
 		A65CB4A925ACA7EC00674AD4 /* ExpenseByTypeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65CB4A825ACA7EC00674AD4 /* ExpenseByTypeCVCell.swift */; };
-		A65CB4BF25ACAB5C00674AD4 /* ExpenseByTypeManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65CB4BE25ACAB5C00674AD4 /* ExpenseByTypeManger.swift */; };
+		A65CB4BF25ACAB5C00674AD4 /* ExpenseByCardManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65CB4BE25ACAB5C00674AD4 /* ExpenseByCardManger.swift */; };
 		A66FBD3F25ACAE3800731680 /* ExpenseByTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FBD3E25ACAE3700731680 /* ExpenseByTypeModel.swift */; };
 		A66FBD4425ACE3CE00731680 /* CVFlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FBD4325ACE3CE00731680 /* CVFlowLayoutDelegate.swift */; };
 		A66FBD5525ACE58100731680 /* CVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FBD5425ACE58100731680 /* CVDataSource.swift */; };
@@ -102,7 +102,7 @@
 		A65984E925A472D9005E6AAE /* MonthlyExpenseOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyExpenseOverview.swift; sourceTree = "<group>"; };
 		A65984F325A47B4A005E6AAE /* ExpenseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseManager.swift; sourceTree = "<group>"; };
 		A65CB4A825ACA7EC00674AD4 /* ExpenseByTypeCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByTypeCVCell.swift; sourceTree = "<group>"; };
-		A65CB4BE25ACAB5C00674AD4 /* ExpenseByTypeManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByTypeManger.swift; sourceTree = "<group>"; };
+		A65CB4BE25ACAB5C00674AD4 /* ExpenseByCardManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByCardManger.swift; sourceTree = "<group>"; };
 		A66FBD3E25ACAE3700731680 /* ExpenseByTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseByTypeModel.swift; sourceTree = "<group>"; };
 		A66FBD4325ACE3CE00731680 /* CVFlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVFlowLayoutDelegate.swift; sourceTree = "<group>"; };
 		A66FBD5425ACE58100731680 /* CVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVDataSource.swift; sourceTree = "<group>"; };
@@ -310,7 +310,7 @@
 		A65CB4C325ACAB6700674AD4 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				A65CB4BE25ACAB5C00674AD4 /* ExpenseByTypeManger.swift */,
+				A65CB4BE25ACAB5C00674AD4 /* ExpenseByCardManger.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -607,7 +607,7 @@
 				A62F9CED25B5CB7D0070C9AA /* CardsViewController.swift in Sources */,
 				A66FBD5A25ACE5DE00731680 /* AddExpenseDatePicker.swift in Sources */,
 				A65984EA25A472D9005E6AAE /* MonthlyExpenseOverview.swift in Sources */,
-				A65CB4BF25ACAB5C00674AD4 /* ExpenseByTypeManger.swift in Sources */,
+				A65CB4BF25ACAB5C00674AD4 /* ExpenseByCardManger.swift in Sources */,
 				A6295BE825B0AA570095B742 /* MonthlyExpenseByTypeCollectionViewCell.swift in Sources */,
 				A62484C225A89BCD00CD62DF /* ExpenseByMonthManager.swift in Sources */,
 			);
@@ -786,7 +786,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ExpenseTracker;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CKLZ6PKF8N;
 				INFOPLIST_FILE = ExpenseTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -806,7 +806,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ExpenseTracker;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CKLZ6PKF8N;
 				INFOPLIST_FILE = ExpenseTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -17,7 +17,7 @@ class MonthlyExpenseByTypeCollectionView: UIViewController {
         super.viewDidLoad()
         
         
-        ExpenseByTypeManger.GetExpenseOfAllTypeByMonth( completion: { [weak self] (ExpenseByTypeModels) in
+        ExpenseByCardManger.GetMonthlyExpenseOfAllCard( completion: { [weak self] (ExpenseByTypeModels) in
             guard let self = self else { return }
             
             self.expenseByTypeByMonthSource = ExpenseByTypeByMonthDataSource(expenseByTypes:ExpenseByTypeModels)

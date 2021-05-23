@@ -104,19 +104,19 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CE9DAA00-DDC7-4479-AF47-AC0362385870"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ExpenseTracker/Card/Cards/CardsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "deleteSelectedItem(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "CE9DAA00-DDC7-4479-AF47-AC0362385870 - 631bce482587fde7"
+                  uuid = "CE9DAA00-DDC7-4479-AF47-AC0362385870 - 631bce482587fcad"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -126,12 +126,12 @@
                   urlString = "file:///Users/subhasish/Documents/Apple/SUBHASISH/Development/Personal/SUBHASISH-DEVELOPMENT/Apple_Development/ExpenseTracker/ExpenseTracker/Card/Cards/CardsViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
                   offsetFromSymbolStart = "672">
                </Location>
                <Location
-                  uuid = "CE9DAA00-DDC7-4479-AF47-AC0362385870 - d61f79ab1f48d747"
+                  uuid = "CE9DAA00-DDC7-4479-AF47-AC0362385870 - d61f79ab1f48d60d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -141,8 +141,8 @@
                   urlString = "file:///Users/subhasish/Documents/Apple/SUBHASISH/Development/Personal/SUBHASISH-DEVELOPMENT/Apple_Development/ExpenseTracker/ExpenseTracker/Card/Cards/CardsViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
                   offsetFromSymbolStart = "67">
                </Location>
             </Locations>
@@ -177,6 +177,102 @@
             startingLineNumber = "14"
             endingLineNumber = "14"
             landmarkName = "showToolBarInNumberPad(textField:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A89228A7-9663-4903-A213-C1CA7B1D5006"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ExpenseTracker/Card/Manager/CardManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "AddCard(cardName:cardNumber:cardType:cardCvv:creditLimit:bankName:userName:password:gracePeriod:expiryDate:dueDate:statementDate:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "10A0971B-3912-4156-874F-088946CA30C9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ExpenseTracker/Card/Cards/CardsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "10A0971B-3912-4156-874F-088946CA30C9 - 5531f1e32afbbcea"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;ExpenseTracker.Card&gt;) -&gt; () in ExpenseTracker.CardsViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "ExpenseTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/subhasish/Documents/Apple/SUBHASISH/Development/Personal/SUBHASISH-DEVELOPMENT/Apple_Development/ExpenseTracker/ExpenseTracker/Card/Cards/CardsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "1322">
+               </Location>
+               <Location
+                  uuid = "10A0971B-3912-4156-874F-088946CA30C9 - 2309fac4c0aea3d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;ExpenseTracker.Card&gt;) -&gt; () in closure #1 (Swift.Array&lt;ExpenseTracker.Card&gt;) -&gt; () in ExpenseTracker.CardsViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "ExpenseTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/subhasish/Documents/Apple/SUBHASISH/Development/Personal/SUBHASISH-DEVELOPMENT/Apple_Development/ExpenseTracker/ExpenseTracker/Card/Cards/CardsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "167">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "27C38F26-95CD-461E-B20A-5E89682A1A0C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ExpenseTracker/Card/Cards/CardsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6983152C-67FC-40CA-8F13-7BA839924F67"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ExpenseTracker/Expense/Add Expense/AddExpenseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

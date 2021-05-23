@@ -105,7 +105,7 @@ class ExpenseByMonthManager {
                 let statementMonth = Calendar.current.dateComponents([.day, .month,.year],from: statementDate).month
                 
                 if (expenseMonth == statementMonth) {
-                    monthlyTotalExpense+=CardManager.GetExpenseByCardType(cardName: card.cardName!, expenseDuration: .byMonth,statementDate: statementDate)
+                    monthlyTotalExpense+=CardManager.GetExpenseByCard(cardName: card.cardName!, expenseDuration: .byMonth,statementDate: statementDate)
                 }
                 
             }
