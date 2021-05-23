@@ -32,7 +32,7 @@ class ExpenseByCardManger {
             for cardName in CardManager._cardNames
             {
             
-                let (totalExpenseByMonth,totalExpenseByYear,_,totalExpense) = CardManager.GetExpenseByCardByDurationsSpecified(cardName: cardName, expenseDuration: [.currentMonth,.currentYear,.all])
+                let (totalExpenseByMonth,totalExpenseByYear,_,totalExpense) = CardManager.GetExpenseByCard(cardName: cardName, expenseDurations: [.currentMonth,.currentYear,.all])
             
                 expenseByCard.append(ExpenseByTypeModel(id: UUID(), description: cardName, image: #imageLiteral(resourceName: "Card BG"),totalAmaount: totalExpense, totalAmaountInCurrentMonth: totalExpenseByMonth,totalAmaountInCurrentYear:totalExpenseByYear,month:Date().month ))
                 
@@ -54,7 +54,7 @@ class ExpenseByCardManger {
             {
                 let cardName = card.cardName!
                 
-                let (currentMonthExpense,currentYearExpense,_,totalExpense) = CardManager.GetExpenseByCardByDurationsSpecified(cardName: cardName, expenseDuration: [.currentMonth,.currentYear,.all])
+                let (currentMonthExpense,currentYearExpense,_,totalExpense) = CardManager.GetExpenseByCard(cardName: cardName, expenseDurations: [.currentMonth,.currentYear,.all])
                 
                 expenseByType.append(ExpenseByTypeModel(id: UUID(), description: cardName, image: #imageLiteral(resourceName: "Card BG"),totalAmaount: totalExpense, totalAmaountInCurrentMonth: currentMonthExpense,totalAmaountInCurrentYear:currentYearExpense,month:Date().month ))
                 

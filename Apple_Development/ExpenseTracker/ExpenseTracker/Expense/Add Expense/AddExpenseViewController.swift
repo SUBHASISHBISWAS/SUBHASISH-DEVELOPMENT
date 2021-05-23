@@ -31,7 +31,7 @@ class AddExpenseViewController: UIViewController {
     let _context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let _collectionViewDynamicWidhthFactor :CGFloat = 1.5;
     var _expenseByMonthCVDataSource :CVExpenseByMonthDataSource?
-    var _expenseByCardTypeCVDataSource :CVExpenseTypeDataSource?
+    var _expenseByCardCVDataSource :CVExpenseCardDataSource?
     var _cardTypePVDataSource :PVCardTypeDataSource?
     
     override func viewDidLoad() {
@@ -67,9 +67,9 @@ class AddExpenseViewController: UIViewController {
         
         ExpenseByCardManger.GetExpenesByCard { [weak self] (ExpenseByTypeModels) in
             guard let self = self else { return }
-            self._expenseByCardTypeCVDataSource = CVExpenseTypeDataSource(expenseByTypes: ExpenseByTypeModels)
-            self._expenseByTypeCView.dataSource = self._expenseByCardTypeCVDataSource
-            self._expenseByTypeCView.delegate = self._expenseByCardTypeCVDataSource
+            self._expenseByCardCVDataSource = CVExpenseCardDataSource(expenseByTypes: ExpenseByTypeModels)
+            self._expenseByTypeCView.dataSource = self._expenseByCardCVDataSource
+            self._expenseByTypeCView.delegate = self._expenseByCardCVDataSource
             self._expenseByTypeCView.reloadData()
         }
          
@@ -92,7 +92,7 @@ class AddExpenseViewController: UIViewController {
             
             ExpenseByCardManger.map(cards: data as! [Card], completion: { [weak self] (expenseByTypeModels) in
                 guard let self = self else { return }
-                self._expenseByCardTypeCVDataSource?.UpdateDataSource(data: expenseByTypeModels)
+                self._expenseByCardCVDataSource?.UpdateDataSource(data: expenseByTypeModels)
                 self._expenseByTypeCView.reloadData()
                 self._expenseByTypeCView.collectionViewLayout.invalidateLayout()
                 self._expenseByTypeCView.layoutSubviews()
@@ -150,7 +150,7 @@ class AddExpenseViewController: UIViewController {
         let transactionType = _cardType.text!
         guard let expenseDate = DateExtension.GetDate(stringDate: _expenseDate.text!) else { return }
         
-        ExpenseManager.AddExpense(amount: expenseAmount, transactionDescription: expenseDescription, transactionType: transactionType,transactionDate: expenseDate)
+        ExpenseManager.AddExpense(amount: expenseAmount, transactionDescription: expenseDescription, cardName: transactionType,transactionDate: expenseDate)
         
         _expenseDescription.text=""
         _expenseAmount.text=""
@@ -167,7 +167,7 @@ class AddExpenseViewController: UIViewController {
         }
         ExpenseByCardManger.GetExpenesByCard { [weak self] (expenseByTypeModels) in
             guard let self = self else { return }
-            self._expenseByCardTypeCVDataSource?.UpdateDataSource(data: expenseByTypeModels)
+            self._expenseByCardCVDataSource?.UpdateDataSource(data: expenseByTypeModels)
             self._expenseByTypeCView.reloadData()
         }
          

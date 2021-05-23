@@ -27,10 +27,10 @@ class ExpenseManager: NSObject {
             return expenseDateFormatter
         }()
     
-    class func AddExpense(amount :Double, transactionDescription :String, transactionType :String , transactionDate : Date) {
+    class func AddExpense(amount :Double, transactionDescription :String, cardName :String , transactionDate : Date) {
         
         var transactionCard : Card?
-        CardManager.GetCard(cardName: transactionType) { (card) in
+        CardManager.GetCard(cardName: cardName) { (card) in
             transactionCard=card
         }
         
@@ -39,20 +39,18 @@ class ExpenseManager: NSObject {
         expense.id=UUID()
         expense.amount=amount
         expense.transactionDescription=transactionDescription
-        expense.transactionType=transactionType
+        expense.transactionType=cardName
         expense.transactionDate=transactionDate
 
-        var currentMonthExpense=CardManager.GetExpenseByCard(cardName: transactionType, expenseDuration: .currentMonth)
+        var (currentMonthExpense,currentYearExpense,_,totalExpense) = CardManager.GetExpenseByCard(cardName: cardName, expenseDurations: [.currentMonth,.currentYear,.all])
         currentMonthExpense+=amount
-        var currentYearExpense=CardManager.GetExpenseByCard(cardName: transactionType, expenseDuration: .currentYear)
         currentYearExpense+=amount
-        var allExpense=CardManager.GetExpenseByCard(cardName: transactionType, expenseDuration: .all)
-        allExpense+=amount
+        totalExpense+=amount
         
         transactionCard?.addToExpenses(expense)
         transactionCard?.currentMonthExpense = currentMonthExpense
         transactionCard?.currentYearExpense = currentYearExpense
-        transactionCard?.totalExpense = allExpense
+        transactionCard?.totalExpense = totalExpense
         
         try! self.context.save()
         expenses.append(expense)

@@ -101,14 +101,14 @@ class CardManager: NSObject {
         
     }
     
-    class func GetExpenseByCardByDurationsSpecified(cardName : String, expenseDuration : [ExpenseDuration] , statementDate : Date = Date() ) ->(Double,Double,Double,Double)
+    class func GetExpenseByCard(cardName : String, expenseDurations : [ExpenseDuration] , statementDate : Date = Date() ) ->(Double,Double,Double,Double)
     {
         var currentMonthExpense : Double = 0
         var currentYearExpense : Double = 0
         var totalExpense : Double = 0
         var expenseByMonth : Double = 0
         
-        for duration in expenseDuration
+        for duration in expenseDurations
         {
             switch duration
             {

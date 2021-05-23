@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CVExpenseTypeDataSource: NSObject,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,IUpdateDateSource {
+class CVExpenseCardDataSource: NSObject,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,IUpdateDateSource {
     func UpdateDataSource(data: Any?) {
         _expenseByTypes = data as! [ExpenseByTypeModel]
     }
