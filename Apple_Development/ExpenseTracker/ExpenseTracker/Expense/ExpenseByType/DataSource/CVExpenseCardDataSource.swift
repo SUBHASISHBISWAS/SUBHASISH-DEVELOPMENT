@@ -9,16 +9,18 @@ import Foundation
 import UIKit
 
 class CVExpenseCardDataSource: NSObject,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,IUpdateDateSource {
+    
+    
+   
+    static let shared =  CVExpenseCardDataSource()
+    
+    let _collectionViewDynamicWidhthFactor :CGFloat = 1.5
+    var _expenseByTypes : [ExpenseByTypeModel] = []
+    
+    private override init() {}
+    
     func UpdateDataSource(data: Any?) {
         _expenseByTypes = data as! [ExpenseByTypeModel]
-    }
-    
-    
-    let _collectionViewDynamicWidhthFactor :CGFloat = 1.5;
-    var _expenseByTypes : [ExpenseByTypeModel]
-    
-    init(expenseByTypes :[ExpenseByTypeModel]) {
-        self._expenseByTypes = expenseByTypes
     }
     
     

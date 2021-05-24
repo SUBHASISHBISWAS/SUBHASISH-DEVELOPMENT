@@ -15,11 +15,13 @@ class CVExpenseByMonthDataSource: NSObject,UICollectionViewDataSource,UICollecti
         _expenseByMonths = data as! [ExpenseByMonthModel]
     }
     
-    let _collectionViewDynamicWidhthFactor :CGFloat = 1.5;
-    var _expenseByMonths : [ExpenseByMonthModel]
+    static let shared =  CVExpenseByMonthDataSource()
     
-    init(expenseByMonths :[ExpenseByMonthModel]) {
-        self._expenseByMonths = expenseByMonths
+    let _collectionViewDynamicWidhthFactor :CGFloat = 1.5;
+    var _expenseByMonths : [ExpenseByMonthModel] = []
+    
+    private override init() {
+        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

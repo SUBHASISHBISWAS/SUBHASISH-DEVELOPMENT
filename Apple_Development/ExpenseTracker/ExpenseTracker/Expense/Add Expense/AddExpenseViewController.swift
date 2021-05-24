@@ -57,6 +57,18 @@ class AddExpenseViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.cardTypeDidChanged), name: UITextField.textDidChangeNotification, object: nil)
         
+        self._expenseByCardCVDataSource = CVExpenseCardDataSource.shared
+        self._expenseByTypeCView.dataSource = self._expenseByCardCVDataSource
+        self._expenseByTypeCView.delegate = self._expenseByCardCVDataSource
+        
+        self._expenseByMonthCVDataSource = CVExpenseByMonthDataSource.shared
+        self._expenseByMonthCView.dataSource = self._expenseByMonthCVDataSource
+        self._expenseByMonthCView.delegate = self._expenseByMonthCVDataSource
+        
+        self._cardTypePVDataSource=PVCardTypeDataSource.shared
+        self._cardTypePickerView.dataSource = self._cardTypePVDataSource
+        self._cardTypePickerView.delegate = self._cardTypePVDataSource
+        _cardTypePVDataSource?._delegate = self
         
         // On Default Card Added
         EventEmitter.subscribe(name: "DefaultCardAdded") { (data) in
@@ -64,10 +76,8 @@ class AddExpenseViewController: UIViewController {
             
             let cards=(data as! [Card])
             
-            self._cardTypePVDataSource=PVCardTypeDataSource(data: cards, viewController: self)
-            self._cardTypePickerView.dataSource = self._cardTypePVDataSource
-            self._cardTypePickerView.delegate = self._cardTypePVDataSource
-            if (cards.count > 0){
+            if (cards.count > 0)
+            {
                 self._cardTypePickerView.selectRow(0, inComponent: 0, animated: true)
                 self._cardTypePVDataSource?.pickerView(self._cardTypePickerView, didSelectRow: 0, inComponent: 0)
             }
@@ -75,9 +85,7 @@ class AddExpenseViewController: UIViewController {
             ExpenseByCardManger.map(cards: cards, completion: { [weak self] (expenseByTypeModels) in
                 guard let self = self else { return }
                 
-                self._expenseByCardCVDataSource = CVExpenseCardDataSource(expenseByTypes: expenseByTypeModels)
-                self._expenseByTypeCView.dataSource = self._expenseByCardCVDataSource
-                self._expenseByTypeCView.delegate = self._expenseByCardCVDataSource
+                self._expenseByCardCVDataSource!.UpdateDataSource(data: expenseByTypeModels)
                 let indexPath = IndexPath(row: expenseByTypeModels.count-1, section: 0)
                 self._expenseByTypeCView.insertItems(at: [indexPath])
                 self._expenseByTypeCView.reloadData()
@@ -85,13 +93,25 @@ class AddExpenseViewController: UIViewController {
                 self._expenseByTypeCView.layoutSubviews()
             })
             
+            ExpenseByMonthManager.map(cards: cards) { [weak self] (ExpenseByMonthModels) in
+                guard let self = self else { return }
+                self._expenseByMonthCVDataSource!.UpdateDataSource(data: ExpenseByMonthModels)
+                self._expenseByMonthCView.reloadData()
+                self._expenseByMonthCView.collectionViewLayout.invalidateLayout()
+                self._expenseByMonthCView.layoutSubviews()
+            }
+            
             
         }
         
         CardManager.GetCards( completion: { [weak self] (Cards) in
             guard let self = self else { return }
             
-            if (Cards.count > 0){
+            self._cardTypePVDataSource?.UpdateDataSource(data: Cards)
+            self._cardTypePickerView.reloadAllComponents()
+            
+            if (Cards.count > 0)
+            {
                 self._cardTypePickerView.selectRow(0, inComponent: 0, animated: true)
                 self._cardTypePVDataSource?.pickerView(self._cardTypePickerView, didSelectRow: 0, inComponent: 0)
             }
@@ -100,20 +120,16 @@ class AddExpenseViewController: UIViewController {
         // On Loading Application Show View
         ExpenseByMonthManager.GetMonthlyExpenes { [weak self] (ExpenseByMonthModels) in
             guard let self = self else { return }
-            self._expenseByMonthCVDataSource = CVExpenseByMonthDataSource(expenseByMonths:ExpenseByMonthModels)
-            self._expenseByMonthCView.dataSource = self._expenseByMonthCVDataSource
-            self._expenseByMonthCView.delegate = self._expenseByMonthCVDataSource
+            self._expenseByMonthCVDataSource!.UpdateDataSource(data: ExpenseByMonthModels)
             self._expenseByMonthCView.reloadData()
+            self._expenseByMonthCView.collectionViewLayout.invalidateLayout()
+            self._expenseByMonthCView.layoutSubviews()
         }
         
         ExpenseByCardManger.GetExpenesByCard { [weak self] (ExpenseByTypeModels) in
             guard let self = self else { return }
-            if (self._expenseByCardCVDataSource == nil)
-            {
-                self._expenseByCardCVDataSource = CVExpenseCardDataSource(expenseByTypes: ExpenseByTypeModels)
-                self._expenseByTypeCView.dataSource = self._expenseByCardCVDataSource
-                self._expenseByTypeCView.delegate = self._expenseByCardCVDataSource
-            }
+            
+            self._expenseByCardCVDataSource!.UpdateDataSource(data: ExpenseByTypeModels)
             self._expenseByTypeCView.reloadData()
             self._expenseByTypeCView.collectionViewLayout.invalidateLayout()
             self._expenseByTypeCView.layoutSubviews()
@@ -247,6 +263,8 @@ extension AddExpenseViewController : ICardsDelegate
     }
     
 }
+
+
 
 
 
