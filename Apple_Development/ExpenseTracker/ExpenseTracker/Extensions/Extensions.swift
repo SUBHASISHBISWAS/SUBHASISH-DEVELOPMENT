@@ -131,6 +131,26 @@ class DateExtension
         
         return date
     }
+    
+    static func GetDateFromString(stringDate : String) -> Date?
+    {
+        let months = ["Jan":1,"Feb":2,"Mar":3,"Apr":4,"May":5,"Jun":6,"Jul":7,"Aug":8,"Sep":9,"Oct":10,"Nov":11,"Dec":12]
+        let textDateComponents = stringDate.components(separatedBy: "-")
+        var calendar = Calendar.current
+        calendar.timeZone = .current
+    
+        let dateComponents = DateComponents(calendar: calendar,
+                                            year: Int(textDateComponents[2]),
+                                            month: months[textDateComponents[1]],
+                                            day: Int(textDateComponents[0]),
+                                            hour: 0,
+                                            minute: 0,
+                                            second: 0
+        )
+        let date = calendar.date(from: dateComponents)!
+        
+        return date
+    }
 
 }
 

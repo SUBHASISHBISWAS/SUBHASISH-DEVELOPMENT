@@ -23,20 +23,38 @@ class CardsViewController: UIViewController, ICardsDelegate {
         CardManager.GetCards( completion: { [weak self] (Cards) in
             guard let self = self else { return }
             
-            self._cardsDataSource = CardsDataSource(cards: Cards, viewController: self)
-            self._cardsCollectionView.dataSource = self._cardsDataSource
-            self._cardsCollectionView.delegate = self._cardsDataSource
-            self._cardsCollectionView.reloadData()
+            //self._cardsDataSource = CardsDataSource(cards: Cards, viewController: self)
+            //self._cardsCollectionView.dataSource = self._cardsDataSource
+            //self._cardsCollectionView.delegate = self._cardsDataSource
             
-            if (Cards.count==0)
+            
+            if (Cards.count) == 0
             {
-                CardManager.AddCard(cardName: "CASH", cardNumber: "CASH", cardType: "CASH", cardCvv: 0, creditLimit: 0, bankName: "CASH", userName: "SUBHASISH", password: "SUBHASISH", gracePeriod :0, expiryDate: DateExtension.GetDate(stringDate: "31-DEC-2021")!, dueDate: DateExtension.GetDate(stringDate: "31-DEC-2021")!, statementDate: DateExtension.GetDate(stringDate: "31-DEC-2021")!){ [unowned self] (cards) in
+                CardManager.AddCard(cardName: "CASH", cardNumber: "CASH", cardType: "CASH", cardCvv: 0, creditLimit: 0, bankName: "CASH", userName: "SUBHASISH", password: "SUBHASISH", gracePeriod :0, expiryDate: DateExtension.GetDate(stringDate: "31-Dec-2021")!, dueDate: DateExtension.GetDate(stringDate: "31-Dec-2021")!, statementDate: DateExtension.GetDate(stringDate: "31-Dec-2021")!){ [unowned self] (cards) in
+                    
+                    self._cardsDataSource = CardsDataSource(cards: cards, viewController: self)
+                    self._cardsCollectionView.dataSource = self._cardsDataSource
+                    self._cardsCollectionView.delegate = self._cardsDataSource
+                    self._cardsCollectionView.reloadData()
+                    
+                    
                     let indexPath = IndexPath(row: cards.count-1, section: 0)
                     self.navigationController?.popToRootViewController(animated: true)
                     self.UpdateCards(info: CardsData(_cards: cards, _indexPath: indexPath))
-                    EventEmitter.publish(name: "UpdateCards", args: cards)
+                    EventEmitter.publish(name: "DefaultCardAdded", args: cards)
                 }
             }
+            else
+            {
+                if self._cardsDataSource == nil {
+                    self._cardsDataSource = CardsDataSource(cards: Cards, viewController: self)
+                    self._cardsCollectionView.dataSource = self._cardsDataSource
+                    self._cardsCollectionView.delegate = self._cardsDataSource
+                }
+                self._cardsCollectionView.reloadData()
+            }
+            
+            
         })
         
         navigationItem.leftBarButtonItem = editButtonItem
@@ -105,7 +123,7 @@ class CardsViewController: UIViewController, ICardsDelegate {
                     let indexPath = IndexPath(row: cards.count, section: 0)
                     self._cardsDataSource?.UpdateDataSource(data: cards)
                     self._cardsCollectionView.deleteItems(at: [indexPath])
-                    EventEmitter.publish(name: "AddExpenseViewController", args: cards)
+                    EventEmitter.publish(name: "UpdateCards", args: cards)
                 } )
             }
         }

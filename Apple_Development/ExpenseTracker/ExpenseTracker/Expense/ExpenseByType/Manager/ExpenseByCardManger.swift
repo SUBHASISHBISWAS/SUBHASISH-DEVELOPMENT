@@ -26,6 +26,7 @@ class ExpenseByCardManger {
     
     class func GetExpenesByCard(completion: @escaping ([ExpenseByTypeModel]) -> ())
     {
+        
         DispatchQueue.global(qos: .userInitiated).async
         {
             var expenseByCard = [ExpenseByTypeModel]()
@@ -43,10 +44,12 @@ class ExpenseByCardManger {
             }
         
         }
+        
     }
     
     class func map(cards : [Card],completion: @escaping ([ExpenseByTypeModel]) -> ())
     {
+        
         DispatchQueue.global(qos: .userInitiated).async
         {
             var expenseByType = [ExpenseByTypeModel]()
@@ -65,6 +68,8 @@ class ExpenseByCardManger {
             }
         
         }
+         
+       
     }
     
     

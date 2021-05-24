@@ -21,6 +21,7 @@ class CVExpenseCardDataSource: NSObject,UICollectionViewDataSource,UICollectionV
         self._expenseByTypes = expenseByTypes
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width=collectionView.bounds.width/_collectionViewDynamicWidhthFactor-50;

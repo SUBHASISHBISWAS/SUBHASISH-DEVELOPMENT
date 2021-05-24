@@ -39,6 +39,7 @@ class CardsCollectionViewCell: UICollectionViewCell {
     
     func setup(card : Card) {
         
+        self.layoutIfNeeded()
         _cardNameText.text = card.cardName
         _creditLimitText.text = "\(card.creditLimit)"
         _cardImageView.image = UIImage(data: card.cardImage!)

@@ -61,6 +61,7 @@ class CardManager: NSObject {
             }
         
         }
+        
     }
     
     class func DeleteCard(id :Int,completion: @escaping ([Card]) -> ())

@@ -23,7 +23,7 @@ class ExpenseByTypeCVCell: UICollectionViewCell {
     
     func setup(expenseByType : ExpenseByTypeModel) {
         
-        
+        self.layoutIfNeeded()
         _expenTypeImage.image=expenseByType.image
         _typeOfExpenseLabel.text = expenseByType.description
         _totalExpenseLabel.text = "\(Int(expenseByType.totalAmaount))"

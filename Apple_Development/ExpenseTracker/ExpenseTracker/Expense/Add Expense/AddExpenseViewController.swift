@@ -50,11 +50,52 @@ class AddExpenseViewController: UIViewController {
         
         _expenseByMonthCView.register(ExpenseByMonthCVCell.nib(), forCellWithReuseIdentifier: ExpenseByMonthCVCell.cellIdetifier)
         
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.expenseTypeDidChanged), name: UITextField.textDidChangeNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.expenseAmountDidChanged), name: UITextField.textDidChangeNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.cardTypeDidChanged), name: UITextField.textDidChangeNotification, object: nil)
+        
+        
+        // On Default Card Added
+        EventEmitter.subscribe(name: "DefaultCardAdded") { (data) in
+            print((data as! [Card]).count)
+            
+            let cards=(data as! [Card])
+            
+            self._cardTypePVDataSource=PVCardTypeDataSource(data: cards, viewController: self)
+            self._cardTypePickerView.dataSource = self._cardTypePVDataSource
+            self._cardTypePickerView.delegate = self._cardTypePVDataSource
+            if (cards.count > 0){
+                self._cardTypePickerView.selectRow(0, inComponent: 0, animated: true)
+                self._cardTypePVDataSource?.pickerView(self._cardTypePickerView, didSelectRow: 0, inComponent: 0)
+            }
+            
+            ExpenseByCardManger.map(cards: cards, completion: { [weak self] (expenseByTypeModels) in
+                guard let self = self else { return }
+                
+                self._expenseByCardCVDataSource = CVExpenseCardDataSource(expenseByTypes: expenseByTypeModels)
+                self._expenseByTypeCView.dataSource = self._expenseByCardCVDataSource
+                self._expenseByTypeCView.delegate = self._expenseByCardCVDataSource
+                let indexPath = IndexPath(row: expenseByTypeModels.count-1, section: 0)
+                self._expenseByTypeCView.insertItems(at: [indexPath])
+                self._expenseByTypeCView.reloadData()
+                self._expenseByTypeCView.collectionViewLayout.invalidateLayout()
+                self._expenseByTypeCView.layoutSubviews()
+            })
+            
+            
+        }
+        
+        CardManager.GetCards( completion: { [weak self] (Cards) in
+            guard let self = self else { return }
+            
+            if (Cards.count > 0){
+                self._cardTypePickerView.selectRow(0, inComponent: 0, animated: true)
+                self._cardTypePVDataSource?.pickerView(self._cardTypePickerView, didSelectRow: 0, inComponent: 0)
+            }
+        })
         
         // On Loading Application Show View
         ExpenseByMonthManager.GetMonthlyExpenes { [weak self] (ExpenseByMonthModels) in
@@ -67,32 +108,32 @@ class AddExpenseViewController: UIViewController {
         
         ExpenseByCardManger.GetExpenesByCard { [weak self] (ExpenseByTypeModels) in
             guard let self = self else { return }
-            self._expenseByCardCVDataSource = CVExpenseCardDataSource(expenseByTypes: ExpenseByTypeModels)
-            self._expenseByTypeCView.dataSource = self._expenseByCardCVDataSource
-            self._expenseByTypeCView.delegate = self._expenseByCardCVDataSource
+            if (self._expenseByCardCVDataSource == nil)
+            {
+                self._expenseByCardCVDataSource = CVExpenseCardDataSource(expenseByTypes: ExpenseByTypeModels)
+                self._expenseByTypeCView.dataSource = self._expenseByCardCVDataSource
+                self._expenseByTypeCView.delegate = self._expenseByCardCVDataSource
+            }
             self._expenseByTypeCView.reloadData()
+            self._expenseByTypeCView.collectionViewLayout.invalidateLayout()
+            self._expenseByTypeCView.layoutSubviews()
+            
         }
          
-        CardManager.GetCards( completion: { [weak self] (Cards) in
-            guard let self = self else { return }
-            
-            self._cardTypePVDataSource=PVCardTypeDataSource(data: Cards, viewController: self)
-            self._cardTypePickerView.dataSource = self._cardTypePVDataSource
-            self._cardTypePickerView.delegate = self._cardTypePVDataSource
-            
-            if (Cards.count > 0){
-                self._cardTypePickerView.selectRow(0, inComponent: 0, animated: true)
-                self._cardTypePVDataSource?.pickerView(self._cardTypePickerView, didSelectRow: 0, inComponent: 0)
-            }
-        })
+        
         
         // On Addition and Deletion Update View
         EventEmitter.subscribe(name: "UpdateCards") { (data) in
             print((data as! [Card]).count)
             
+          
             ExpenseByCardManger.map(cards: data as! [Card], completion: { [weak self] (expenseByTypeModels) in
                 guard let self = self else { return }
-                self._expenseByCardCVDataSource?.UpdateDataSource(data: expenseByTypeModels)
+                
+                
+                self._expenseByCardCVDataSource!.UpdateDataSource(data: expenseByTypeModels)
+                let indexPath = IndexPath(row: expenseByTypeModels.count-1, section: 0)
+                self._expenseByTypeCView.insertItems(at: [indexPath])
                 self._expenseByTypeCView.reloadData()
                 self._expenseByTypeCView.collectionViewLayout.invalidateLayout()
                 self._expenseByTypeCView.layoutSubviews()
