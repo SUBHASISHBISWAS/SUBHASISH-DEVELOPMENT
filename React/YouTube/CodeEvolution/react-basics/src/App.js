@@ -3,16 +3,21 @@ import './App.css';
 import Greet from './Components/1-FunctionalComponent';
 import GreetClassComponent from './Components/2-GreetClassComponent';
 import JSXComponent from './Components/3-JSXComponent';
-import { ReactProps } from './4-FReactProps';
-import CReactProps from './5-CReactProps';
+import { ReactProps } from './Components/4-FReactProps';
+import CReactProps from './Components/5-CReactProps';
+import CState from './Components/6-CState';
+import CStateAdvanced from './Components/7-CStateAdvanced'
+import CBulkSetSateUpdate from './Components/8-CBulkSetSateUpdate';
 
 function App() {
   return (
     <div className="App">
 
+      <CBulkSetSateUpdate/>
 
+      {/* <CStateAdvanced/> */}
 
-
+      {/* <CState/> */}
       {/* <CReactProps name ='Subhasish' title='Biswas'/>
 
       <ReactProps name ='Subhasish' title='Biswas'>
