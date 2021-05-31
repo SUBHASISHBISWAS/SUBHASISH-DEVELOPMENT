@@ -10,8 +10,9 @@ import React, { useState } from "react";
  * @returns
  */
 function App() {
-  //! using state in functional component by using useState hook
+  //? using state in functional component by using useState hook
   //? Default state passed as Parameter to useState
+  //? State gets Passed Down and Action get Passed Ups
   const [tasks, setTask] = useState([
     {
       id: 1,
@@ -27,11 +28,16 @@ function App() {
     },
   ]);
 
+  //* this handler get passed to Task child component and raised from there to this parent component
+  const deleteTask = (id) => {
+    console.log("delete", id);
+  };
+
   return (
     <div className="container">
       {/* //! This is Better Comment */}
       <Header title="Task Tracker" />
-      <Tasks tasks={tasks} />
+      <Tasks tasks={tasks} onDelete={deleteTask} />
     </div>
   );
 }
