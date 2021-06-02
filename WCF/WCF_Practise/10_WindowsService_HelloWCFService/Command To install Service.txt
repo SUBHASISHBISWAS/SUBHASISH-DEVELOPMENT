@@ -1,3 +1,0 @@
-installutil -i WindowsServiceHost.exe
-
-installutil -u WindowsServiceHost.exe
