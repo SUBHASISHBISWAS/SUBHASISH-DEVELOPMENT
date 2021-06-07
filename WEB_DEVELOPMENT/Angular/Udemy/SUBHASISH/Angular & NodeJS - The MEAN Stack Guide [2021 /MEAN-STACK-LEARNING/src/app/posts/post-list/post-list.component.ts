@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./post-list.component.css'],
 })
 export class PostListComponent implements OnInit, OnDestroy {
-  @Input() posts: Post[] = [];
+  posts: Post[] = [];
   private postSub: Subscription = new Subscription();
   constructor(private postService: PostsService) {}
 

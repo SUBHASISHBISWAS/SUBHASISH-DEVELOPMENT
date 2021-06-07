@@ -7,10 +7,5 @@ import { Post } from './posts/post.model';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  storedPosts: Post[] = [];
   title = 'MEAN-STACK-LEARNING';
-
-  onPostAdded(post: Post) {
-    this.storedPosts.push(post);
-  }
 }
