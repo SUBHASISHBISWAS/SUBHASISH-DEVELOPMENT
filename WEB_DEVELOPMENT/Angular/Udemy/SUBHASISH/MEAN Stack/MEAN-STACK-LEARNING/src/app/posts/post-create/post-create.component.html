@@ -23,7 +23,7 @@
       <img
         [src]="imagePreview"
         [alt]="form.value.title"
-        *ngIf="imagePreview !== '' && imagePreview"
+        *ngIf="imagePreview !== '' && imagePreview && form.get('image')!.valid"
       />
     </div>
     <mat-form-field>
