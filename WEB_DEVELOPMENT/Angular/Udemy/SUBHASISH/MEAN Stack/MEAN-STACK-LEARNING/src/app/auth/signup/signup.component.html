@@ -1,12 +1,13 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form (submt)="onSignup(signUpForm)" *ngIf="!isLoading" #signUpForm="ngForm">
+  <form (submit)="onSignup(signUpForm)" *ngIf="!isLoading" #signUpForm="ngForm">
     <mat-form-field>
       <input
         matInput
         type="email"
         name="email"
         required
+        email
         placeholder="Email"
         ngModel
         #emailInput="ngModel"
