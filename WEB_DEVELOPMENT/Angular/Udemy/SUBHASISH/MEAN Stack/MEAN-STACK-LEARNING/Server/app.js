@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const postRoutes = require("./routes/post");
-
+const path = require("path");
 mongoose
   .connect(
     "mongodb+srv://subhasish:dqxNO4byagbnzUEW@mumbaicluster.0a4mb.mongodb.net/BlogsDb?retryWrites=true&w=majority",
@@ -24,6 +24,8 @@ app.use(
     extended: true,
   })
 );
+
+app.use("/images", express.static(path.join("server/images")));
 
 // CORS header
 app.use((req, res, next) => {
